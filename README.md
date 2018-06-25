@@ -1,3 +1,11 @@
+## Contributors
+
+- **Kevin Dexter**
+- **Ilana Nagib**
+- **Cory Booth**
+- **Bree Melechinsky**
+
+
 # Express/Passport with React
 This version uses React to control the login requests and redirection in coordination with client-side routing.
 
@@ -13,13 +21,32 @@ Before you get started, make sure you have the following software installed on y
 
 ## Create database and table
 
-Create a new database called `prime_app` and create a `person` table:
+Create a new database called `box_lunch_lifestyle` and create a `person` table:
 
 ```SQL
 CREATE TABLE person (
     id SERIAL PRIMARY KEY,
     username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (1000) NOT NULL
+    password VARCHAR (1000) NOT NULL,
+    name VARCHAR (200) NOT NULL,
+    get_emails BOOLEAN NOT NULL DEFAULT 'false',
+    is_admin BOOLEAN NOT NULL DEFAULT 'false',
+    date_joined DATE NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE entries (
+    id SERIAL PRIMARY KEY,
+    person_id INTEGER REFERENCES "public"."person"("id"),
+    date_posted DATE NOT NULL DEFAULT NOW(),
+    lunch_complete BOOLEAN NOT NULL DEFAULT 'false',
+    life_complete BOOLEAN NOT NULL DEFAULT 'false',
+    comments VARCHAR(2000)
+);
+
+CREATE TABLE positive_messages (
+    id SERIAL PRIMARY KEY,
+    message_content VARCHAR(400),
+    message_type VARCHAR(80)
 );
 ```
 
