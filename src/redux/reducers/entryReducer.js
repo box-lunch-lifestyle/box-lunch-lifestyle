@@ -1,4 +1,4 @@
-import {combineReducers} from 'react-redux';
+import {combineReducers} from 'redux';
 
 // tracks if the reducer is currently being modified
 const isLoading = (state = false, action) => {
