@@ -1,8 +1,8 @@
 const router = require('express').Router;
-const pool = require('pool');
+const pool = require('../modules/pool');
 
 
-//get for COMPLETED ENTRIES
+// get for COMPLETED ENTRIES
 router.get('/', (req, res) => {
     console.log('GET /api/entry');
     if (req.isAuthenticated()) {
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     }
 })
 
-//get for ADMIN
+// get for ADMIN
 router.get('/admin', (req, res) => {
     console.log('GET /api/entry/admin');
     if (req.isAuthenticated()) {
@@ -55,7 +55,7 @@ router.get('/admin', (req, res) => {
     }
 });
 
-//post for NEW INITIAL ENTRY
+// post for NEW INITIAL ENTRY
 router.post('/', (req, res) => {
     console.log('POST /api/entry');
     if (req.isAuthenticated()) {
@@ -73,7 +73,7 @@ VALUES ($1, $2, $3) RETURNING "id"`;
 
 })
 
-//put for EDIT (update after initial timer post - 2nd timer, journal entry)
+// put for EDIT (update after initial timer post - 2nd timer, journal entry)
 router.put('/:id', (req, res) => {
     console.log('PUT /api/entry/id');
     if (req.isAuthenticated()) {
@@ -107,8 +107,8 @@ router.put('/:id', (req, res) => {
 })
 
 
-//not yet in use [BASE MODE]
-//delete for ENTRY (lunch timer, life timer, journal entry)
+// not yet in use [BASE MODE]
+// delete for ENTRY (lunch timer, life timer, journal entry)
 router.delete('/:id', (req, res) => {
     console.log('DELETE /api/entry/id');
     if (req.isAuthenticated()) {

@@ -1,3 +1,11 @@
+## Contributors
+
+- **Kevin Dexter**
+- **Ilana Nagib**
+- **Cory Booth**
+- **Bree Melechinsky**
+
+
 # Express/Passport with React
 This version uses React to control the login requests and redirection in coordination with client-side routing.
 
