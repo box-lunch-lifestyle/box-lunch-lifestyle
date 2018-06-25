@@ -11,6 +11,13 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+import AdminPage from './components/AdminPage/AdminPage';
+import CompletedPage from './components/CompletedPage/CompletedPage';
+import HomePage from './components/HomePage/HomePage';
+import JournalPage from './components/JournalPage/JournalPage';
+import MilestonePage from './components/MilestonePage/MilestonePage';
+import Timer from './components/Timer/Timer';
+import TimerSelect from './components/TimerSelect/TimerSelect';
 
 import './styles/main.css';
 
@@ -21,7 +28,7 @@ const App = () => (
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route
-          path="/home"
+          path="/login"
           component={LoginPage}
         />
         <Route
@@ -36,6 +43,35 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        <Route
+          path="/admin"
+          component={AdminPage}
+        />
+        <Route
+          path="/completed"
+          component={CompletedPage}
+        />
+        <Route
+          path="/home"
+          component={HomePage}
+        />
+        <Route
+          path="/journal"
+          component={JournalPage}
+        />
+        <Route
+          path="/milestone"
+          component={MilestonePage}
+        />
+        <Route
+          path="/timer"
+          component={Timer}
+        />
+        <Route
+          path="/timerSelect"
+          component={TimerSelect}
+        />
+
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
