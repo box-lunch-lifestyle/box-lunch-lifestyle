@@ -11,6 +11,7 @@ function* fetchUser() {
       type: USER_ACTIONS.SET_USER,
       user,
     });
+    //userId
     yield put({
       type: USER_ACTIONS.REQUEST_DONE,
     });

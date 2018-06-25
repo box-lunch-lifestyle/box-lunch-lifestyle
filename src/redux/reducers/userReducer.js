@@ -12,6 +12,8 @@ const userName = (state = null, action) => {
   }
 };
 
+//const userId
+
 const isLoading = (state = false, action) => {
   switch (action.type) {
     case USER_ACTIONS.REQUEST_START:
@@ -26,4 +28,5 @@ const isLoading = (state = false, action) => {
 export default combineReducers({
   userName,
   isLoading,
+  //userId
 });
