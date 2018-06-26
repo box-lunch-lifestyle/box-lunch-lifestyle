@@ -55,9 +55,26 @@ function* fetchAdminPageEntries(action) {
   }
 }
 
+function* fetchEditEntry(action) {
+  try {
+    yield put({ type: "REQUEST_START_ENTRY_REDUCER" });
+    yield call(
+      axios.put(`/api/entry/${action.id}`, action.payload)
+        .then(response => response)
+        .catch(error => { throw error.response || error; })
+    ); 
+    yield call({ type: "FETCH_ALL_ENTRIES" });
+    yield put({ type: "REQUEST_DONE_ENTRY_REDUCER" });
+  } catch (error) {
+    yield put({ type: "REQUEST_DONE_ENTRY_REDUCER" });
+  }
+}
+
 function* entrySaga() {
   yield takeEvery("POST_NEW_ENTRY", fetchPostEntry);
   yield takeEvery("FETCH_ALL_ENTRIES", fetchAllEntries);
+  yield takeEvery("FETCH_ADMIN_PAGE_ENTRIES", fetchAdminPageEntries);
+  yield takeEvery("FETCH_EDIT_ENTRY", fetchEditEntry);
 };
 
 export default entrySaga;
