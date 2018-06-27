@@ -74,7 +74,7 @@ function* entrySaga() {
   yield takeEvery("POST_NEW_ENTRY", fetchPostEntry);
   yield takeEvery("FETCH_ALL_ENTRIES", fetchAllEntries);
   yield takeEvery("FETCH_ADMIN_PAGE_ENTRIES", fetchAdminPageEntries);
-  yield takeEvery("FETCH_EDIT_ENTRY", fetchEditEntry);
+  yield takeEvery("FETCH_EDIT_ENTRY", fetchEditEntry );
 };
 
 export default entrySaga;
