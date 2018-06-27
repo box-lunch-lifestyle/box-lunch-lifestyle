@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import user from './userReducer';
 import login from './loginReducer';
 import entries from './entryReducer';
-import positiveMessages from './positiveReducer';
+import comments from './commentReducer';
 
 const store = combineReducers({
   user,
   login,
   entries,
-  positiveMessages,
+  comments,
 });
 
 export default store;

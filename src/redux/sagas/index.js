@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects';
 import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import entrySaga from './entrySaga';
-import positiveMessageSaga from './positiveMessageSaga';
+import commentSaga from './commentSaga';
 
 
 export default function* rootSaga() {
@@ -10,7 +10,7 @@ export default function* rootSaga() {
     userSaga(),
     loginSaga(),
     entrySaga(),
-    positiveMessageSaga(),
+    commentSaga(),
     // watchIncrementAsync()
   ]);
 }
