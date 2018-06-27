@@ -5,7 +5,7 @@ function* fetchPostEntry(action) {
   try {
     yield put({ type: "REQUEST_START_ENTRY_REDUCER" });
     const entryId = yield call(
-      axios.post('/api/entry', action.payload)
+      axios.post('/api/entry/postEntry', action.payload)
         .then(response => response.data[0].id)
         .catch(error => { throw error.response || error; })
     );
@@ -23,7 +23,7 @@ function* fetchAllEntries(action) {
   try {
     yield put({ type: "REQUEST_START_ENTRY_REDUCER" });
     const entries = yield call(
-      axios.get('/api/entry/')
+      axios.get('/api/entry/getEntries')
         .then(response => response.data)
         .catch(error => { throw error.response || error; })
     );
@@ -59,7 +59,7 @@ function* fetchEditEntry(action) {
   try {
     yield put({ type: "REQUEST_START_ENTRY_REDUCER" });
     yield call(
-      axios.put(`/api/entry/${action.id}`, action.payload)
+      axios.put(`/api/entry/putEntry/${action.id}`, action.payload)
         .then(response => response)
         .catch(error => { throw error.response || error; })
     ); 
