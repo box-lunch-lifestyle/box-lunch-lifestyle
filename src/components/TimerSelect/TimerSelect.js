@@ -20,7 +20,7 @@ class TimerSelect extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <img src='images/logo.jpg' width="400" />
+        {/* <img src='images/logo.jpg' width="400" /> */}
         <img src='images/clock.jpg' width="400" />
         <Grid container spacing={24} justify={'center'}>
             <h3>What's first today?</h3>

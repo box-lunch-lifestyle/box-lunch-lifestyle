@@ -8,8 +8,8 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
-    padding: 5px;
+    /* background-color: #00acb0; */
+    padding: 10px;
     color: #ece7e7;
 }
 
@@ -48,7 +48,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  /* background-color: #00acb0; */
   width: 100%;
   border-radius: 0px;
 }
