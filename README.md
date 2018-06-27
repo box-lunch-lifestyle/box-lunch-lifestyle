@@ -4,6 +4,7 @@
 - **Ilana Nagib**
 - **Cory Booth**
 - **Bree Melechinsky**
+- **Torben Jepsen**
 
 
 # Express/Passport with React
