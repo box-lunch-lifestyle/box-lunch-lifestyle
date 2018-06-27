@@ -2,23 +2,22 @@ CREATE TABLE person (
     id SERIAL PRIMARY KEY,
     username VARCHAR (80) UNIQUE NOT NULL,
     password VARCHAR (1000) NOT NULL,
-    name VARCHAR (200) NOT NULL,
-    get_emails BOOLEAN NOT NULL DEFAULT 'false',
+    name VARCHAR (200),
     is_admin BOOLEAN NOT NULL DEFAULT 'false',
     date_joined DATE NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE entries (
     id SERIAL PRIMARY KEY,
-    person_id INTEGER REFERENCES "public"."person"("id"),
+    person_id INTEGER REFERENCES "public"."person"("id") ON DELETE CASCADE,
     date_posted DATE NOT NULL DEFAULT NOW(),
     lunch_complete BOOLEAN NOT NULL DEFAULT 'false',
-    life_complete BOOLEAN NOT NULL DEFAULT 'false',
-    comments VARCHAR(2000)
+    activity_complete BOOLEAN NOT NULL DEFAULT 'false'
 );
 
-CREATE TABLE positive_messages (
+CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
-    message_content VARCHAR(400),
-    message_type VARCHAR(80)
+    date_posted DATE NOT NULL DEFAULT NOW(),
+    comments VARCHAR(2000) NOT NULL,
+    person_id INT REFERENCES "public"."person"("id") ON DELETE CASCADE
 );
