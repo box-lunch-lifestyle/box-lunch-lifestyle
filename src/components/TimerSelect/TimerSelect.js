@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class TimerSelect extends Component {
   render() {
     return (
-      <div>Time Select</div>
+      <div>
+      <img src='images/clock.jpg' width="400" />
+      </div>
     )
   }
 }
