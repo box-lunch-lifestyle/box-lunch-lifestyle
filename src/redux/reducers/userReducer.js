@@ -51,7 +51,6 @@ export default combineReducers({
   userName,
   isLoading,
   isAdmin,
-  getEmails,
   name,
   //userId
 });
