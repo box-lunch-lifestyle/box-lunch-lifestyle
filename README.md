@@ -44,7 +44,7 @@ CREATE TABLE entries (
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     date_posted DATE NOT NULL DEFAULT NOW(),
-    comments VARCHAR(2000) NOT NULL,
+    comment VARCHAR(2000) NOT NULL,
     person_id INT REFERENCES "public"."person"("id") ON DELETE CASCADE
 );
 ```
