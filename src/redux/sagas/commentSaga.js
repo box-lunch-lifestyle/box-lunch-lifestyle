@@ -13,9 +13,9 @@ function* fetchAllComments(action) {
       type: "SET_ALL_COMMENTS",
       payload: comments,
     })
-    yield put({ type: "REQUEST_STOP_COMMENT_REDUCER" })
+    yield put({ type: "REQUEST_DONE_COMMENT_REDUCER" })
   } catch (error) {
-    yield put({ type: "REQUEST_STOP_COMMENT_REDUCER" })
+    yield put({ type: "REQUEST_DONE_COMMENT_REDUCER" })
   }
 }
 
