@@ -74,7 +74,7 @@ VALUES ($1, $2, $3) RETURNING "id"`;
 
 });
 
-// put for EDIT (update after initial timer post - 2nd timer, journal entry)
+// put for EDIT (update after initial timer post - 2nd timer)
 router.put('/putEntry/:id', (req, res) => {
     console.log('PUT /api/entry/putEntry/:id');
     if (req.isAuthenticated()) {
