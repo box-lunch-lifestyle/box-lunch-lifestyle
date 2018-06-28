@@ -25,7 +25,7 @@ function CompletedPage(props) {
           <h1>Nicely Done!</h1>
         </div>
         <div className='completedImg'>
-          {/* <img src='' alt='boxingBoy' /> */}
+          <img src='images/cjguycharacter.jpg' alt='boxingBoy' width='90%' />
         </div>
         <div className='encouragementMessage'>
           <h1>Everyday Matters. Keep it up!</h1>
