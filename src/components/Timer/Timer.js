@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Pause from '@material-ui/icons/PauseCircleOutline';
 import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
+import CountdownOne from '../Countdown/Countdown';
+import CountdownTwo from '../Countdown/Countdown';
 
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
@@ -30,6 +32,7 @@ class TimerPage extends Component {
       currentModal: 'food',
       currentRound: '',
       timerIsRunning: true,
+      time: 900,
     }
   };
 
@@ -38,19 +41,19 @@ class TimerPage extends Component {
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
       // currentModal: this.timer.firstModal,
       // currentRound: this.timer.firstRound,
-    })
+      currentModal: 'food',
+      currentRound: 'food',
+    });
   };
 
   completeRoundOne = () => {
     if (this.state.currentRound === 'food') {
       this.setState ({
         currentModal: 'life',
-        currentRound: 'life',
       })
     } else {
       this.setState ({
         currentModal: 'food',
-        currentRound: 'food',
       })
     }
   };
@@ -87,6 +90,12 @@ class TimerPage extends Component {
     // do we want a sweet alert here?
     this.props.history.push('/home');
   };
+
+  onComplete = () => {
+    this.setState({
+      round: !this.state.round,
+    })
+  }
 
   render() {
 
@@ -126,6 +135,14 @@ class TimerPage extends Component {
       pausePlayButton = <Button variant="fab" color="primary" onClick={this.play} className={classes.button} ><Play className={classes.icon} /></Button>
     }
 
+    let countdown;
+    if (this.state.currentRound === 'food') {
+      countdown = <div className="roundOne"><CountdownOne timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
+    } else if (this.state.currentRound === 'life') {
+      console.log('DONE');
+      countdown = <div className="roundTwo"><CountdownTwo timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
+    }
+
     return (
 
       <div>
@@ -137,7 +154,8 @@ class TimerPage extends Component {
         </div>
         {pausePlayButton}
         <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
-      </div>
+        {countdown}
+        </div>
     )
   };
 };

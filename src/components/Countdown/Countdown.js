@@ -54,11 +54,13 @@ class Countdown extends Component {
     return serverSideTimeRemainingInSeconds;
   }
 
-  componentDidUpdate(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if(this.props.timeRemainingInSeconds !== nextProps.timeRemainingInSeconds){
       let timeRemainingInSeconds = this.compareServerTimeandComponentTimeandUpdateServer(nextProps.timeRemainingInSeconds);
       this.timerCountdown(timeRemainingInSeconds, true);
     }
+    console.log(this.state)
+    console.log(nextProps)
   }
 
   componentDidMount() {
