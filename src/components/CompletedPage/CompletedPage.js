@@ -12,29 +12,33 @@ const styles = theme => ({
 function CompletedPage(props) {
   const { classes } = props;
 
-    return (
-      <div>
-        <div className='header'>
-          <Header />
-        </div>
-       {/* function for date would go here*/}
-        <div className='completedMessage'>
-          Nicely Done!
-        </div>
-        <div className='completedImg'>
-          {/* <img src='' alt='boxingBoy' /> */}
-        </div>
-        <div className='encouragementMessage'>
-          Everyday Matters. Keep it up!
-        </div>
-        <div className='completedButton'>
-           {/* onClick function would go here with button*/}
-        <Button variant="contained" color="secondary" className={classes.button}>Home</Button>
-        </div>
-      </div>
-
-    )
+  const handleClick = (pageLink) => () => {
+    props.history.push(pageLink);
   }
+
+
+  return (
+    <div>
+      <div className='header'>
+        <Header />
+      </div>
+      {/* function for date would go here*/}
+      <div className='completedMessage'>
+        <h1>Nicely Done!</h1>
+      </div>
+      <div className='completedImg'>
+        {/* <img src='' alt='boxingBoy' /> */}
+      </div>
+      <div className='encouragementMessage'>
+        <h1>Everyday Matters. Keep it up!</h1>
+      </div>
+      <div className='completedButton'>
+        <Button onClick={handleClick('/home')} variant="contained" color="secondary" className={classes.button}>Home</Button>
+      </div>
+    </div>
+
+  )
+}
 
 
 
