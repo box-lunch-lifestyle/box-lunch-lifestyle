@@ -11,7 +11,7 @@ class Countdown extends Component {
       countdownStatus: 'stopped',
     };
   }
-  timeRemainingInSeconds = 900;
+  // timeRemainingInSeconds = 900;
 
   updateMinutesAndSeconds(timeRemainingInSeconds){
     let minutes = Math.floor(timeRemainingInSeconds/60);
@@ -33,7 +33,7 @@ class Countdown extends Component {
       this.props.onCompletion();
     }
     localStorage.setItem('timeRemainingInSeconds', timeRemainingInSeconds);
-    if(timeRemainingInSeconds > 0) {
+    if(timeRemainingInSeconds >= 0) {
       this.updateMinutesAndSeconds(timeRemainingInSeconds);
       timeRemainingInSeconds = timeRemainingInSeconds - 1;
       this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds, false), 1000);

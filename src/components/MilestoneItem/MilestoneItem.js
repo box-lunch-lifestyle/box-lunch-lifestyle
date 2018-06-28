@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 
 
 
+
 const styles = {
     card: {
         width: 300,
@@ -49,6 +50,7 @@ function MilestoneItem(props) {
           <Typography variant="headline" component="h2">
            Flyweight (5 Days)
           </Typography>
+          
                 </CardContent>
             </Card>
             </Grid>
