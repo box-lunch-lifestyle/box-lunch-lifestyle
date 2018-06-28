@@ -28,17 +28,21 @@ class TimerSelect extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <img src='images/clock.jpg' width="400" />
-        <Grid container spacing={24} justify={'center'}>
-          <h3>What's first today?</h3>
-        </Grid>
-        <Grid container spacing={24} justify={'center'}>
-          <Button onClick={this.foodTimerClick} variant="contained" color="secondary" className={classes.button}>
-            FOOD
+        <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
+          <Grid item>
+            <img src='images/clock.jpg' width='90%' />
+          </Grid>
+          <Grid item >
+            <h2>What's first today?</h2>
+          </Grid>
+          <Grid item>
+            <Button onClick={this.foodTimerClick} variant="contained" color="primary" className={classes.button}>
+              FOOD
       </Button>
-          <Button onClick={this.youTimerClick} variant="contained" color="secondary" className={classes.button}>
-            YOU
+            <Button onClick={this.youTimerClick} variant="contained" color="primary" className={classes.button}>
+              YOU
       </Button>
+          </Grid>
         </Grid>
       </div>
     )
