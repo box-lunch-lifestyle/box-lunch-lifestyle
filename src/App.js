@@ -26,7 +26,12 @@ import red from '@material-ui/core/colors/red';
 
 const myTheme = createMuiTheme({
   palette: {
-    primary: red,
+    primary: {
+      light: red,
+      main: '#BB221C',
+      dark: '#AD242B',
+      contrastText: '#fff',
+    },
     // secondary: cyan,
     // error: red,
     // contrastThreshold: 3,

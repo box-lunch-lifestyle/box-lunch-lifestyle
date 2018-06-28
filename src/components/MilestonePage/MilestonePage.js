@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {USER_ACTIONS} from '../../redux/actions/userActions';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import MilestoneItem from '../MilestoneItem/MilestoneItem';
 
 const mapStateToProps = state => ({
@@ -31,33 +32,43 @@ class MilestonePage extends Component {
     let content = null;
 
     if (this.props.user.userName) {
-      content = ( 
+      content = (
         <div>
-        <h2> Box Lunch Lifestyle Logo Goes Here </h2> 
-        <h3> Milestones </h3> 
-        <h5> You have [X] lunches under your belt </h5>
-        <div>
-        <MilestoneItem />
-        </div>
-        <div>
-        <p>Milestone Options</p>
-        <ul>
-          <li>Flyweight (5 lunches)</li>
-          <li>Bantamweight (15 lunches)</li>
-          <li>Welterweight (25 lunches)</li>
-          <li>Middleweight (50 lunches)</li>
-          <li>Heavyweight (250 lunches)</li>
-        </ul>
-        </div>
-
-        <Button variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button> 
+          <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
+            <Grid item>
+              <h3> Milestones </h3>
+            </Grid>
+            <Grid item>
+              <h5> You have [X] lunches under your belt </h5>
+            </Grid>
+            <div>
+              <Grid item>
+                <MilestoneItem />
+              </Grid>
+            </div>
+            <div>
+              <Grid item>
+                <h4>Milestone Options</h4>
+              </Grid>
+              <Grid item>
+                <ul>
+                  <li>Flyweight (5 lunches)</li>
+                  <li>Bantamweight (15 lunches)</li>
+                  <li>Welterweight (25 lunches)</li>
+                  <li>Middleweight (50 lunches)</li>
+                  <li>Heavyweight (250 lunches)</li>
+                </ul>
+              </Grid>
+            </div>
+            <Button variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>
+          </Grid>
         </div>
       );
     }
 
     return (
-      <div> 
-      { content } 
+      <div>
+        {content}
       </div>
     );
   }
