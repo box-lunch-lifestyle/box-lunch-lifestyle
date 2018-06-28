@@ -22,7 +22,7 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="Box Lunch Lifestyle" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
