@@ -16,7 +16,7 @@ class HomePage extends Component {
             <h2>Get pumped up.</h2>
           </Grid>
           <Grid item>
-            <img src='images/heroGuy.jpg' width='400' alt="Hero guy" />
+            <img src='images/heroGuy.jpg' width='90%' alt="Hero guy" />
           </Grid>
           <Grid item>
             <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
