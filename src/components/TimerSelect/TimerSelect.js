@@ -30,7 +30,7 @@ class TimerSelect extends Component {
       <div>
         <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
           <Grid item>
-            <img src='images/clock.jpg' width='400' />
+            <img src='images/clock.jpg' width='90%' />
           </Grid>
           <Grid item >
             <h2>What's first today?</h2>
