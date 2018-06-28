@@ -19,8 +19,22 @@ import Timer from './components/Timer/Timer';
 import TimerSelect from './components/TimerSelect/TimerSelect';
 
 import './styles/main.css';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { createMuiTheme } from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
+
+const myTheme = createMuiTheme({
+  palette: {
+    primary: red,
+    // secondary: cyan,
+    // error: red,
+    // contrastThreshold: 3,
+    // tonalOffset: 0.2,
+  }
+});
 
 const App = () => (
+  <MuiThemeProvider theme={myTheme}>
   <div>
     <Header title="Box Lunch Lifestyle" />
     <Router>
@@ -73,6 +87,7 @@ const App = () => (
       </Switch>
     </Router>
   </div>
+  </MuiThemeProvider>
 );
 
 export default App;
