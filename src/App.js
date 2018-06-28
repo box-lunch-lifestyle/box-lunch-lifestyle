@@ -17,6 +17,7 @@ import JournalPage from './components/JournalPage/JournalPage';
 import MilestonePage from './components/MilestonePage/MilestonePage';
 import Timer from './components/Timer/Timer';
 import TimerSelect from './components/TimerSelect/TimerSelect';
+import Countdown from './components/Countdown/Countdown';
 
 import './styles/main.css';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
@@ -80,6 +81,11 @@ const App = () => (
           path="/timerSelect"
           component={TimerSelect}
         />
+        <Route
+          path="/countdown"
+          component={Countdown}
+        />
+
 
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
