@@ -20,7 +20,6 @@ function CompletedPage(props) {
     return (
       <div>
         <Moment format="YYYY/MM/DD">
-          1976-04-19T12:59-0500
             </Moment>
         <div className='completedMessage'>
           <h1>Nicely Done!</h1>
