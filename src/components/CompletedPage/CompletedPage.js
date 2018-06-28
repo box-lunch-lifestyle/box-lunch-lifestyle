@@ -42,7 +42,7 @@ function CompletedPage(props) {
         </Grid>
         <Grid>
           <div className='completedButton'>
-            <Button onClick={handleClick('/home')} variant="contained" color="secondary" className={classes.button}>Home</Button>
+            <Button onClick={handleClick('/home')} variant="contained" color="primary" className={classes.button}>Home</Button>
           </div>
         </Grid>
       </Grid>

@@ -11,7 +11,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Grid container spacing={24}  alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
+        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={24}>
           <Grid item>
             <h2>Get pumped up.</h2>
           </Grid>

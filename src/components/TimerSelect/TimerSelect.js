@@ -28,7 +28,7 @@ class TimerSelect extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
+        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
           <Grid item>
             <img src='images/clock.jpg' width='90%' />
           </Grid>
