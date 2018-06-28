@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
+import Moment from 'react-moment';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -17,28 +17,28 @@ function CompletedPage(props) {
   }
 
 
-  return (
-    <div>
-      <div className='header'>
-        <Header />
-      </div>
-      {/* function for date would go here*/}
-      <div className='completedMessage'>
-        <h1>Nicely Done!</h1>
-      </div>
-      <div className='completedImg'>
-        {/* <img src='' alt='boxingBoy' /> */}
-      </div>
-      <div className='encouragementMessage'>
-        <h1>Everyday Matters. Keep it up!</h1>
-      </div>
-      <div className='completedButton'>
-        <Button onClick={handleClick('/home')} variant="contained" color="secondary" className={classes.button}>Home</Button>
-      </div>
-    </div>
+    return (
+      <div>
+        <Moment format="YYYY/MM/DD">
+          1976-04-19T12:59-0500
+            </Moment>
+        <div className='completedMessage'>
+          <h1>Nicely Done!</h1>
+        </div>
+        <div className='completedImg'>
+          {/* <img src='' alt='boxingBoy' /> */}
+        </div>
+        <div className='encouragementMessage'>
+          <h1>Everyday Matters. Keep it up!</h1>
+        </div>
+        <div className='completedButton'>
+          <Button onClick={handleClick('/home')} variant="contained" color="secondary" className={classes.button}>Home</Button>
+        </div>
+           </div>
 
-  )
-}
+    )
+  }
+
 
 
 
