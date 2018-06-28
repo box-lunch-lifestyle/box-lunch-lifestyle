@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
+import Moment from 'react-moment';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -12,29 +12,32 @@ const styles = theme => ({
 function CompletedPage(props) {
   const { classes } = props;
 
+  const handleClick = (pageLink) => () => {
+    props.history.push(pageLink);
+  }
+
+
     return (
       <div>
-        <div className='header'>
-          <Header />
-        </div>
-       {/* function for date would go here*/}
+        <Moment format="YYYY/MM/DD">
+            </Moment>
         <div className='completedMessage'>
-          Nicely Done!
+          <h1>Nicely Done!</h1>
         </div>
         <div className='completedImg'>
-          {/* <img src='' alt='boxingBoy' /> */}
+          <img src='images/cjguycharacter.jpg' alt='boxingBoy' width='90%' />
         </div>
         <div className='encouragementMessage'>
-          Everyday Matters. Keep it up!
+          <h1>Everyday Matters. Keep it up!</h1>
         </div>
         <div className='completedButton'>
-           {/* onClick function would go here with button*/}
-        <Button variant="contained" color="secondary" className={classes.button}>Home</Button>
+          <Button onClick={handleClick('/home')} variant="contained" color="secondary" className={classes.button}>Home</Button>
         </div>
-      </div>
+           </div>
 
     )
   }
+
 
 
 

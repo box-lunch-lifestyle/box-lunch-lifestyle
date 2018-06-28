@@ -16,20 +16,33 @@ class TimerSelect extends Component {
     super(props)
   }
 
+  foodTimerClick = () => {
+    this.props.history.push('/timer');
+  };
+
+  youTimerClick = () => {
+    this.props.history.push('/timer');
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-        {/* <img src='images/logo.jpg' width="400" /> */}
-        <img src='images/clock.jpg' width="400" />
-        <Grid container spacing={24} justify={'center'}>
-            <h3>What's first today?</h3>
-          <Button variant="contained" color="secondary" className={classes.button}>
-            FOOD
+        <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
+          <Grid item>
+            <img src='images/clock.jpg' width='400' />
+          </Grid>
+          <Grid item >
+            <h2>What's first today?</h2>
+          </Grid>
+          <Grid item>
+            <Button onClick={this.foodTimerClick} variant="contained" color="primary" className={classes.button}>
+              FOOD
       </Button>
-          <Button variant="contained" color="secondary" className={classes.button}>
-            YOU
+            <Button onClick={this.youTimerClick} variant="contained" color="primary" className={classes.button}>
+              YOU
       </Button>
+          </Grid>
         </Grid>
       </div>
     )

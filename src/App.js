@@ -23,7 +23,7 @@ import Countdown from './components/Countdown/Countdown';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="Box Lunch Lifestyle" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
