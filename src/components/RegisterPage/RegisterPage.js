@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 import RegisterForm from './RegisterForm';
+
 
 class RegisterPage extends Component {
   constructor(props) {
