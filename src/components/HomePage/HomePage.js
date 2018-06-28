@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import Header from '../Header/Header';
+import Grid from '@material-ui/core/Grid';
 
 class HomePage extends Component {
 
@@ -11,14 +11,23 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <p>Get pumped up (not permanent)</p>
-        <img alt="Hero guy (image coming)" />
-        <br />
-        <Button color="primary" variant="contained" onClick={this.handleClick('/timer')} >TIMER</Button>
-        <br />
-        <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
-        <br />
-        <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
+        <Grid container spacing={24}  alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
+          <Grid item>
+            <h2>Get pumped up.</h2>
+          </Grid>
+          <Grid item>
+            <img src='images/heroGuy.jpg' width='400' alt="Hero guy" />
+          </Grid>
+          <Grid item>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
+          </Grid>
+          <Grid item>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
+          </Grid>
+          <Grid item>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
+          </Grid>
+        </Grid>
       </div>
     )
   }
