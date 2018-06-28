@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
-import Countdown from '../Countdown/Countdown';
+
 
 
 const styles = {
@@ -52,7 +52,6 @@ function MilestoneItem(props) {
                 </CardContent>
             </Card>
             </Grid>
-            <Countdown timeRemainingInSeconds={900} onEveryMinute={()=>{}} onCompletion={() => {}} />
         </div>
     );
 }
