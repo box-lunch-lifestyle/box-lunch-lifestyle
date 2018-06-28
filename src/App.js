@@ -19,6 +19,7 @@ import Timer from './components/Timer/Timer';
 import TimerSelect from './components/TimerSelect/TimerSelect';
 
 import './styles/main.css';
+import Countdown from './components/Countdown/Countdown';
 
 const App = () => (
   <div>
@@ -66,6 +67,11 @@ const App = () => (
           path="/timerSelect"
           component={TimerSelect}
         />
+        <Route
+          path="/countdown"
+          component={Countdown}
+        />
+
 
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
