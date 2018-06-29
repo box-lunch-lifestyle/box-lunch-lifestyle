@@ -109,9 +109,28 @@ class TimerPage extends Component {
   };
 
   onComplete = () => {
-    this.setState({
-      currentRound: 'life',
-    })
+    let nextRound;
+    if (this.props.timer.currentRound === 'food'){
+      nextRound = 'life';
+    } else {
+      nextRound ='food';
+    }
+
+    if(!this.props.timer.isSecondRound){
+      swal({
+        title: "Good Job!",
+        text: "Ready For Round Two?",
+        showConfirmButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'YES!',
+      })
+      .then((result) => {
+        if (result.value) {
+          this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: nextRound});
+        } 
+      });
+      this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'})
+    }
   }
 
   componentWillUnmount = () => {
