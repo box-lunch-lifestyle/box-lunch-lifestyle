@@ -8,7 +8,7 @@ import Pause from '@material-ui/icons/PauseCircleOutline';
 import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
 import Grid from '@material-ui/core/Grid';
-import swal from 'sweetalert2'
+import swal from 'sweetalert';
 
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
