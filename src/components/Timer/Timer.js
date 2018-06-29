@@ -149,9 +149,9 @@ class TimerPage extends Component {
     let timer;
 
     let countdown;
-    if (this.state.currentRound === 'food') {
+    if (this.props.timer.currentRound === 'food') {
       countdown = <div className="roundOne"><FoodTimer onComplete={this.onComplete} history={this.props.history} /></div>
-    } else if (this.state.currentRound === 'life') {
+    } else if (this.props.timer.currentRound === 'life') {
       console.log('DONE');
       countdown = <div className="roundTwo"><LifeTimer onComplete={this.onComplete} history={this.props.history} /></div>
     }
