@@ -9,8 +9,8 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = {
     card: {
-        width: 500,
-        float: 'left',
+        width: 300,
+        float: 'center',
         margin: '10px',
         padding: '5px',
         display: 'flex',
