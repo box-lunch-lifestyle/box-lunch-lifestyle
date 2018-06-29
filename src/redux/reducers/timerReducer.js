@@ -64,7 +64,7 @@ const modalOpen = (state = false, action) => {
 }
 
 export default combineReducers ({
-  firstRound,
+  currentRound,
   isPlaying,
   lifeDone,
   foodDone,
