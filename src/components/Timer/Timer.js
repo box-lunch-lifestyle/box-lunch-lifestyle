@@ -38,6 +38,7 @@ class TimerPage extends Component {
       timerIsRunning: true,
       time: 9,
     }
+    this.addNote = this.addNote.bind(this);
   };
 
   componentDidMount = () => {
@@ -131,26 +132,28 @@ class TimerPage extends Component {
       });
       this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'});
     } else {
-      swal({
-        title: "Excellent!",
-        text: "What Should Your Future Self Know About Today?",
-        showConfirmButton: true,
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Save',
-        cancelButtonText: 'Skip',
-      })
-      .then((result) => {
-        if (result.value) {
-          this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: 'test comment'}});
-          this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
-        } else 
-        {
-          this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
-        }
-      });
+        this.addNote();
     } 
-  }
+  };
+
+  async addNote () {
+    const {value: text} = await swal({
+      input: 'textarea',
+      inputPlaceholder: "What Should Your Future Self Know About Today?",
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Save',
+      cancelButtonText: 'Skip',
+    })
+    if (text) {
+      this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
+      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+    } else 
+    {
+      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+    }
+  };
 
   componentWillUnmount = () => {
 
