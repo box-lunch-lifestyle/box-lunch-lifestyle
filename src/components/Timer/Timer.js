@@ -7,8 +7,7 @@ import Button from '@material-ui/core/Button';
 import Pause from '@material-ui/icons/PauseCircleOutline';
 import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
-import CountdownOne from '../Countdown/Countdown';
-import CountdownTwo from '../Countdown/Countdown';
+import Countdown from '../Countdown/Countdown';
 
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
@@ -32,7 +31,7 @@ class TimerPage extends Component {
       currentModal: 'food',
       currentRound: '',
       timerIsRunning: true,
-      time: 900,
+      time: 9,
     }
   };
 
@@ -137,10 +136,10 @@ class TimerPage extends Component {
 
     let countdown;
     if (this.state.currentRound === 'food') {
-      countdown = <div className="roundOne"><CountdownOne timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
+      countdown = <div className="roundOne"><Countdown timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
     } else if (this.state.currentRound === 'life') {
       console.log('DONE');
-      countdown = <div className="roundTwo"><CountdownTwo timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
+      countdown = <div className="roundTwo"><Countdown timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
     }
 
     return (
