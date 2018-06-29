@@ -8,6 +8,8 @@ import Pause from '@material-ui/icons/PauseCircleOutline';
 import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
 import Countdown from '../Countdown/Countdown';
+import Grid from '@material-ui/core/Grid';
+import swal from 'sweetalert2'
 
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
@@ -36,7 +38,7 @@ class TimerPage extends Component {
   };
 
   componentDidMount = () => {
-    this.setState ({
+    this.setState({
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
       // currentModal: this.timer.firstModal,
       // currentRound: this.timer.firstRound,
@@ -47,11 +49,11 @@ class TimerPage extends Component {
 
   completeRoundOne = () => {
     if (this.state.currentRound === 'food') {
-      this.setState ({
+      this.setState({
         currentModal: 'life',
       })
     } else {
-      this.setState ({
+      this.setState({
         currentModal: 'food',
       })
     }
@@ -86,8 +88,21 @@ class TimerPage extends Component {
   };
 
   stop = () => {
-    // do we want a sweet alert here?
-    this.props.history.push('/home');
+    swal({
+      title: 'Are you sure?',
+      text: "You'll have to start from the beginning!",
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#BB221C',
+      confirmButtonText: 'I need to stop!'
+    }).then((result) => {
+      if (result.value) {
+        // do we want a sweet alert here? Yes we do;)
+        this.props.history.push('/home');
+      }
+    })
+
   };
 
   onComplete = () => {
@@ -98,7 +113,7 @@ class TimerPage extends Component {
 
   render() {
 
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     let messageBar;
 
@@ -145,16 +160,23 @@ class TimerPage extends Component {
     return (
 
       <div>
-        {messageBar}
-        <div>
-          {/* Timer will go in this div. */}
-          <p>TIMER WILL GO HERE</p>
-          {timer}
-        </div>
-        {pausePlayButton}
-        <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
-        {countdown}
-        </div>
+        <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
+          <Grid item>
+            {messageBar}
+          </Grid>
+          <Grid>
+            <div>
+              {/* Timer will go in this div. */}
+              <p>TIMER WILL GO HERE</p>
+              {timer}
+            </div>
+          </Grid>
+          <Grid item>
+            {pausePlayButton}
+            <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
+          </Grid>
+        </Grid>
+      </div>
     )
   };
 };
