@@ -53,7 +53,7 @@ function LoginForm(props) {
 
     return (
         <div className={classes.root}>
-            <Grid container spacing={40}>
+            <Grid container alignItems={'center'} justify={'center'} spacing={40}>
 
                 <Paper className={classes.paper}>
                     <Grid item xs={12}>
@@ -107,7 +107,7 @@ function LoginForm(props) {
                         <Grid item xs={12}>
                             <div>
                                 <p>Don't have an account?</p>
-                                <Link to="/register">Click Here to Register!</Link>
+                                <Link to="/register">CLICK HERE TO REGISTER!</Link>
                             </div>
                         </Grid>
                     </form>

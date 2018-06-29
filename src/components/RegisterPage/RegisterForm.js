@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Grid from '@material-ui/core/Grid';
 
 
 const styles = theme => ({
@@ -48,9 +49,13 @@ function RegisterForm(props) {
 
     return (
         <div className={classes.root}>
+            <Grid container alignItems={'center'} justify={'center'} spacing={40}>
                 <Paper className={classes.paper}>
+                    <Grid item>
                         <h3 className={classes.header}>Join The Club!</h3>
+                    </Grid>
                     <form onSubmit={props.registerUser} className={classes.container}>
+                        <Grid item xs={12}>
                             <FormControl>
                                 <InputLabel htmlFor="username">
                                     Username:</InputLabel>
@@ -61,6 +66,8 @@ function RegisterForm(props) {
                                     onChange={props.handleInputChangeFor('username')}
                                 />
                             </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
                             <FormControl>
                                 <InputLabel htmlFor="password">
                                     Password:</InputLabel>
@@ -72,20 +79,20 @@ function RegisterForm(props) {
                                     onChange={props.handleInputChangeFor('password')}
                                 />
                             </FormControl>
+                        </Grid>
                         <div>
-                            <FormControl>
-                                <Button variant="raised" size="small" color="primary" type="submit" value="register" className={classes.button}>
-                                    Register
+                            <Grid item xs={12}>
+                                <FormControl>
+                                    <Button variant="raised" size="small" color="primary" type="submit" value="register" className={classes.button}>
+                                        Register
                                 </Button>
-                            </FormControl>
+                                </FormControl>
+                                <Link to="/login">CANCEL</Link>
+                            </Grid>
                         </div>
-                        
-                            <div>
-                                <p></p>
-                                <Link to="/home">Cancel</Link>
-                            </div>     
                     </form>
                 </Paper>
+            </Grid>
         </div>
     );
 }
