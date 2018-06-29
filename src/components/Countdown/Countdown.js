@@ -40,16 +40,17 @@ class Countdown extends Component {
   }
 
   timerCountdown(timeRemainingInSeconds) {
-    this.setState({
-      timeRemainingInSeconds
-    });
     if (this.state.isRunning) {
       if (timeRemainingInSeconds === 120) {
         this.props.onEveryMinute();
       }
       if (timeRemainingInSeconds === 0) {
         this.props.onCompletion();
+        return;
       }
+      this.setState({
+        timeRemainingInSeconds
+      });
       localStorage.setItem('timeRemainingInSeconds', timeRemainingInSeconds);
       if (timeRemainingInSeconds >= 0) {
         this.updateMinutesAndSeconds(timeRemainingInSeconds);
@@ -90,6 +91,7 @@ class Countdown extends Component {
 
   componentWillUnmount() {
     clearTimeout(this.setTimeoutId);
+
   }
 
 
