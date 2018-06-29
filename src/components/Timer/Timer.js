@@ -9,7 +9,9 @@ import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
 import Countdown from '../Countdown/Countdown';
 import Grid from '@material-ui/core/Grid';
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
+import FoodTimer from '../TimerOptions/FoodTimer';
+import LifeTimer from '../TimerOptions/LifeTimer';
 
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
@@ -107,8 +109,12 @@ class TimerPage extends Component {
 
   onComplete = () => {
     this.setState({
-      round: !this.state.round,
+      currentRound: 'life',
     })
+  }
+
+  componentWillUnmount = () => {
+
   }
 
   render() {
@@ -140,21 +146,13 @@ class TimerPage extends Component {
     }
 
     let timer;
-    let pausePlayButton;
-    if (this.state.timerIsRunning) {
-      timer = <p>The timer is running</p>
-      pausePlayButton = <Button variant="fab" color="primary" onClick={this.pause} className={classes.button} ><Pause className={classes.icon} /></Button>
-    } else {
-      timer = <p>The timer is paused</p>
-      pausePlayButton = <Button variant="fab" color="primary" onClick={this.play} className={classes.button} ><Play className={classes.icon} /></Button>
-    }
 
     let countdown;
     if (this.state.currentRound === 'food') {
-      countdown = <div className="roundOne"><Countdown timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
+      countdown = <div className="roundOne"><FoodTimer onComplete={this.onComplete} /></div>
     } else if (this.state.currentRound === 'life') {
       console.log('DONE');
-      countdown = <div className="roundTwo"><Countdown timeRemainingInSeconds={this.state.time} isRunning={this.state.timerIsRunning} onEveryMinute={()=>{}} onCompletion={this.onComplete} /></div>
+      countdown = <div className="roundTwo"><LifeTimer onComplete={this.onComplete} /></div>
     }
 
     return (
@@ -169,11 +167,8 @@ class TimerPage extends Component {
               {/* Timer will go in this div. */}
               <p>TIMER WILL GO HERE</p>
               {timer}
+              {countdown}
             </div>
-          </Grid>
-          <Grid item>
-            {pausePlayButton}
-            <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
           </Grid>
         </Grid>
       </div>
