@@ -4,6 +4,7 @@ import Pause from '@material-ui/icons/PauseCircleOutline';
 import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
 import Grid from '@material-ui/core/Grid';
+import swal from 'sweetalert2';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -115,6 +116,24 @@ class Countdown extends Component {
   };
 
 
+
+  stop = () => {
+    swal({
+      title: 'Are you sure?',
+      text: "You'll have to start from the beginning!",
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#BB221C',
+      confirmButtonText: 'I need to stop!'
+    }).then((result) => {
+      if (result.value) {
+        // do we want a sweet alert here? Yes we do;)
+        this.props.history.push('/home');
+      }
+    })
+
+  };
 
 
 

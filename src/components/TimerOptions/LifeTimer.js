@@ -11,7 +11,12 @@ class LifeTimer extends Component {
   render () {
     return (
       <div>LIFE TIMER
-        <Countdown timeRemainingInSeconds={900} onEveryMinute={()=>{}} onCompletion={this.props.onComplete} />
+        <Countdown 
+          timeRemainingInSeconds={900} 
+          onEveryMinute={()=>{}} 
+          onCompletion={this.props.onComplete}
+          history={this.props.history} 
+        />
       </div>
     )
   }

@@ -11,7 +11,12 @@ class FoodTimer extends Component {
   render() {
     return (
       <div>FOOD TIMER
-        <Countdown timeRemainingInSeconds={9} onEveryMinute={() => { }} onCompletion={this.props.onComplete} />
+        <Countdown 
+          timeRemainingInSeconds={9} 
+          onEveryMinute={() => { }} 
+          onCompletion={this.props.onComplete} 
+          history={this.props.history} 
+        />
       </div>
     )
   }
