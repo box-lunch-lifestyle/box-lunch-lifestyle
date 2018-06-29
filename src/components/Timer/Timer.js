@@ -13,6 +13,7 @@ import swal from 'sweetalert2';
 import FoodTimer from '../TimerOptions/FoodTimer';
 import LifeTimer from '../TimerOptions/LifeTimer';
 
+
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
 });
