@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
 import { withStyles } from '@material-ui/core/styles';
 
-// Styles for the buttons and icons that appear in page
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -22,7 +21,6 @@ class Countdown extends Component {
   constructor(props) {
     super(props)
 
-    // We need to track the values for the numbers and if the timer is currently paused
     this.state = {
       minutes: 0,
       seconds: 0,
@@ -32,8 +30,7 @@ class Countdown extends Component {
   }
   // timeRemainingInSeconds = 900;
 
-  // Calculates the total seconds remaining as minutes and seconds(less than 60)
-  // and saves it to the local state.
+  // Saves remaining time as minutes and seconds
   updateMinutesAndSeconds(timeRemainingInSeconds) {
     let minutes = Math.floor(timeRemainingInSeconds / 60);
     let seconds = timeRemainingInSeconds % 60;
@@ -45,13 +42,13 @@ class Countdown extends Component {
 
   // Function that runs the timer
   timerCountdown(timeRemainingInSeconds) {
-    // Checks if the timer is paused
+    // If paused...
     if (this.state.isRunning) {
-      // If 2 min remain, runs function.
+      // If 2 min remaining...
       if (timeRemainingInSeconds === 120) {
         this.props.onEveryMinute();
       }
-      // If time has run out, runs the function and returns (ending the timerCountdown)
+      // If time up...
       if (timeRemainingInSeconds === 0) {
         this.props.onCompletion();
         return;
@@ -59,16 +56,15 @@ class Countdown extends Component {
       this.setState({
         timeRemainingInSeconds
       });
-      // Saves current time to local storage
       localStorage.setItem('timeRemainingInSeconds', timeRemainingInSeconds);
-      // If the time is not negative, updates the time, reduces remaining time by 1,
-      // Waits 1 second, and runs this function again with the new remaining time.
+      // Decraments time by 1 sec and runs function again
       if (timeRemainingInSeconds >= 0) {
         this.updateMinutesAndSeconds(timeRemainingInSeconds);
         timeRemainingInSeconds = timeRemainingInSeconds - 1;
         this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds), 1000);
       }
-    // If timer is paused, wait 1 second and run this function again.
+    // If paused...
+    // Waits 1 sec and runs function again
     } else {
       this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds), 1000);
     }
@@ -126,7 +122,8 @@ class Countdown extends Component {
     })
   };
 
-  // Offers a SweetAlert for stopping the timer. On confirmation, send user home.
+  // Offers a SweetAlert for stopping the timer. 
+  // On confirmation, send user home.
   stop = () => {
     swal({
       title: 'Are you sure?',
