@@ -33,7 +33,7 @@ const styles = {
     },
 };
 
-function WelterWeightItem(props) {
+function UndisputedChampionItem(props) {
     const { classes } = props;
     return (
         <div>
@@ -44,7 +44,7 @@ function WelterWeightItem(props) {
                 June 30th 2018
           </Typography>
           <Typography variant="headline" component="h2">
-           Welterweight (25 Days)
+           Undisputed Champion (250 Days)
           </Typography>
           
                 </CardContent>
@@ -54,8 +54,8 @@ function WelterWeightItem(props) {
     );
 }
 
-WelterWeightItem.propTypes = {
+UndisputedChampionItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(WelterWeightItem);
+export default withStyles(styles)(UndisputedChampionItem);

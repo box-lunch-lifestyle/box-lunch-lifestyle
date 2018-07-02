@@ -33,7 +33,7 @@ const styles = {
     },
 };
 
-function MiddleWeightItem(props) {
+function ChampionItem(props) {
     const { classes } = props;
     return (
         <div>
@@ -44,7 +44,7 @@ function MiddleWeightItem(props) {
                 June 30th 2018
           </Typography>
           <Typography variant="headline" component="h2">
-           Middleweight (50 Days)
+           Champion (50 Days)
           </Typography>
           
                 </CardContent>
@@ -54,8 +54,8 @@ function MiddleWeightItem(props) {
     );
 }
 
-MiddleWeightItem.propTypes = {
+ChampionItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MiddleWeightItem);
+export default withStyles(styles)(ChampionItem);

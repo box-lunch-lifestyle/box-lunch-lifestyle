@@ -17,7 +17,7 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        
+    
     },
     media: {
         height: 0,
@@ -33,7 +33,7 @@ const styles = {
     },
 };
 
-function HeavyWeightItem(props) {
+function HeroItem(props) {
     const { classes } = props;
     return (
         <div>
@@ -44,7 +44,7 @@ function HeavyWeightItem(props) {
                 June 30th 2018
           </Typography>
           <Typography variant="headline" component="h2">
-           Heavyweight (250 Days)
+          Hero (1 Day)
           </Typography>
           
                 </CardContent>
@@ -54,8 +54,8 @@ function HeavyWeightItem(props) {
     );
 }
 
-HeavyWeightItem.propTypes = {
+HeroItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HeavyWeightItem);
+export default withStyles(styles)(HeroItem);
