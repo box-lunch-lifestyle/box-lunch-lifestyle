@@ -33,7 +33,7 @@ const styles = {
     },
 };
 
-function BantamWeightItem(props) {
+function ContenderItem(props) {
     const { classes } = props;
     return (
         <div>
@@ -44,7 +44,7 @@ function BantamWeightItem(props) {
                 June 30th 2018
           </Typography>
           <Typography variant="headline" component="h2">
-          BantamWeight (15 Days)
+          Contender (15 Days)
           </Typography>
           
                 </CardContent>
@@ -54,8 +54,8 @@ function BantamWeightItem(props) {
     );
 }
 
-BantamWeightItem.propTypes = {
+ContenderItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BantamWeightItem);
+export default withStyles(styles)(ContenderItem);

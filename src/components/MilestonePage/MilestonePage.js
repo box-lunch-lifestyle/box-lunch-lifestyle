@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import FlyWeightItem from '../FlyWeightItem/FlyWeightItem';
-import BantamWeightItem from '../BantamWeightItem/BantamWeightItem';
-import WelterWeightItem from '../WelterWeightItem/WelterWeightItem';
-import MiddleweightItem from '../MiddleWeightItem/MiddleWeightItem';
-import HeavyWeightItem from '../HeavyWeightItem/HeavyWeightItem';
+import HeroItem from '../HeroItem/HeroItem';
+import JourneymanItem from '../JourneymanItem/JourneymanItem';
+import ContenderItem from '../ContenderItem/ContenderItem';
+import VictorItem from '../VictorItem/VictorItem';
+import ChampionItem from '../ChampionItem/ChampionItem';
+import UndisputedChampionItem from '../UndisputedChampionItem/UndisputedChampionItem';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -47,11 +48,12 @@ class MilestonePage extends Component {
             </Grid>
             <div>
               <Grid item>
-                <FlyWeightItem />
-                <BantamWeightItem />
-                <WelterWeightItem />
-                <MiddleweightItem />
-                <HeavyWeightItem />
+                <HeroItem />
+                <JourneymanItem />
+                <ContenderItem />
+                <VictorItem />
+                <ChampionItem />
+                <UndisputedChampionItem />
               </Grid>
             </div>
             <Button variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>
