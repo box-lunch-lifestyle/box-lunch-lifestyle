@@ -53,7 +53,6 @@ class JournalItem extends Component {
                                 id="textarea"
                                 label={this.props.comment.comment}
                                 onChange={this.handleChange('comment')}
-                                fullWidth
                                 margin="normal"
                             />
                             <Button ><Edit onClick={() => this.handleEditComment()} className="editButton" /></Button>
