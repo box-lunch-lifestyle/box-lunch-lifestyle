@@ -40,7 +40,7 @@ class MilestonePage extends Component {
         <div>
           <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
             <Grid item>
-              <h3> Milestones </h3>
+              <h1> MILESTONES </h1>
             </Grid>
             <Grid item>
               <h5> You have [X] lunches under your belt </h5>

@@ -1,3 +1,21 @@
+@font-face {
+    font-family: attractive;
+    src: url("../fonts/Attractive-Regular.ttf");
+}
+
+@font-face {
+    font-family: knock-out;
+    src: url("../fonts/Knockout\ HTF29JuniorLiteweight\ Regular.otf");
+}
+
+h2 {
+    font-family: attractive;
+}
+
+h1 {
+    font-family: knock-out;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
