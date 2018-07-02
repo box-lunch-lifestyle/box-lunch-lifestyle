@@ -41,6 +41,12 @@ class TimerPage extends Component {
     this.addNote = this.addNote.bind(this);
   };
 
+  componentWillMount = () => {
+    if (this.props.timer.currentRound === '') {
+      this.props.history.push('/timerSelect');
+    }
+  }
+
   componentDidMount = () => {
     this.setState({
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
