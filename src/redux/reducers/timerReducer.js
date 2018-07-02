@@ -24,29 +24,14 @@ const isPlaying = (state = false, action) => {
   }
 }
 
-const lifeDone = (state = false, action) => {
+const isSecondRound = (state = false, action) => {
   switch (action.type) {
-    case "SET_LIFE_COMPLETED":
-      return true;
-    case "SET_LIFE_INCOMPLETE":
-      return false;
+    case "SET_FIRST_ROUND_COMPLETED":
+    return true;
     case "CLEAR_TIMER_REDUCER":
-      return false;
+    return false;
     default:
-      return state;
-  }
-}
-
-const foodDone = (state = false, action) => {
-  switch (action.type) {
-    case "SET_FOOD_COMPLETED":
-      return true;
-    case "SET_FOOD_INCOMPLETE":
-      return false;
-    case "CLEAR_TIMER_REDUCER":
-      return false;
-    default:
-      return state;
+    return state;
   }
 }
 
@@ -66,7 +51,6 @@ const modalOpen = (state = false, action) => {
 export default combineReducers ({
   currentRound,
   isPlaying,
-  lifeDone,
-  foodDone,
   modalOpen,
+  isSecondRound,
 })

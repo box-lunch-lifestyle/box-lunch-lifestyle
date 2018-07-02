@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import MilestoneItem from '../MilestoneItem/MilestoneItem';
+import FlyWeightItem from '../FlyWeightItem/FlyWeightItem';
+import BantamWeightItem from '../BantamWeightItem/BantamWeightItem';
+import WelterWeightItem from '../WelterWeightItem/WelterWeightItem';
+import MiddleweightItem from '../MiddleWeightItem/MiddleWeightItem';
+import HeavyWeightItem from '../HeavyWeightItem/HeavyWeightItem';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -36,28 +40,18 @@ class MilestonePage extends Component {
         <div>
           <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
             <Grid item>
-              <h3> Milestones </h3>
+              <h1> MILESTONES </h1>
             </Grid>
             <Grid item>
               <h5> You have [X] lunches under your belt </h5>
             </Grid>
             <div>
               <Grid item>
-                <MilestoneItem />
-              </Grid>
-            </div>
-            <div>
-              <Grid item>
-                <h4>Milestone Options</h4>
-              </Grid>
-              <Grid item>
-                <ul>
-                  <li>Flyweight (5 lunches)</li>
-                  <li>Bantamweight (15 lunches)</li>
-                  <li>Welterweight (25 lunches)</li>
-                  <li>Middleweight (50 lunches)</li>
-                  <li>Heavyweight (250 lunches)</li>
-                </ul>
+                <FlyWeightItem />
+                <BantamWeightItem />
+                <WelterWeightItem />
+                <MiddleweightItem />
+                <HeavyWeightItem />
               </Grid>
             </div>
             <Button variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>

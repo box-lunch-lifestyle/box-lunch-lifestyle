@@ -35,7 +35,8 @@ router.post('/postComment', (req, res) => {
       INSERT INTO "comments" (person_id, "comment") 
       VALUES ($1, $2) 
     `;
-        const params = [req.user.id, req.body]
+
+        const params = [req.user.id, req.body.comment]
         pool.query(query, params)
             .then(results => {
                 res.sendStatus(201);
