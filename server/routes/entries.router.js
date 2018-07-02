@@ -63,7 +63,7 @@ router.post('/postEntry', (req, res) => {
 VALUES ($1, $2, $3) RETURNING "id"`;
         pool.query(query, [req.user.id, req.body.lunch_complete, req.body.activity_complete])
             .then((result) => {
-                res.sendStatus(201);
+                res.send(result.rows);
             }).catch((error) => {
                 res.sendStatus(500);
                 console.log('ERROR in GET /api/entry/postEntry:', error)

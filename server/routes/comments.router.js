@@ -39,7 +39,7 @@ router.post('/postComment', (req, res) => {
         const params = [req.user.id, req.body.comment]
         pool.query(query, params)
             .then(results => {
-                res.sendStatus(201);
+                res.send(results.rows);
             })
             .catch(error => {
                 res.sendStatus(500);
