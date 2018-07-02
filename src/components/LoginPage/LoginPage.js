@@ -67,6 +67,10 @@ class LoginPage extends Component {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
+  handleLink = (pageLink) => () => {
+    this.props.history.push(pageLink);
+  }
+
   renderAlert() {
     if (this.props.login.message !== '') {
       return (
@@ -89,6 +93,7 @@ class LoginPage extends Component {
         handleInputChangeFor={this.handleInputChangeFor} 
         handleMouseDownPassword={this.handleMouseDownPassword} 
         handleClickShowPassword={this.handleClickShowPassword} 
+        handleLink={this.handleLink}
         state={this.state} />
       </div>
     );
