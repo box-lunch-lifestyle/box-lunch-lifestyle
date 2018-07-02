@@ -6,7 +6,7 @@ const Header = ({ title }) => (
     <div>
     <Grid container spacing={24} justify={'center'}>
     <Grid item>
-      <img src='images/logo.jpg' width='90%' />
+      <img src='images/logo.jpg' width='100%' margin='20px'/>
       </Grid>
       </Grid>
     </div>

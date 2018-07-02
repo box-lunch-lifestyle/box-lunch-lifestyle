@@ -57,7 +57,7 @@ function LoginForm(props) {
 
                 <Paper className={classes.paper}>
                     <Grid item xs={12}>
-                        <h3 className={classes.header}>Box Lunch LYFE</h3>
+                        <h2 className={classes.header}>PLEASE LOG IN.</h2>
                     </Grid>
                     <form onSubmit={props.login} className={classes.container}>
                         <Grid item xs={12}>
@@ -99,15 +99,17 @@ function LoginForm(props) {
                         <div>
                             <FormControl>
                                 <Button variant="raised" size="small" color="primary" type="submit" value="Log In" className={classes.button}>
-                                    Log In
+                                    LOG IN
                                 </Button>
 
                             </FormControl>
                         </div>
                         <Grid item xs={12}>
                             <div>
-                                <p>Don't have an account?</p>
-                                <Link to="/register">CLICK HERE TO REGISTER!</Link>
+                            <Button variant="raised" size="small" color="secondary" onClick={props.handleLink('/register')} className={classes.button}>
+                                    OR SIGN UP NOW!
+                                </Button>
+                                {/* <Link to="/register">OR SIGN UP NOW!</Link> */}
                             </div>
                         </Grid>
                     </form>

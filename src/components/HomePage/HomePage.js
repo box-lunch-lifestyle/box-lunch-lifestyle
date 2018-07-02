@@ -12,11 +12,14 @@ class HomePage extends Component {
     return (
       <div>
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={24}>
-          <Grid item>
+          {/* <Grid item>
             <h2>Get pumped up.</h2>
+          </Grid> */}
+          <Grid item >
+            <h2>Today is your day.</h2>
           </Grid>
-          <Grid item>
-            <img src='images/heroGuy.jpg' width='90%' alt="Hero guy" />
+          <Grid item >
+            <img src='images/stickmanHEAD2.png' width='100%' alt="Hero guy" />
           </Grid>
           <Grid item>
             <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
