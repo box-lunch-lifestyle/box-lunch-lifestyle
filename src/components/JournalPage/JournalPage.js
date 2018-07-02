@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid';
+import JournalItem from '../JournalItem/JournalItem';
+import swal from 'sweetalert2'
+
+const mapStateToProps = state => ({
+});
 
 class JournalPage extends Component {
+  constructor(props) {
+    super(props)
+    this.addNote = this.addNote.bind(this);
+    };
 
   handleClick = (pageLink) => () => {
     this.props.history.push(pageLink);
+  }
+
+  async addNote () {
+    const {value: text} = await swal({
+      input: 'textarea',
+      inputPlaceholder: 'What should your future self know about today?',
+      showCancelButton: true
+    })
+    if (text) {
+      // swal(text)
+      const action = { type: 'FETCH_POST_COMMENT', payload: {comment: text }}
+      this.props.dispatch(action);
+      console.log(text);
+    }
   }
 
   render() {
@@ -17,19 +41,17 @@ class JournalPage extends Component {
       <div>
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
-            <h3>NOTES TO SELF</h3>
+            <h1>NOTES TO SELF</h1>
           </Grid>
-          <Grid item>
+          {/* <Grid item> */}
             {/* toggle view. if blank: */}
-            <p>Complete a round to make an entry.</p>
-          </Grid>
-          {/* <br /> */}
+            {/* <p>Complete a round to make an entry.</p> */}
+          {/* </Grid>
           <Grid item>
-            <Button variant="contained" color="primary">ADD</Button>
+            <Button variant="contained" color="primary">ADD</Button> */}
             {/* ADD BUTTON brings up text modal */}
-          </Grid>
+          {/* </Grid> */}
         </Grid>
-        {/* <br /> */}
         <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
             <TextField
@@ -40,36 +62,17 @@ class JournalPage extends Component {
             />
           </Grid>
         </Grid>
-        {/* <br /> */}
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-          <Grid item>
+          {/* <Grid item>
             <Button variant="contained" color="primary" onClick={this.handleClick('/home')}>HOME</Button>
-          </Grid>
+          </Grid> */}
         </Grid>
         {/* toggle view. if there are notes: */}
-        <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
-          <Grid item>
-            <Paper>
-              <Typography variant="headline" component="h3">
-                <div className="entryDate">june 27th</div>
-              </Typography>
-              <Typography component="p">
-                <TextField
-                  id="textarea"
-                  label="i wrote 3 haikus. edit icon will be on the right"
-                  fullWidth
-                  margin="normal"
-                />
-                <Button><Edit className="editButton" /></Button>
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
+        <JournalItem />
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
-            <Button variant="contained" color="primary">ADD</Button>
+            <Button variant="contained" color="primary" onClick={this.addNote}>ADD</Button>
           </Grid>
-          {/* <br /> */}
           <Grid item>
             <Button variant="contained" color="primary" onClick={this.handleClick('/home')}>HOME</Button>
           </Grid>
@@ -79,4 +82,4 @@ class JournalPage extends Component {
   }
 }
 
-export default JournalPage;
+export default connect(mapStateToProps)(JournalPage);

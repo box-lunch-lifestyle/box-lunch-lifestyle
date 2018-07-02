@@ -21,10 +21,11 @@ function* fetchAllComments(action) {
 
 function* fetchPostComment(action) {
   try {
-    yield call(axios.post('/api/comment/postComments', action.payload)
-      .then(response => response)
-      .catch(error => { throw error.response || error; })
-    )
+    yield call(
+      axios.post('/api/comment/postComment', action.payload)
+        .then(response => response)
+        .catch(error => { throw error.response || error; })
+    );
     yield put({
       type: 'FETCH_ALL_COMMENTS',
     });

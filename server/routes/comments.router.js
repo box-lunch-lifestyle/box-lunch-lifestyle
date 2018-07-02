@@ -29,13 +29,14 @@ router.get('/getComments', (req, res) => {
 
 // post new NOTE TO SELF
 router.post('/postComment', (req, res) => {
-    console.log('POST /api/comment/postComment');
+    console.log('POST /api/comment/postComment', req.body);
     if (req.isAuthenticated()) {
         const query = `
       INSERT INTO "comments" (person_id, "comment") 
       VALUES ($1, $2) 
     `;
-        const params = [req.user.id, req.body]
+
+        const params = [req.user.id, req.body.comment]
         pool.query(query, params)
             .then(results => {
                 res.sendStatus(201);
