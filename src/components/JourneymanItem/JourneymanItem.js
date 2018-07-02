@@ -33,7 +33,7 @@ const styles = {
     },
 };
 
-function FlyWeightItem(props) {
+function JourneymanItem(props) {
     const { classes } = props;
     return (
         <div>
@@ -44,7 +44,7 @@ function FlyWeightItem(props) {
                 June 30th 2018
           </Typography>
           <Typography variant="headline" component="h2">
-           Flyweight (5 Days)
+          Journeyman (5 Days)
           </Typography>
           
                 </CardContent>
@@ -54,8 +54,8 @@ function FlyWeightItem(props) {
     );
 }
 
-FlyWeightItem.propTypes = {
+JourneymanItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FlyWeightItem);
+export default withStyles(styles)(JourneymanItem);
