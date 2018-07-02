@@ -1,14 +1,10 @@
-import { put, takeEvery, call } from 'redux-saga/effects';
-import axios from 'axios';
+import { put, takeEvery } from 'redux-saga/effects';
+import { callAllComments, callDeleteComment, callEditComments, callPostComment } from '../requests/commentRequests';
 
 function* fetchAllComments(action) {
   try {
     yield put({ type: "REQUEST_START_COMMENT_REDUCER" })
-    const comments = yield call(
-      axios.get('/api/comment/getComments')
-        .then(response => response.data)
-        .catch(error => { throw error.response || error; })
-    );
+    const comments = yield callAllComments();
     yield put({
       type: "SET_ALL_COMMENTS",
       payload: comments,
@@ -21,11 +17,7 @@ function* fetchAllComments(action) {
 
 function* fetchPostComment(action) {
   try {
-    yield call(
-      axios.post('/api/comment/postComment', action.payload)
-        .then(response => response)
-        .catch(error => { throw error.response || error; })
-    );
+    yield callPostComment(action.payload);
     yield put({
       type: 'FETCH_ALL_COMMENTS',
     });
@@ -36,11 +28,7 @@ function* fetchPostComment(action) {
 
 function* fetchPutComment(action) {
   try {
-    yield call(
-      axios.put(`/api/comment/putComment/${action.id}`, action.payload)
-        .then(response => response)
-        .catch(error => { throw error.response || error; })
-    );
+    yield callEditComments(action);
     yield put({ type: "FETCH_ALL_COMMENTS" })
   } catch (error) {
 
@@ -49,11 +37,7 @@ function* fetchPutComment(action) {
 
 function* fetchDeleteComment(action) {
   try {
-    yield call(
-      axios.delete(`/api/comment/deleteComment/${action.id}`)
-        .then(response => response.data)
-        .catch(error => { throw error.response || error; })
-    );
+    yield callDeleteComment(action.id);
     yield put({ type: "FETCH_ALL_COMMENTS" })
   } catch (error) {
 
