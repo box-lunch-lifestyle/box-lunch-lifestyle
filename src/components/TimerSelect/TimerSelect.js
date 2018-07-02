@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import swal from 'sweetalert2';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   button: {
@@ -17,11 +19,46 @@ class TimerSelect extends Component {
   }
 
   foodTimerClick = () => {
-    this.props.history.push('/timer');
+    swal({
+      title: "READY?",
+      text: "You Got This!",
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#BB221C',
+      confirmButtonText: 'YES!',
+    })
+    .then((result) => {
+      if (result.value) {
+        this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: 'food'});
+        this.props.history.push('/timer');
+      } else if (result.dismiss === swal.DismissReason.cancel)
+      {
+        swal("Come Back When You're Ready");
+      }
+    });
   };
 
   youTimerClick = () => {
-    this.props.history.push('/timer');
+    swal({
+      title: "READY?",
+      text: "You Got This!",
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#BB221C',
+      confirmButtonText: 'YES!',
+    })
+    .then((result) => {
+      if (result.value) {
+        this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: 'life'});
+        this.props.history.push('/timer');
+      } else if 
+      (result.dismiss === swal.DismissReason.cancel)
+      {
+        swal("Come Back When You're Ready");
+      }
+    });
   };
 
   render() {
@@ -54,4 +91,4 @@ TimerSelect.propTypes = {
 };
 
 
-export default withStyles(styles)(TimerSelect);
+export default connect()(withStyles(styles)(TimerSelect));

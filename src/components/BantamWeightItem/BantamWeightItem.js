@@ -7,21 +7,17 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
 
-
-
-
 const styles = {
     card: {
         width: 300,
-        float: 'left',
+        float: 'center',
         margin: '10px',
         padding: '5px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-
-
+        
     },
     media: {
         height: 0,
@@ -37,7 +33,7 @@ const styles = {
     },
 };
 
-function MilestoneItem(props) {
+function BantamWeightItem(props) {
     const { classes } = props;
     return (
         <div>
@@ -48,7 +44,7 @@ function MilestoneItem(props) {
                 June 30th 2018
           </Typography>
           <Typography variant="headline" component="h2">
-           Flyweight (5 Days)
+          BantamWeight (15 Days)
           </Typography>
           
                 </CardContent>
@@ -58,8 +54,8 @@ function MilestoneItem(props) {
     );
 }
 
-MilestoneItem.propTypes = {
+BantamWeightItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MilestoneItem);
+export default withStyles(styles)(BantamWeightItem);

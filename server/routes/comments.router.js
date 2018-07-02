@@ -29,7 +29,7 @@ router.get('/getComments', (req, res) => {
 
 // post new NOTE TO SELF
 router.post('/postComment', (req, res) => {
-    console.log('POST /api/comment/postComment', req.body);
+    console.log('POST /api/comment/postComment');
     if (req.isAuthenticated()) {
         const query = `
       INSERT INTO "comments" (person_id, "comment") 

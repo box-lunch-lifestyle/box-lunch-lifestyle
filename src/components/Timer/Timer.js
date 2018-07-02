@@ -7,8 +7,12 @@ import Button from '@material-ui/core/Button';
 import Pause from '@material-ui/icons/PauseCircleOutline';
 import Play from '@material-ui/icons/PlayCircleOutline';
 import Stop from '@material-ui/icons/Cancel';
+import Countdown from '../Countdown/Countdown';
 import Grid from '@material-ui/core/Grid';
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
+import FoodTimer from '../TimerOptions/FoodTimer';
+import LifeTimer from '../TimerOptions/LifeTimer';
+
 
 const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
@@ -32,7 +36,9 @@ class TimerPage extends Component {
       currentModal: 'food',
       currentRound: '',
       timerIsRunning: true,
+      time: 9,
     }
+    this.addNote = this.addNote.bind(this);
   };
 
   componentDidMount = () => {
@@ -40,19 +46,19 @@ class TimerPage extends Component {
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
       // currentModal: this.timer.firstModal,
       // currentRound: this.timer.firstRound,
-    })
+      currentModal: 'food',
+      currentRound: 'food',
+    });
   };
 
   completeRoundOne = () => {
     if (this.state.currentRound === 'food') {
       this.setState({
         currentModal: 'life',
-        currentRound: 'life',
       })
     } else {
       this.setState({
         currentModal: 'food',
-        currentRound: 'food',
       })
     }
   };
@@ -103,6 +109,56 @@ class TimerPage extends Component {
 
   };
 
+  onComplete = () => {
+    let nextRound;
+    if (this.props.timer.currentRound === 'food'){
+      nextRound = 'life';
+    } else {
+      nextRound ='food';
+    }
+
+    if(!this.props.timer.isSecondRound){
+      swal({
+        title: "Good Job!",
+        text: "Ready For Round Two?",
+        showConfirmButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'YES!',
+      })
+      .then((result) => {
+        if (result.value) {
+          this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: nextRound});
+        } 
+      });
+      this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'});
+    } else {
+        this.addNote();
+    } 
+  };
+
+  async addNote () {
+    const {value: text} = await swal({
+      input: 'textarea',
+      inputPlaceholder: "What Should Your Future Self Know About Today?",
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Save',
+      cancelButtonText: 'Skip',
+    })
+    if (text) {
+      this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
+      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+    } else 
+    {
+      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+    }
+  };
+
+  componentWillUnmount = () => {
+
+  }
+
   render() {
 
     const { classes } = this.props;
@@ -132,13 +188,13 @@ class TimerPage extends Component {
     }
 
     let timer;
-    let pausePlayButton;
-    if (this.state.timerIsRunning) {
-      timer = <p>The timer is running</p>
-      pausePlayButton = <Button variant="fab" color="primary" onClick={this.pause} className={classes.button} ><Pause className={classes.icon} /></Button>
-    } else {
-      timer = <p>The timer is paused</p>
-      pausePlayButton = <Button variant="fab" color="primary" onClick={this.play} className={classes.button} ><Play className={classes.icon} /></Button>
+
+    let countdown;
+    if (this.props.timer.currentRound === 'food') {
+      countdown = <div className="roundOne"><FoodTimer onComplete={this.onComplete} history={this.props.history} /></div>
+    } else if (this.props.timer.currentRound === 'life') {
+      console.log('DONE');
+      countdown = <div className="roundTwo"><LifeTimer onComplete={this.onComplete} history={this.props.history} /></div>
     }
 
     return (
@@ -153,11 +209,8 @@ class TimerPage extends Component {
               {/* Timer will go in this div. */}
               <p>TIMER WILL GO HERE</p>
               {timer}
+              {countdown}
             </div>
-          </Grid>
-          <Grid item>
-            {pausePlayButton}
-            <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
           </Grid>
         </Grid>
       </div>
