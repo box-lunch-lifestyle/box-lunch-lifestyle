@@ -124,6 +124,7 @@ class TimerPage extends Component {
         showConfirmButton: true,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'YES!',
+        allowOutsideClick: false
       })
       .then((result) => {
         if (result.value) {
@@ -146,6 +147,7 @@ class TimerPage extends Component {
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Save',
       cancelButtonText: 'Skip',
+      allowOutsideClick: false
     })
     if (text) {
       this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
