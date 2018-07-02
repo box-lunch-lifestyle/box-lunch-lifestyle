@@ -41,6 +41,12 @@ class TimerPage extends Component {
     this.addNote = this.addNote.bind(this);
   };
 
+  componentWillMount = () => {
+    if (this.props.timer.currentRound === '') {
+      this.props.history.push('/timerSelect');
+    }
+  }
+
   componentDidMount = () => {
     this.setState({
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
@@ -124,6 +130,7 @@ class TimerPage extends Component {
         showConfirmButton: true,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'YES!',
+        allowOutsideClick: false
       })
       .then((result) => {
         if (result.value) {
@@ -138,6 +145,7 @@ class TimerPage extends Component {
 
   async addNote () {
     const {value: text} = await swal({
+      title: 'Excellent!',
       input: 'textarea',
       inputPlaceholder: "What Should Your Future Self Know About Today?",
       showConfirmButton: true,
@@ -145,18 +153,21 @@ class TimerPage extends Component {
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Save',
       cancelButtonText: 'Skip',
+      allowOutsideClick: false
     })
     if (text) {
       this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
       this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+      this.props.history.push('/home');
     } else 
     {
       this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+      this.props.history.push('/home');
     }
   };
 
   componentWillUnmount = () => {
-
+    this.props.dispatch({type: 'CLEAR_TIMER_REDUCER'});
   }
 
   render() {
