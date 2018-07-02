@@ -41,12 +41,16 @@ class TimerPage extends Component {
     this.addNote = this.addNote.bind(this);
   };
 
+  // If user did not come via timerSelect page, redirect to timerSelect page
   componentWillMount = () => {
     if (this.props.timer.currentRound === '') {
       this.props.history.push('/timerSelect');
     }
   }
 
+  // OLD CODE was used to monitor current modal and round
+  //   (Modals were tracked because we originally had special 
+  //   messages under the header depending on the modal/round)
   componentDidMount = () => {
     this.setState({
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
@@ -57,6 +61,7 @@ class TimerPage extends Component {
     });
   };
 
+  // OLD CODE was used to toggle the modal after the first round finished
   completeRoundOne = () => {
     if (this.state.currentRound === 'food') {
       this.setState({
@@ -69,18 +74,21 @@ class TimerPage extends Component {
     }
   };
 
+  // OLD CODE was used to open comment modal after second round
   completeRoundTwo = () => {
     this.setState({
       currentModal: 'commentOption',
     })
   };
 
+  // OLD CODE was used to remove the current modal
   modalConfirm = () => {
     this.setState({
       currentModal: '',
     })
   };
 
+  // OLD CODE moved to Countdown.js, this function paused the timer.
   pause = () => {
     // tbd after we determine how the timer will function
     console.log('pause');
@@ -89,6 +97,7 @@ class TimerPage extends Component {
     })
   };
 
+  // OLD CODE moved to Countdown.js, this function unpaused the timer
   play = () => {
     // tbd after we determine how the timer will function
     console.log('play');
@@ -97,6 +106,7 @@ class TimerPage extends Component {
     })
   };
 
+  // OLD CODE moved to Countdown.js, this function would offer a user to stop
   stop = () => {
     swal({
       title: 'Are you sure?',
@@ -115,7 +125,9 @@ class TimerPage extends Component {
 
   };
 
+  // Run after timer finishes
   onComplete = () => {
+    // Toggles next round
     let nextRound;
     if (this.props.timer.currentRound === 'food'){
       nextRound = 'life';
@@ -123,6 +135,7 @@ class TimerPage extends Component {
       nextRound ='food';
     }
 
+    // If just finished first round...
     if(!this.props.timer.isSecondRound){
       swal({
         title: "Good Job!",
@@ -138,11 +151,14 @@ class TimerPage extends Component {
         } 
       });
       this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'});
+    
+    // If just finished second round...
     } else {
         this.addNote();
     } 
   };
 
+  // Opens comment sweetalert
   async addNote () {
     const {value: text} = await swal({
       title: 'Excellent!',
@@ -166,6 +182,7 @@ class TimerPage extends Component {
     }
   };
 
+  // Resets timer reducer to default state when finished
   componentWillUnmount = () => {
     this.props.dispatch({type: 'CLEAR_TIMER_REDUCER'});
   }
