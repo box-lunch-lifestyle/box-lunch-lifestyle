@@ -18,6 +18,7 @@ const mapStateToProps = reduxState => ({
   timer: reduxState.timer,
 });
 
+// Styles for buttons and icons on the page
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -41,12 +42,17 @@ class TimerPage extends Component {
     this.addNote = this.addNote.bind(this);
   };
 
+  // When component will mount, we confirm they navigated here after selecting a round.
+  // If they did not, we send them to the timerSelect page.
   componentWillMount = () => {
     if (this.props.timer.currentRound === '') {
       this.props.history.push('/timerSelect');
     }
   }
 
+  // OLD CODE was used to monitor current modal and round
+  //   (Modals were tracked because we originally had special 
+  //   messages under the header depending on the modal/round)
   componentDidMount = () => {
     this.setState({
       //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
@@ -57,6 +63,7 @@ class TimerPage extends Component {
     });
   };
 
+  // OLD CODE was used to toggle the modal after the first round finished
   completeRoundOne = () => {
     if (this.state.currentRound === 'food') {
       this.setState({
@@ -69,18 +76,21 @@ class TimerPage extends Component {
     }
   };
 
+  // OLD CODE was used to open comment modal after second round
   completeRoundTwo = () => {
     this.setState({
       currentModal: 'commentOption',
     })
   };
 
+  // OLD CODE was used to remove the current modal
   modalConfirm = () => {
     this.setState({
       currentModal: '',
     })
   };
 
+  // OLD CODE moved to Countdown.js, this function paused the timer.
   pause = () => {
     // tbd after we determine how the timer will function
     console.log('pause');
@@ -89,6 +99,7 @@ class TimerPage extends Component {
     })
   };
 
+  // OLD CODE moved to Countdown.js, this function unpaused the timer
   play = () => {
     // tbd after we determine how the timer will function
     console.log('play');
@@ -97,6 +108,7 @@ class TimerPage extends Component {
     })
   };
 
+  // OLD CODE moved to Countdown.js, this function would offer a user to stop
   stop = () => {
     swal({
       title: 'Are you sure?',
@@ -115,7 +127,9 @@ class TimerPage extends Component {
 
   };
 
+  // After a timer finishes, this function is run
   onComplete = () => {
+    // Toggles which round comes next based on current round
     let nextRound;
     if (this.props.timer.currentRound === 'food'){
       nextRound = 'life';
@@ -123,6 +137,7 @@ class TimerPage extends Component {
       nextRound ='food';
     }
 
+    //Opens "Ready for round 2" sweetalert if it was the first round
     if(!this.props.timer.isSecondRound){
       swal({
         title: "Good Job!",
@@ -137,12 +152,16 @@ class TimerPage extends Component {
           this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: nextRound});
         } 
       });
+      // Marks that we have finished the first round and are now on second round
       this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'});
+    
+    // Runs the function if this was the second round
     } else {
         this.addNote();
     } 
   };
 
+  // Opens a sweetalert offering user to add a comment, sending them home after their decision
   async addNote () {
     const {value: text} = await swal({
       title: 'Excellent!',
@@ -166,6 +185,7 @@ class TimerPage extends Component {
     }
   };
 
+  // Upon leaving the page, resets timer reducer to default state
   componentWillUnmount = () => {
     this.props.dispatch({type: 'CLEAR_TIMER_REDUCER'});
   }
