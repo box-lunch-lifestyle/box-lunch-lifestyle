@@ -174,11 +174,11 @@ class TimerPage extends Component {
     if (text) {
       this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
       this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
-      this.props.history.push('/home');
+      this.props.history.push('/completed');
     } else 
     {
       this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
-      this.props.history.push('/home');
+      this.props.history.push('/completed');
     }
   };
 
