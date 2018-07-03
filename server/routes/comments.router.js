@@ -60,7 +60,7 @@ router.put('/putComment/:id', (req, res) => {
             SET "comment" = $1,
             "date_posted" = $2
             WHERE "id" = $3
-            AND "person_id" = $4;
+            AND "person_id" = $4
         `;
         const params = [req.body.comment, req.body.date_posted, req.params.id, req.user.id];
         pool.query(query, params)
@@ -78,8 +78,8 @@ router.put('/putComment/:id', (req, res) => {
 
 // delete comment in NOTE TO SELF
 router.delete('/deleteComment/:id', (req, res) => {
-    console.log('DELETE /api/comment/deleteComment/:id');
-    if (req.isAuthenticated && req.body.person_id == req.user.id) {
+    console.log('DELETE /api/comment/deleteComment/:id', req.params, req.user);
+    if (req.isAuthenticated) {
         const query = `
         DELETE from "comments"
         WHERE "id" = $1

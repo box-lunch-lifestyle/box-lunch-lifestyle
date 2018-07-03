@@ -32,13 +32,12 @@ export function callEditComments(action) {
     .catch(error => { throw error.response || error; })
 };
 
-export function callDeleteComment(id) {
+export function callDeleteComment(action) {
   const config = {
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
   };
-
-  return axios.delete(`/api/comment/deleteComment/${id}`)
+  return axios.delete(`/api/comment/deleteComment/${action.payload.id}`, action.payload)
     .then(response => response.data)
     .catch(error => { throw error.response || error; })
 };

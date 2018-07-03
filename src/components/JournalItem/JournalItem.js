@@ -26,7 +26,12 @@ const styles = theme => ({
     EditIcon: {
         marginRight: theme.spacing.unit,
         position: 'absolute',
-        right: 5,
+        right: '50px',
+    },
+    TrashIcon: {
+        marginRight: theme.spacing.unit,
+        position: 'absolute',
+        right: '5px',
     },
     headline: {
         color: '#808080',
@@ -70,7 +75,15 @@ class JournalItem extends Component {
           id: this.props.comment.id,
         });
         this.handleClose();
-      }
+    }
+
+    handleDeleteComment = (comment) => {
+        console.log(comment);
+        this.props.dispatch({
+            type: 'FETCH_DELETE_COMMENT',
+            payload: comment,
+        });
+    }
 
     render() {
         const {classes} = this.props;
@@ -83,15 +96,16 @@ class JournalItem extends Component {
                         </Typography>
                         <Typography variant="subheading">
                             {this.props.comment.comment}
-                            <IconButton className={classes.EditIcon} >
-                            <Edit onClick={this.handleClickOpen} aria-label="Edit" />
+                            <IconButton className={classes.EditIcon} aria-label="Edit">
+                            <Edit onClick={this.handleClickOpen}  />
                             </IconButton>
-                            {/* <IconButton aria-label="Delete">
-                            <DeleteIcon />
-                            </IconButton> */}
+                            <IconButton className={classes.TrashIcon} aria-label="Delete">
+                            <DeleteIcon onClick={() => this.handleDeleteComment(this.props.comment)}/>
+                            </IconButton>
                         </Typography>
                     </Paper>
 
+                {/* This is where the dialog box starts */}
                 <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
@@ -99,7 +113,7 @@ class JournalItem extends Component {
                 >
                 <DialogContent>
                 <DialogContentText>
-                To change your Note to Self, click Save
+                To change your Note, click Save
                 </DialogContentText>
                 <TextField
                 autoFocus

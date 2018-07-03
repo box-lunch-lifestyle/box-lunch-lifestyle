@@ -17,9 +17,7 @@ function* fetchAllComments(action) {
 
 function* fetchPostComment(action) {
   try {
-    console.log('before');
     yield callPostComment(action.payload);
-    console.log('after');
     yield put({
       type: 'FETCH_ALL_COMMENTS',
     });
@@ -39,7 +37,7 @@ function* fetchPutComment(action) {
 
 function* fetchDeleteComment(action) {
   try {
-    yield callDeleteComment(action.id);
+    yield callDeleteComment(action);
     yield put({ type: "FETCH_ALL_COMMENTS" })
   } catch (error) {
 
