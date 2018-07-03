@@ -11,7 +11,8 @@ router.get('/getEntries', (req, res) => {
       FROM "entries"
       WHERE "person_id" = $1
       AND "lunch_complete" = true
-      AND "activity_complete" = true;
+      AND "activity_complete" = true
+      ORDER BY "date_posted";
     `;
         const params = [req.user.id];
         pool.query(query, params)
