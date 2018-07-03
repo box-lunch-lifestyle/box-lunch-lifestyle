@@ -57,7 +57,7 @@ class HomePage extends Component {
             <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
           </Grid>
           <Grid item>
-          <Button color="secondary" onClick={this.logout}>LOG OUT</Button>
+          <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
           </Grid>
         </Grid>
         </div>
