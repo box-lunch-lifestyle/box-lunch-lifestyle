@@ -17,7 +17,9 @@ function* fetchAllComments(action) {
 
 function* fetchPostComment(action) {
   try {
+    console.log('before');
     yield callPostComment(action.payload);
+    console.log('after');
     yield put({
       type: 'FETCH_ALL_COMMENTS',
     });

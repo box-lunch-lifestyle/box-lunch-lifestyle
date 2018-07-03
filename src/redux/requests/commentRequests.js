@@ -5,9 +5,8 @@ export function callPostComment(payload) {
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
   };
-
   return axios.post('/api/comment/postComment', payload, config)
-    .then(response => response.data[0].id)
+    .then(response => response)
     .catch(error => { throw error.response || error; })
 };
 

@@ -36,18 +36,17 @@ class HomePage extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div>
-        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={24}>
-          {/* <Grid item>
-            <h2>Get pumped up.</h2>
-          </Grid> */}
-          <Grid item >
-            <h2>Today is your day.</h2>
+        <div className="attractive">
+          <Grid container alignItems={'center'} justify={'center'} direction={'row'} spacing={0} style={{ marginTop: 20 , marginBottom: 70 }}>
+            <Grid item xs={4} style={{ marginLeft: 80 }}>
+              <h2>Today is your day.</h2>
+            </Grid>
+            <Grid item >
+              <img src='images/head.png' width={'60%'} alt="Hero guy" />
+            </Grid>
           </Grid>
-          <Grid item >
-            <img src='images/stickmanHEAD2.png' width='100%' alt="Hero guy" />
-          </Grid>
-          <Grid item>
+          <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={24}>
+            <Grid item>
             <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
           </Grid>
           <Grid item>
@@ -57,7 +56,7 @@ class HomePage extends Component {
             <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
           </Grid>
           <Grid item>
-          <Button color="secondary" onClick={this.logout}>LOG OUT</Button>
+          <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
           </Grid>
         </Grid>
         </div>
@@ -66,7 +65,7 @@ class HomePage extends Component {
 
     return (
       <div>
-        { content }
+        {content}
       </div>
     )
   }
