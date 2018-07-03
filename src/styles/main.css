@@ -20,8 +20,13 @@ h1 {
     font-family: knock-out;
 }
 
+.attractive {
+    font-family: attractive;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: attractive;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
 }
 
 .instructions h1 {

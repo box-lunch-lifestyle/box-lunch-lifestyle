@@ -109,7 +109,6 @@ function LoginForm(props) {
                             <Button variant="raised" size="small" color="secondary" onClick={props.handleLink('/register')} className={classes.button}>
                                     OR SIGN UP NOW!
                                 </Button>
-                                {/* <Link to="/register">OR SIGN UP NOW!</Link> */}
                             </div>
                         </Grid>
                     </form>
