@@ -56,7 +56,7 @@ class UndisputedChampionItem extends Component {
 
         if (this.props.entries.allEntries.length >= 250) {
             displayImg = imgColor;
-            let achievedDate = this.props.entries.allEntries[4].date_posted;
+            let achievedDate = this.props.entries.allEntries[249].date_posted;
             displayDate = moment(achievedDate).format("MMM Do, YYYY");
         } else {
             displayImg = imgOutline;

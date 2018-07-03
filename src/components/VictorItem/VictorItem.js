@@ -57,7 +57,7 @@ class VictorItem extends Component {
 
         if (this.props.entries.allEntries.length >= 25) {
             displayImg = imgColor;
-            let achievedDate = this.props.entries.allEntries[4].date_posted;
+            let achievedDate = this.props.entries.allEntries[24].date_posted;
             displayDate = moment(achievedDate).format("MMM Do, YYYY");
         } else {
             displayImg = imgOutline;
