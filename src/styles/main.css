@@ -8,6 +8,10 @@
     src: url("../fonts/Knockout\ HTF29JuniorLiteweight\ Regular.otf");
 }
 
+h3 {
+    font-family: attractive;
+}
+
 h2 {
     font-family: attractive;
 }

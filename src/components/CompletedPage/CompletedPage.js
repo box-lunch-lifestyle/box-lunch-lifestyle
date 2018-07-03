@@ -32,7 +32,7 @@ function CompletedPage(props) {
         </Grid>
         <Grid item>
           <div className='completedImg'>
-            <img src='images/cjguycharacter.jpg' alt='boxingBoy' width='90%' />
+            <img src='images/cjguycharacter.jpg' alt='boxingBoy' width='100%' margin='20px'/>
           </div>
         </Grid>
         <Grid>

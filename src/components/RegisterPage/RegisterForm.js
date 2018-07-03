@@ -52,7 +52,7 @@ function RegisterForm(props) {
             <Grid container alignItems={'center'} justify={'center'} spacing={40}>
                 <Paper className={classes.paper}>
                     <Grid item>
-                        <h3 className={classes.header}>Join The Club!</h3>
+                        <h2 className={classes.header}>It's time to take back your life.</h2>
                     </Grid>
                     <form onSubmit={props.registerUser} className={classes.container}>
                         <Grid item xs={12}>
@@ -84,7 +84,7 @@ function RegisterForm(props) {
                             <Grid item xs={12}>
                                 <FormControl>
                                     <Button variant="raised" size="small" color="primary" type="submit" value="register" className={classes.button}>
-                                        Register
+                                        SIGN UP
                                 </Button>
                                 </FormControl>
                                 <Link to="/login">CANCEL</Link>
