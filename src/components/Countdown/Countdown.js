@@ -30,6 +30,7 @@ class Countdown extends Component {
   }
   // timeRemainingInSeconds = 900;
 
+  // Saves remaining time as minutes and seconds
   updateMinutesAndSeconds(timeRemainingInSeconds) {
     let minutes = Math.floor(timeRemainingInSeconds / 60);
     let seconds = timeRemainingInSeconds % 60;
@@ -39,11 +40,15 @@ class Countdown extends Component {
     });
   }
 
+  // Function that runs the timer
   timerCountdown(timeRemainingInSeconds) {
+    // If paused...
     if (this.state.isRunning) {
+      // If 2 min remaining...
       if (timeRemainingInSeconds === 120) {
         this.props.onEveryMinute();
       }
+      // If time up...
       if (timeRemainingInSeconds === 0) {
         this.props.onCompletion();
         return;
@@ -52,18 +57,21 @@ class Countdown extends Component {
         timeRemainingInSeconds
       });
       localStorage.setItem('timeRemainingInSeconds', timeRemainingInSeconds);
+      // Decraments time by 1 sec and runs function again
       if (timeRemainingInSeconds >= 0) {
         this.updateMinutesAndSeconds(timeRemainingInSeconds);
         timeRemainingInSeconds = timeRemainingInSeconds - 1;
         this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds), 1000);
       }
+    // If paused...
+    // Waits 1 sec and runs function again
     } else {
       this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds), 1000);
     }
   }
 
-
-
+  // This function will eventually allow us to store the time serverside temporatily so a user can
+  // refresh the page without losing their time. (may not be needed).
   compareServerTimeandComponentTimeandUpdateServer(serverSideTimeRemainingInSeconds) {
     let componentTimeRemainingInSeconds = localStorage.getItem('timeRemainingInSeconds');
     if (componentTimeRemainingInSeconds && componentTimeRemainingInSeconds < serverSideTimeRemainingInSeconds) {
@@ -76,6 +84,7 @@ class Countdown extends Component {
     return serverSideTimeRemainingInSeconds;
   }
 
+  // If the component receives a new timeRemainingInSeconds, replace the old one with the new one (may be unnecesary now) 
   componentWillReceiveProps(nextProps) {
     if (this.props.timeRemainingInSeconds !== nextProps.timeRemainingInSeconds) {
       let timeRemainingInSeconds = this.compareServerTimeandComponentTimeandUpdateServer(nextProps.timeRemainingInSeconds);
@@ -85,6 +94,7 @@ class Countdown extends Component {
     console.log(nextProps)
   }
 
+  // When component mounts, run timer.
   componentDidMount() {
     this.timerCountdown(this.props.timeRemainingInSeconds)
   }
@@ -94,13 +104,7 @@ class Countdown extends Component {
 
   }
 
-
-
-
-
-
-
-
+  // Pauses the timer
   pause = () => {
     // tbd after we determine how the timer will function
     console.log('pause');
@@ -109,6 +113,7 @@ class Countdown extends Component {
     })
   };
 
+  // Unpauses the timer
   play = () => {
     // tbd after we determine how the timer will function
     console.log('play');
@@ -117,8 +122,8 @@ class Countdown extends Component {
     })
   };
 
-
-
+  // Offers a SweetAlert for stopping the timer. 
+  // On confirmation, send user home.
   stop = () => {
     swal({
       title: 'Are you sure?',
@@ -136,10 +141,6 @@ class Countdown extends Component {
     })
 
   };
-
-
-
-
 
   render() {
 

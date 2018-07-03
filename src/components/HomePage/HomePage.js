@@ -47,18 +47,18 @@ class HomePage extends Component {
           </Grid>
           <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={24}>
             <Grid item>
-              <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
-            </Grid>
-            <Grid item>
-              <Button className="attractive" color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
-            </Grid>
-            <Grid item>
-              <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
-            </Grid>
-            <Grid item>
-              <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
-            </Grid>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
           </Grid>
+          <Grid item>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
+          </Grid>
+          <Grid item>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
+          </Grid>
+          <Grid item>
+          <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
+          </Grid>
+        </Grid>
         </div>
       );
     }
