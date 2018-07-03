@@ -8,8 +8,11 @@ import Edit from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid';
 import JournalItem from '../JournalItem/JournalItem';
 import swal from 'sweetalert2'
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
+  user: state.user,
+  comments: state.comments,
 });
 
 class JournalPage extends Component {
@@ -21,6 +24,19 @@ class JournalPage extends Component {
   handleClick = (pageLink) => () => {
     this.props.history.push(pageLink);
   }
+
+
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.props.dispatch({ type: 'FETCH_ALL_COMMENTS'});
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('login');
+    }
+  }
+
 
   async addNote () {
     const {value: text} = await swal({
@@ -36,40 +52,22 @@ class JournalPage extends Component {
     }
   }
 
+
   render() {
-    return (
-      <div>
+    let content = null;
+
+    if (this.props.user.userName) {
+      content = (
+        <div>
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
             <h1>NOTES TO SELF</h1>
           </Grid>
-          {/* <Grid item> */}
-            {/* toggle view. if blank: */}
-            {/* <p>Complete a round to make an entry.</p> */}
-          {/* </Grid>
-          <Grid item>
-            <Button variant="contained" color="primary">ADD</Button> */}
-            {/* ADD BUTTON brings up text modal */}
-          {/* </Grid> */}
+        <Grid item>
+        {this.props.comments.allComments.map(comment => <JournalItem key={comment.id} 
+        comment={comment}/>
+        )}
         </Grid>
-        <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
-          <Grid item>
-            <TextField
-              id="textarea"
-              label="What should your future self know about today?"
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
-        </Grid>
-        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-          {/* <Grid item>
-            <Button variant="contained" color="primary" onClick={this.handleClick('/home')}>HOME</Button>
-          </Grid> */}
-        </Grid>
-        {/* toggle view. if there are notes: */}
-        <JournalItem />
-        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
             <Button variant="contained" color="primary" onClick={this.addNote}>ADD</Button>
           </Grid>
@@ -77,6 +75,13 @@ class JournalPage extends Component {
             <Button variant="contained" color="primary" onClick={this.handleClick('/home')}>HOME</Button>
           </Grid>
         </Grid>
+      </div >
+      );
+    }
+
+    return (
+      <div>
+        { content }
       </div >
     )
   }

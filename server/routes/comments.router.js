@@ -6,12 +6,12 @@ router.get('/getComments', (req, res) => {
     console.log('GET /api/comment/getComments');
     if (req.isAuthenticated()) {
         const query = `
-      SELECT *
+      SELECT "c".*
       FROM "comments" as "c"
       JOIN "person" as "p"
       ON "p"."id" = "c"."person_id"
-      WHERE "person"."id" = $1
-      ORDER BY "comments"."date"
+      WHERE "p"."id" = $1
+      ORDER BY "c"."date_posted"
     `;
         const params = [req.user.id];
         pool.query(query, params)
@@ -39,7 +39,8 @@ router.post('/postComment', (req, res) => {
         const params = [req.user.id, req.body.comment]
         pool.query(query, params)
             .then(results => {
-                res.send(results.rows);
+                console.log(results);
+                res.sendStatus(201);
             })
             .catch(error => {
                 res.sendStatus(500);
@@ -56,10 +57,12 @@ router.put('/putComment/:id', (req, res) => {
     if (req.isAuthenticated) {
         const query = `
             UPDATE "comments"
-            SET "comment" = $1
-            WHERE "person_id" = $2;
+            SET "comment" = $1,
+            "date_posted" = $2
+            WHERE "id" = $3
+            AND "person_id" = $4;
         `;
-        const params = [req.body, req.user.id];
+        const params = [req.body.comment, req.body.date_posted, req.params.id, req.user.id];
         pool.query(query, params)
             .then(results => {
                 res.sendStatus(201);
