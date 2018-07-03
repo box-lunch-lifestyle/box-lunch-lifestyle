@@ -20,6 +20,7 @@ function CompletedPage(props) {
 
   return (
     <div>
+      <audio src="/audio/trumpet_fanfare.mp3" autoPlay />
       <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
         <Grid item>
           <Moment format="YYYY/MM/DD">
