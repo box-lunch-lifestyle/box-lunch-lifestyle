@@ -15,6 +15,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import swal from 'sweetalert2';
 
 const styles = theme => ({
     root: {
@@ -85,6 +86,26 @@ class JournalItem extends Component {
         });
     }
 
+    deleteClick = (comment) => {
+    swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#BB221C',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+        this.handleDeleteComment(comment);
+          swal(
+            'Deleted!',
+            'Your note has been deleted.',
+            'success'
+          )
+        }
+    });
+    };
+
     render() {
         const {classes} = this.props;
         const date = moment(this.props.comment.date_posted).format("MMMM Do YYYY");
@@ -100,7 +121,7 @@ class JournalItem extends Component {
                             <Edit onClick={this.handleClickOpen}  />
                             </IconButton>
                             <IconButton className={classes.TrashIcon} aria-label="Delete">
-                            <DeleteIcon onClick={() => this.handleDeleteComment(this.props.comment)}/>
+                            <DeleteIcon onClick={() => this.deleteClick(this.props.comment)}/>
                             </IconButton>
                         </Typography>
                     </Paper>

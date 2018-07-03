@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Edit from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid';
 import JournalItem from '../JournalItem/JournalItem';
 import swal from 'sweetalert2'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -71,7 +68,8 @@ class JournalPage extends Component {
         )}
         </Grid>
         </Grid>
-        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
+        {/* <JournalButtons addNote={this.addNote} handleClick={this.handleClick} /> */}
+        <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16}>
           <Grid item>
             <Button variant="contained" color="primary" onClick={this.addNote}>ADD</Button>
           </Grid>
