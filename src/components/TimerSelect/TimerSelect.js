@@ -28,15 +28,17 @@ class TimerSelect extends Component {
       cancelButtonColor: '#BB221C',
       confirmButtonText: 'YES!',
     })
-    .then((result) => {
-      if (result.value) {
-        this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: 'food'});
-        this.props.history.push('/timer');
-      } else if (result.dismiss === swal.DismissReason.cancel)
-      {
-        swal("Come Back When You're Ready");
-      }
-    });
+      .then((result) => {
+        if (result.value) {
+          this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: 'food' });
+          this.props.history.push('/timer');
+        } else if (result.dismiss === swal.DismissReason.cancel) {
+          swal("Come Back When You're Ready")
+            .then(() => {
+              this.props.history.push('/home');
+            })
+        }
+      });
   };
 
   youTimerClick = () => {
@@ -49,16 +51,18 @@ class TimerSelect extends Component {
       cancelButtonColor: '#BB221C',
       confirmButtonText: 'YES!',
     })
-    .then((result) => {
-      if (result.value) {
-        this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: 'life'});
-        this.props.history.push('/timer');
-      } else if 
-      (result.dismiss === swal.DismissReason.cancel)
-      {
-        swal("Come Back When You're Ready");
-      }
-    });
+      .then((result) => {
+        if (result.value) {
+          this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: 'life' });
+          this.props.history.push('/timer');
+        } else if
+        (result.dismiss === swal.DismissReason.cancel) {
+          swal("Come Back When You're Ready")
+            .then(() => {
+              this.props.history.push('/home');
+            })
+        }
+      });
   };
 
   render() {
@@ -67,7 +71,7 @@ class TimerSelect extends Component {
       <div>
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
           <Grid item>
-            <img src='images/clock.jpg' width='100%' margin='20px'/>
+            <img src='images/clock.jpg' width='100%' margin='20px' />
           </Grid>
           <Grid item >
             <h2>What's first today?</h2>
