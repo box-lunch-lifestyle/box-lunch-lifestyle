@@ -22,7 +22,10 @@ const styles = theme => ({
       ...theme.mixins.gutters(),
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2,
-      margin: '5px',
+      margin: '15px',
+      borderWidth: '1px',
+      boxShadow: 'none',
+      borderStyle: 'solid',
     },
     EditIcon: {
         marginRight: theme.spacing.unit,
