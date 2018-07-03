@@ -54,7 +54,7 @@ class HeroItem extends Component {
 
         let displayImg;
 
-        if (this.props.entries.allEntries.length = 1) {
+        if (this.props.entries.allEntries.length >= 1) {
             displayImg = imgColor;
 
         } else {
