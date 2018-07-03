@@ -53,10 +53,11 @@ class ChampionItem extends Component {
     let imgColor = '/images/champion-belt-color.png'
 
     let displayImg;
+    let achievedDate;
 
-    if (this.props.entries.allEntries.length >= 50){
+    if (this.props.entries.allEntries.length >= 5){
         displayImg = imgColor;
-
+        achievedDate = this.props.entries.allEntries.slice(-5, -4)[0].date_posted;
     } else {
      displayImg = imgOutline;
     }
@@ -69,7 +70,7 @@ class ChampionItem extends Component {
             <Card className={classes.card}>
                 <CardContent>
                 <Typography className={classes.title} color="textSecondary">
-                June 30th 2018
+                {moment(achievedDate).format("MMM Do, YYYY")}
           </Typography>
           <Typography variant="headline" component="h2">
            Champion (50 Days) <span><img src={displayImg}/></span>
