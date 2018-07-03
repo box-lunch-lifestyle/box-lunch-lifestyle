@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -53,10 +53,12 @@ class ContenderItem extends Component {
         let imgColor = '/images/champion-belt-color.png'
 
         let displayImg;
+        let displayDate;
 
         if (this.props.entries.allEntries.length >= 15) {
             displayImg = imgColor;
-
+            let achievedDate = this.props.entries.allEntries[14].date_posted;
+            displayDate = moment(achievedDate).format("MMM Do, YYYY");
         } else {
             displayImg = imgOutline;
         }
@@ -67,11 +69,11 @@ class ContenderItem extends Component {
                     <Card className={classes.card}>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary">
-                                June 30th 2018
+                                {displayDate}
           </Typography>
                             <Typography variant="headline" component="h2">
-                                Contender (15 Days) <span><img src={displayImg}/></span>
-          </Typography>
+                                Contender (15 Days) <span><img src={displayImg} /></span>
+                            </Typography>
 
                         </CardContent>
                     </Card>
