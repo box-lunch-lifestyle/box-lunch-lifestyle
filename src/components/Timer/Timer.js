@@ -205,13 +205,13 @@ class TimerPage extends Component {
 
     let messageBar;
 
-    if (this.state.currentModal === 'food') {
+    if (this.props.timer.currentRound === 'food') {
       messageBar = <div>
         <p>ENJOY YOUR FOOD.</p>
       </div>
-    } else if (this.state.currentModal === 'life') {
+    } else if (this.props.timer.currentRound === 'life') {
       messageBar = <div>
-        <p>ENJOY YOUR TIME.</p>
+        <p>ENJOY YOURSELF.</p>
       </div>
     } else if (this.state.currentModal === 'commentOption') {
       messageBar = <div>
