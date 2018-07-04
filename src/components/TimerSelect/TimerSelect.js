@@ -4,7 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
+import Play from '@material-ui/icons/PlayArrow';
 import { connect } from 'react-redux';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 const styles = theme => ({
   button: {
@@ -26,7 +28,7 @@ class TimerSelect extends Component {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#BB221C',
-      confirmButtonText: 'YES!',
+      confirmButtonText: '<i class="fa fa-play"></i>',
     })
       .then((result) => {
         if (result.value) {
@@ -49,7 +51,7 @@ class TimerSelect extends Component {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#BB221C',
-      confirmButtonText: 'YES!',
+      confirmButtonText: '<i class="fa fa-play"></i>',
     })
       .then((result) => {
         if (result.value) {
