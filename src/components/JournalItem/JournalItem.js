@@ -96,7 +96,7 @@ class JournalItem extends Component {
         showCancelButton: true,
         confirmButtonColor: '#c82027',
         cancelButtonColor: '#5f5f5f',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.value) {
         this.handleDeleteComment(comment);
