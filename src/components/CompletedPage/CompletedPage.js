@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
+  },
+  root: {
+    flexGrow: 1,
+    // backgroundImage: `url(${"../images/blackboard.jpg"})`,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.primary.contrastText,
+    background: theme.palette.primary.main,
   },
 });
 
@@ -17,41 +28,38 @@ function CompletedPage(props) {
     props.history.push(pageLink);
   }
 
-
   return (
-    <div>
-      <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-        <Grid item>
-          <Moment format="YYYY/MM/DD">
-          </Moment>
+    <div className={classes.root}>
+      <Grid container spacing={24} >
+        <Grid item xs={12}>
+          <div className='completedDate'>
+            <Paper className={classes.paper}>
+              <Moment format="MMMM do, YYYY">
+              </Moment></Paper>
+          </div>
         </Grid>
+      </Grid>
+      <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'}>
         <Grid item>
           <div className='completedMessage'>
-            <h1>Nicely Done!</h1>
+            <h2>Nicely Done!</h2>
           </div>
         </Grid>
-        <Grid item>
+        <Grid item xs={8}>
           <div className='completedImg'>
-            <img src='images/cjguycharacter.jpg' alt='boxingBoy' width='100%' margin='20px'/>
+            <img src='images/stickman.png' alt='boxingBoy' width='100%' margin='20px' />
           </div>
         </Grid>
-        <Grid>
-          <div className='encouragementMessage'>
-            <h2>Everyday Matters. Keep it up!</h2>
-          </div>
+        <Grid item xs={6}>
+          <h2>Everyday Matters. <br/> Keep it up! </h2>
         </Grid>
-        <Grid>
-          <div className='completedButton'>
-            <Button onClick={handleClick('/home')} variant="contained" color="primary" className={classes.button}>Home</Button>
-          </div>
+        <Grid item xs={6}>
+          <Button onClick={handleClick('/home')} variant="contained" color="primary" className={classes.button}>Home</Button>
         </Grid>
       </Grid>
     </div>
 
   )
 }
-
-
-
 
 export default withStyles(styles)(CompletedPage);
