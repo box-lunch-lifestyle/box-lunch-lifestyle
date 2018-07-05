@@ -29,7 +29,6 @@ class Countdown extends Component {
       isRunning: true,
     };
   }
-  // timeRemainingInSeconds = 900;
 
   // Saves remaining time as minutes and seconds
   updateMinutesAndSeconds(timeRemainingInSeconds) {
@@ -93,7 +92,7 @@ class Countdown extends Component {
     }
     console.log(this.state)
     console.log(nextProps)
-  }
+  }  
 
   // When component mounts, run timer.
   componentDidMount() {
@@ -107,7 +106,6 @@ class Countdown extends Component {
 
   // Pauses the timer
   pause = () => {
-    // tbd after we determine how the timer will function
     console.log('pause');
     this.setState({
       isRunning: false,
@@ -116,7 +114,6 @@ class Countdown extends Component {
 
   // Unpauses the timer
   play = () => {
-    // tbd after we determine how the timer will function
     console.log('play');
     this.setState({
       isRunning: true,
@@ -131,8 +128,8 @@ class Countdown extends Component {
       text: "You'll have to start from the beginning!",
       type: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#BB221C',
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
       confirmButtonText: 'I need to stop!'
     }).then((result) => {
       if (result.value) {
@@ -150,7 +147,6 @@ class Countdown extends Component {
     let pausePlayButton;
     let timer;
     if (this.state.isRunning) {
-      timer = <p>The timer is running</p>
       pausePlayButton = <Button 
         variant="fab" 
         color="primary" 
@@ -160,8 +156,13 @@ class Countdown extends Component {
           <Pause className={classes.icon} />
         </Button>
     } else {
-      timer = <p>The timer is paused</p>
-      pausePlayButton = <Button variant="fab" color="primary" onClick={this.play} className={classes.button} ><Play className={classes.icon} /></Button>
+
+      pausePlayButton = <Button 
+      variant="fab" color="primary" 
+      onClick={this.play} 
+      className={classes.button} >
+      <Play className={classes.icon} />
+      </Button>
     }
 
     return (

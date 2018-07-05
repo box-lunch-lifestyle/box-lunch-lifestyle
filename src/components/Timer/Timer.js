@@ -50,83 +50,6 @@ class TimerPage extends Component {
     }
   }
 
-  // OLD CODE was used to monitor current modal and round
-  //   (Modals were tracked because we originally had special 
-  //   messages under the header depending on the modal/round)
-  componentDidMount = () => {
-    this.setState({
-      //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
-      // currentModal: this.timer.firstModal,
-      // currentRound: this.timer.firstRound,
-      currentModal: 'food',
-      currentRound: 'food',
-    });
-  };
-
-  // OLD CODE was used to toggle the modal after the first round finished
-  completeRoundOne = () => {
-    if (this.state.currentRound === 'food') {
-      this.setState({
-        currentModal: 'life',
-      })
-    } else {
-      this.setState({
-        currentModal: 'food',
-      })
-    }
-  };
-
-  // OLD CODE was used to open comment modal after second round
-  completeRoundTwo = () => {
-    this.setState({
-      currentModal: 'commentOption',
-    })
-  };
-
-  // OLD CODE was used to remove the current modal
-  modalConfirm = () => {
-    this.setState({
-      currentModal: '',
-    })
-  };
-
-  // OLD CODE moved to Countdown.js, this function paused the timer.
-  pause = () => {
-    // tbd after we determine how the timer will function
-    console.log('pause');
-    this.setState({
-      timerIsRunning: false,
-    })
-  };
-
-  // OLD CODE moved to Countdown.js, this function unpaused the timer
-  play = () => {
-    // tbd after we determine how the timer will function
-    console.log('play');
-    this.setState({
-      timerIsRunning: true,
-    })
-  };
-
-  // OLD CODE moved to Countdown.js, this function would offer a user to stop
-  stop = () => {
-    swal({
-      title: 'Are you sure?',
-      text: "You'll have to start from the beginning!",
-      type: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#BB221C',
-      confirmButtonText: 'I need to stop!'
-    }).then((result) => {
-      if (result.value) {
-        // do we want a sweet alert here? Yes we do;)
-        this.props.history.push('/home');
-      }
-    })
-
-  };
-
   // Run at 2 minutes left
   twoMinWarning = () => {
     this.setState ({
@@ -154,7 +77,7 @@ class TimerPage extends Component {
         title: "Good Job!",
         text: "Ready For Round Two?",
         showConfirmButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#c82027',
         confirmButtonText: 'YES!',
         allowOutsideClick: false
       })
@@ -179,7 +102,8 @@ class TimerPage extends Component {
       inputPlaceholder: "What Should Your Future Self Know About Today?",
       showConfirmButton: true,
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
       confirmButtonText: 'Save',
       cancelButtonText: 'Skip',
       allowOutsideClick: false
@@ -207,28 +131,14 @@ class TimerPage extends Component {
     let messageBar;
 
     if (this.props.timer.currentRound === 'food') {
-      messageBar = <div>
+      messageBar = <div className="timerMessageBar">
         <p>ENJOY YOUR FOOD.</p>
       </div>
     } else if (this.props.timer.currentRound === 'life') {
-      messageBar = <div>
+      messageBar = <div className="timerMessageBar">
         <p>ENJOY YOURSELF.</p>
       </div>
-    } else if (this.state.currentModal === 'commentOption') {
-      messageBar = <div>
-        <p>EXCELLENT!</p>
-      </div>
-    } else if (this.state.currentRound === 'food') {
-      messageBar = <div>
-        <p>CHEW. NOTICE. REFUEL.</p>
-      </div>
-    } else {
-      messageBar = <div>
-        <p>DO THIS FOR YOU</p>
-      </div>
     }
-
-    let timer;
 
     let countdown;
     if (this.props.timer.currentRound === 'food') {
@@ -240,6 +150,7 @@ class TimerPage extends Component {
 
     return (
 
+
       <div className="container">
         {this.state.audio}
         <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
@@ -248,7 +159,6 @@ class TimerPage extends Component {
           </Grid>
           <Grid>
             <div>
-              {timer}
               {countdown}
             </div>
           </Grid>

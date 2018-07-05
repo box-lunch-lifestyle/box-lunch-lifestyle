@@ -39,7 +39,9 @@ class JournalPage extends Component {
     const {value: text} = await swal({
       input: 'textarea',
       inputPlaceholder: 'What should your future self know about today?',
-      showCancelButton: true
+      showCancelButton: true,
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
     })
     if (text) {
       // swal(text)
