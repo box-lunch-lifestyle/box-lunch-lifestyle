@@ -10,6 +10,7 @@ import ContenderItem from '../ContenderItem/ContenderItem';
 import VictorItem from '../VictorItem/VictorItem';
 import ChampionItem from '../ChampionItem/ChampionItem';
 import UndisputedChampionItem from '../UndisputedChampionItem/UndisputedChampionItem';
+import Header from '../Header/Header';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -48,6 +49,7 @@ class MilestonePage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
+                <Header title="Box Lunch Lifestyle" />
           <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
             <Grid item>
               <h1> MILESTONES </h1>

@@ -123,3 +123,52 @@ li a:hover {
     opacity: 1;
     transition: opacity .5s ease-in;
   }
+
+
+.example-component {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden; 
+  }
+  .example-component.show {
+    opacity: 1;
+    visibility: visible; 
+  }
+/* 
+  .loading-animation {
+    transform: translate3d(20px, 20px, 0px);
+  } */
+
+  /* .pictureContainer img {
+    position: relative;
+    top: 0px;
+    transition: transform .2s ease-in-out;
+}
+
+.pictureContainer img:hover {
+    transform: translate3d(0px, -150px, 0px);
+} */
+
+@keyframes slideInFromBottom {
+    100% {
+      transform: translateY(0);
+    }
+    0% {
+      transform: translateY(100%);
+    }
+  }
+  
+  .taco {  
+    /* This section calls the slideInFromLeft animation we defined above */
+    animation: 1s ease-out 0s 1 slideInFromBottom;
+    
+    /* background: #333;
+    padding: 30px; */
+  }
+  

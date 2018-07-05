@@ -7,11 +7,14 @@ import swal from 'sweetalert2';
 import Play from '@material-ui/icons/PlayArrow';
 import { connect } from 'react-redux';
 import '@fortawesome/fontawesome-free/css/all.css';
+import Header from '../Header/Header';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
-    alignItems: 'center',
+    margin: theme.spacing.unit * 2,
+    // alignItems: 'center',
+    boxShadow: 'none',
+    justify: 'space-around',
   },
 });
 
@@ -71,6 +74,7 @@ class TimerSelect extends Component {
     const { classes } = this.props;
     return (
       <div>
+            <Header title="Box Lunch Lifestyle" />
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
           <Grid item>
             <img src='images/clock.jpg' width='100%' margin='20px' />
