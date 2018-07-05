@@ -127,8 +127,8 @@ class Countdown extends Component {
       text: "You'll have to start from the beginning!",
       type: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#BB221C',
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
       confirmButtonText: 'I need to stop!'
     }).then((result) => {
       if (result.value) {
