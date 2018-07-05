@@ -34,7 +34,7 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit,
     },
     button: {
-        marginTop: theme.spacing.unit,
+        margin: '30px',
     },
     header: {
         textAlign: 'center',
@@ -87,7 +87,7 @@ function RegisterForm(props) {
                                         SIGN UP
                                 </Button>
                                 </FormControl>
-                                <Link to="/login">CANCEL</Link>
+                                <Link to="/login" className={classes.button}>CANCEL</Link>
                             </Grid>
                         </div>
                     </form>
