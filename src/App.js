@@ -46,7 +46,7 @@ const myTheme = createMuiTheme({
 const App = () => (
   <MuiThemeProvider theme={myTheme}>
   <div>
-    <Header title="Box Lunch Lifestyle" />
+    {/* <Header title="Box Lunch Lifestyle" /> */}
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

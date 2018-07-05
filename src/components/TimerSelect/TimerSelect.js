@@ -10,8 +10,10 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
-    alignItems: 'center',
+    margin: theme.spacing.unit * 2,
+    // alignItems: 'center',
+    boxShadow: 'none',
+    justify: 'space-around',
   },
 });
 

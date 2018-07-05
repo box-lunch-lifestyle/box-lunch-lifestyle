@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import JournalItem from '../JournalItem/JournalItem';
 import swal from 'sweetalert2'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
-
 const mapStateToProps = state => ({
   user: state.user,
   comments: state.comments,
+});
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit * 2,
+    // alignItems: 'center',
+    boxShadow: 'none',
+    justify: 'space-around',
+  },
 });
 
 class JournalPage extends Component {
@@ -51,6 +61,7 @@ class JournalPage extends Component {
 
 
   render() {
+    const {classes} = this.props;
     let content = null;
 
     if (this.props.user.userName) {
@@ -63,10 +74,10 @@ class JournalPage extends Component {
           </Grid>
           <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16}>
           <Grid item>
-            <Button variant="contained" color="primary" onClick={this.addNote}>ADD</Button>
+            <Button variant="contained" color="primary" onClick={this.addNote} className={classes.button}>ADD</Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="primary" onClick={this.handleClick('/home')}>HOME</Button>
+            <Button variant="contained" color="primary" onClick={this.handleClick('/home')} className={classes.button}>HOME</Button>
           </Grid>
         </Grid>
           <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
@@ -88,4 +99,8 @@ class JournalPage extends Component {
   }
 }
 
-export default connect(mapStateToProps)(JournalPage);
+JournalPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(JournalPage));

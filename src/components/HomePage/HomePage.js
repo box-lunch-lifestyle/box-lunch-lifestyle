@@ -11,6 +11,9 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
+  button:{
+    boxShadow: 'none',
+  },
 });
 
 const mapStateToProps = state => ({
@@ -55,16 +58,16 @@ class HomePage extends Component {
           </Grid>
           <Grid container alignItems={'center'} justify={'space-between'} direction={'column'} spacing={24}>
             <Grid item xs={6} style={{ marginBottom: 20 }}>
-            <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} className={classes.button}>TIMER</Button>
           </Grid>
           <Grid item xs={6} style={{ marginBottom: 20 }}>
-            <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} className={classes.button}>MILESTONES</Button>
           </Grid>
           <Grid item xs={6} style={{ marginBottom: 20 }} >
-            <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} className={classes.button}>NOTES TO SELF</Button>
           </Grid>
           <Grid item xs={6} style={{ marginBottom: 20 }}>
-          <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
+          <Button color="secondary" variant="contained" onClick={this.logout} className={classes.button}>LOG OUT</Button>
           </Grid>
         </Grid>
         </div>

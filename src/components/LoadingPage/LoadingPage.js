@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 
+
 const styles = theme => ({
   motto: {
     fontFamily: 'typeka',
@@ -16,12 +17,14 @@ class LoadingPage extends Component {
     super(props);
   };
 
-
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.motto}>
-        <Grid container spacing={12} alignItems={'center'} justify={'center'} direction={'column'}>
+         <div className='taco'>
+            <img src='images/logo.jpg' width='100%' margin='20px' />
+        </div>
+        <Grid container spacing={8} alignItems={'center'} justify={'center'} direction={'column'}>
           <Grid item>
 
             <CSSTransitionGroup className={classes.motto}
