@@ -45,13 +45,13 @@ function CompletedPage(props) {
             <h2>Nicely Done!</h2>
           </div>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={10}>
           <div className='completedImg'>
             <img src='images/stickman.png' alt='boxingBoy' width='100%' margin='20px' />
           </div>
         </Grid>
-        <Grid item xs={6}>
-          <h2>Everyday Matters. <br/> Keep it up! </h2>
+        <Grid item xs={8}>
+          <h2>Every day Matters. <br/> Keep it up! </h2>
         </Grid>
         <Grid item xs={6}>
           <Button onClick={handleClick('/home')} variant="contained" color="primary" className={classes.button}>Home</Button>
