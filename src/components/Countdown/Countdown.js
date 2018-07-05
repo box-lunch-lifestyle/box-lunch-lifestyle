@@ -6,6 +6,7 @@ import Stop from '@material-ui/icons/Cancel';
 import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
 import { withStyles } from '@material-ui/core/styles';
+import '../../styles/timer.css';
 
 const styles = theme => ({
   button: {
@@ -165,16 +166,26 @@ class Countdown extends Component {
 
     return (
       <div>
+        <div className="timerContainer">
+        <div id="clockdiv">
         <div>
-          {this.state.minutes > 9 ?
-            this.state.minutes : '0' + this.state.minutes}:
+          <span> {this.state.minutes > 9 ?
+            this.state.minutes : '0' + this.state.minutes} </span>
+            <div className="smalltext">Minutes</div>
+          </div>
+          <div>
+            <span>
         {this.state.seconds > 9 ?
-            this.state.seconds : '0' + this.state.seconds}
+            this.state.seconds : '0' + this.state.seconds} </span>
+            <div className="smalltext">Seconds</div>
+            </div>
+            </div>
         </div>
-
+        <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16}>
         <Grid item>
           {pausePlayButton}
           <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
+        </Grid>
         </Grid>
       </div>
     )

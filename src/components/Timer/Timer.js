@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
 import FoodTimer from '../TimerOptions/FoodTimer';
 import LifeTimer from '../TimerOptions/LifeTimer';
+import '../../styles/timer.css';
 
 
 const mapStateToProps = reduxState => ({
@@ -239,7 +240,7 @@ class TimerPage extends Component {
 
     return (
 
-      <div>
+      <div className="container">
         {this.state.audio}
         <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
@@ -247,8 +248,6 @@ class TimerPage extends Component {
           </Grid>
           <Grid>
             <div>
-              {/* Timer will go in this div. */}
-              <p>TIMER WILL GO HERE</p>
               {timer}
               {countdown}
             </div>
