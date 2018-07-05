@@ -30,7 +30,8 @@ function CompletedPage(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={24} >
+       <audio src="/audio/trumpet_fanfare.mp3" autoPlay />
+    <Grid container spacing={24} >
         <Grid item xs={12}>
           <div className='completedDate'>
             <Paper className={classes.paper}>

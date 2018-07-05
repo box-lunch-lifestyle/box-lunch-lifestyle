@@ -63,11 +63,15 @@ class JournalPage extends Component {
           <Grid item>
             <h1>NOTES TO SELF</h1>
           </Grid>
+          </Grid>
+          <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
         <Grid item>
         {this.props.comments.allComments.map(comment => <JournalItem key={comment.id} 
         comment={comment}/>
         )}
         </Grid>
+        </Grid>
+        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
             <Button variant="contained" color="primary" onClick={this.addNote}>ADD</Button>
           </Grid>

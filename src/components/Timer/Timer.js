@@ -37,6 +37,7 @@ class TimerPage extends Component {
       currentRound: '',
       timerIsRunning: true,
       time: 9,
+      audio: '',
     }
     this.addNote = this.addNote.bind(this);
   };
@@ -125,9 +126,20 @@ class TimerPage extends Component {
 
   };
 
+  // Run at 2 minutes left
+  twoMinWarning = () => {
+    this.setState ({
+      audio: <audio src="/audio/2min_warning.mp3" autoPlay />
+    })
+  }
+
   // Run after timer finishes
   onComplete = () => {
     // Toggles next round
+    this.setState({
+      audio: <audio src="/audio/times_up.mp3" autoPlay />,
+    });
+
     let nextRound;
     if (this.props.timer.currentRound === 'food'){
       nextRound = 'life';
@@ -193,13 +205,13 @@ class TimerPage extends Component {
 
     let messageBar;
 
-    if (this.state.currentModal === 'food') {
+    if (this.props.timer.currentRound === 'food') {
       messageBar = <div>
         <p>ENJOY YOUR FOOD.</p>
       </div>
-    } else if (this.state.currentModal === 'life') {
+    } else if (this.props.timer.currentRound === 'life') {
       messageBar = <div>
-        <p>ENJOY YOUR TIME.</p>
+        <p>ENJOY YOURSELF.</p>
       </div>
     } else if (this.state.currentModal === 'commentOption') {
       messageBar = <div>
@@ -219,15 +231,16 @@ class TimerPage extends Component {
 
     let countdown;
     if (this.props.timer.currentRound === 'food') {
-      countdown = <div className="roundOne"><FoodTimer onComplete={this.onComplete} history={this.props.history} /></div>
+      countdown = <div className="roundOne"><FoodTimer onComplete={this.onComplete} twoMinWarning={this.twoMinWarning} history={this.props.history} /></div>
     } else if (this.props.timer.currentRound === 'life') {
       console.log('DONE');
-      countdown = <div className="roundTwo"><LifeTimer onComplete={this.onComplete} history={this.props.history} /></div>
+      countdown = <div className="roundTwo"><LifeTimer onComplete={this.onComplete} twoMinWarning={this.twoMinWarning} history={this.props.history} /></div>
     }
 
     return (
 
       <div>
+        {this.state.audio}
         <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
             {messageBar}

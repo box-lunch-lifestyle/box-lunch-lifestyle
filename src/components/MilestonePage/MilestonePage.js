@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import HeroItem from '../HeroItem/HeroItem';
@@ -15,11 +16,19 @@ const mapStateToProps = state => ({
 });
 
 class MilestonePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
 
   componentDidMount() {
     this.props.dispatch({
       type: USER_ACTIONS.FETCH_USER
     });
+    this.props.dispatch({
+      type: 'FETCH_ALL_ENTRIES'
+    })
   }
 
   componentDidUpdate() {
@@ -61,6 +70,8 @@ class MilestonePage extends Component {
         </div>
       );
     }
+
+
 
     return (
       <div>

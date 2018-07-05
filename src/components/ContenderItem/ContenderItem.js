@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -17,7 +18,7 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        
+
     },
     media: {
         height: 0,
@@ -33,29 +34,57 @@ const styles = {
     },
 };
 
-function ContenderItem(props) {
-    const { classes } = props;
-    return (
-        <div>
-            <Grid item xs={12}>
-            <Card className={classes.card}>
-                <CardContent>
-                <Typography className={classes.title} color="textSecondary">
-                June 30th 2018
+const mapStateToProps = reduxState => ({
+    entries: reduxState.entries,
+})
+
+class ContenderItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showImg: true,
+        };
+    }
+
+    render() {
+        const { classes } = this.props;
+
+        let imgOutline = '/images/champion-belt.png'
+        let imgColor = '/images/champion-belt-color.png'
+
+        let displayImg;
+        let displayDate;
+
+        if (this.props.entries.allEntries.length >= 15) {
+            displayImg = imgColor;
+            let achievedDate = this.props.entries.allEntries[14].date_posted;
+            displayDate = moment(achievedDate).format("MMM Do, YYYY");
+        } else {
+            displayImg = imgOutline;
+        }
+
+        return (
+            <div>
+                <Grid item xs={12}>
+                    <Card className={classes.card}>
+                        <CardContent>
+                            <Typography className={classes.title} color="textSecondary">
+                                {displayDate}
           </Typography>
-          <Typography variant="headline" component="h2">
-          Contender (15 Days)
-          </Typography>
-          
-                </CardContent>
-            </Card>
-            </Grid>
-        </div>
-    );
+                            <Typography variant="headline" component="h2">
+                                Contender (15 Days) <span><img src={displayImg} /></span>
+                            </Typography>
+
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </div>
+        );
+    }
 }
 
 ContenderItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContenderItem);
+export default connect(mapStateToProps)(withStyles(styles)(ContenderItem));

@@ -5,21 +5,54 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
-import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+
+const styles = theme => ({
+    root: {
+      ...theme.mixins.gutters(),
+      paddingTop: theme.spacing.unit * 2,
+      paddingBottom: theme.spacing.unit * 2,
+      margin: '5px',
+    },
+    EditIcon: {
+        marginRight: theme.spacing.unit,
+        position: 'absolute',
+        right: 5,
+    },
+    headline: {
+        color: '#808080',
+    },
+  });
 
 
 class JournalItem extends Component {
     constructor(props){
         super(props);
         this.state = {
+            open: false,
             updatedComment: {
               date_posted: this.props.comment.date_posted,
-              comment: '',
+              comment: this.props.comment.comment,
             }
         }
     }
+
+    handleClickOpen = () => {
+        this.setState({ open: true });
+      };
+    
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
     handleChange = propertyName => event => {
         this.setState({
@@ -35,33 +68,65 @@ class JournalItem extends Component {
           type: 'FETCH_PUT_COMMENT',
           payload: this.state.updatedComment,
           id: this.props.comment.id,
-        })
+        });
+        this.handleClose();
       }
 
     render() {
+        const {classes} = this.props;
         const date = moment(this.props.comment.date_posted).format("MMMM Do YYYY");
         return (
-
-            <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
-                <Grid item>
-                    <Paper>
-                        <Typography variant="headline" component="h3">
-                            <div className="entryDate">{date}</div>
+                <div>
+                    <Paper className={classes.root}>
+                        <Typography variant="headline" className={classes.headline}>
+                            {date}
                         </Typography>
-                        <Typography component="p">
-                            <TextField
-                                id="textarea"
-                                label={this.props.comment.comment}
-                                onChange={this.handleChange('comment')}
-                                margin="normal"
-                            />
-                            <Button ><Edit onClick={() => this.handleEditComment()} className="editButton" /></Button>
+                        <Typography variant="subheading">
+                            {this.props.comment.comment}
+                            <IconButton className={classes.EditIcon} >
+                            <Edit onClick={this.handleClickOpen} aria-label="Edit" />
+                            </IconButton>
+                            {/* <IconButton aria-label="Delete">
+                            <DeleteIcon />
+                            </IconButton> */}
                         </Typography>
                     </Paper>
-                </Grid>
-            </Grid>
+
+                <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}
+                aria-labelledby="edit"
+                >
+                <DialogContent>
+                <DialogContentText>
+                To change your Note to Self, click Save
+                </DialogContentText>
+                <TextField
+                autoFocus
+                margin="dense"
+                id="comment"
+                onChange={this.handleChange('comment')}
+                value={this.state.updatedComment.comment}
+                type="text"
+                fullWidth
+                />
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={this.handleClose} color="primary">
+                Cancel
+                </Button>
+                <Button onClick={() => this.handleEditComment()} color="primary">
+                Save
+                </Button>
+                </DialogActions>
+                </Dialog>
+        </div>
         )
     }
 }
 
-export default connect()(JournalItem);
+JournalItem.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default connect()(withStyles(styles)(JournalItem));
