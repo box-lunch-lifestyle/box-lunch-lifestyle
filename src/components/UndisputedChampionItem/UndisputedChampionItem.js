@@ -52,10 +52,12 @@ class UndisputedChampionItem extends Component {
         let imgColor = '/images/champion-belt-color.png'
 
         let displayImg;
+        let displayDate;
 
         if (this.props.entries.allEntries.length >= 250) {
             displayImg = imgColor;
-
+            let achievedDate = this.props.entries.allEntries[249].date_posted;
+            displayDate = moment(achievedDate).format("MMM Do, YYYY");
         } else {
             displayImg = imgOutline;
         }
@@ -66,7 +68,7 @@ class UndisputedChampionItem extends Component {
                     <Card className={classes.card}>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary">
-                                June 30th 2018
+                            {displayDate}
           </Typography>
                             <Typography variant="headline" component="h2">
                                 Undisputed Champion (250 Days) <span><img src={displayImg} /></span>

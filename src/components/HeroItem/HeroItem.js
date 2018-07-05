@@ -51,10 +51,12 @@ class HeroItem extends Component {
         let imgColor = '/images/champion-belt-color.png'
 
         let displayImg;
+        let displayDate;
 
         if (this.props.entries.allEntries.length >= 1) {
             displayImg = imgColor;
-
+            let achievedDate = this.props.entries.allEntries[0].date_posted;
+            displayDate = moment(achievedDate).format("MMM Do, YYYY");
         } else {
             displayImg = imgOutline;
         }
@@ -64,8 +66,8 @@ class HeroItem extends Component {
                 <Grid item xs={12}>
                     <Card className={classes.card}>
                         <CardContent>
-                            <Typography className={classes.date} color="textSecondary">
-                                June 30th 2018
+                            <Typography className={classes.title} color="textSecondary">
+                            {displayDate}
           </Typography>
                             <Typography className={classes.title} variant="headline" component="h2">
                                 Hero (1 Day) <span><img src={displayImg} className={classes.image}/></span>

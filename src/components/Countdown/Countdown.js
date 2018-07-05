@@ -46,7 +46,7 @@ class Countdown extends Component {
     if (this.state.isRunning) {
       // If 2 min remaining...
       if (timeRemainingInSeconds === 120) {
-        this.props.onEveryMinute();
+        this.props.twoMinWarning();
       }
       // If time up...
       if (timeRemainingInSeconds === 0) {

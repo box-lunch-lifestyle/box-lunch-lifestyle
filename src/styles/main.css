@@ -8,6 +8,11 @@
     src: url("../fonts/Knockout\ HTF29JuniorLiteweight\ Regular.otf");
 }
 
+@font-face {
+    font-family: typeka;
+    src: url("../fonts/Typeka.otf");
+}
+
 h3 {
     font-family: attractive;
 }
@@ -20,13 +25,17 @@ h1 {
     font-family: knock-out;
 }
 
-.attractive {
-    font-family: attractive;
-}
-
 body {
     font-family: attractive;
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
+}
+
+loading {
+    font-family: typeka;
+}
+
+.completedDate {
+    background-color: #c82027;
 }
 
 .instructions h1 {
@@ -96,3 +105,21 @@ li a:hover {
     text-decoration: underline;
     color: #eee;
 }
+
+  .example-appear {
+    opacity: 0.01;
+  }
+  
+  .example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity 1.5s ease-in;
+  }
+
+  .example2-appear {
+    opacity: 0.01;
+  }
+  
+  .example2-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }

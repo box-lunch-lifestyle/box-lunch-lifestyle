@@ -4,7 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
+import Play from '@material-ui/icons/PlayArrow';
 import { connect } from 'react-redux';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 const styles = theme => ({
   button: {
@@ -26,17 +28,19 @@ class TimerSelect extends Component {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#BB221C',
-      confirmButtonText: 'YES!',
+      confirmButtonText: '<i class="fa fa-play"></i>',
     })
-    .then((result) => {
-      if (result.value) {
-        this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: 'food'});
-        this.props.history.push('/timer');
-      } else if (result.dismiss === swal.DismissReason.cancel)
-      {
-        swal("Come Back When You're Ready");
-      }
-    });
+      .then((result) => {
+        if (result.value) {
+          this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: 'food' });
+          this.props.history.push('/timer');
+        } else if (result.dismiss === swal.DismissReason.cancel) {
+          swal("Come Back When You're Ready")
+            .then(() => {
+              this.props.history.push('/home');
+            })
+        }
+      });
   };
 
   youTimerClick = () => {
@@ -47,18 +51,20 @@ class TimerSelect extends Component {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#BB221C',
-      confirmButtonText: 'YES!',
+      confirmButtonText: '<i class="fa fa-play"></i>',
     })
-    .then((result) => {
-      if (result.value) {
-        this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: 'life'});
-        this.props.history.push('/timer');
-      } else if 
-      (result.dismiss === swal.DismissReason.cancel)
-      {
-        swal("Come Back When You're Ready");
-      }
-    });
+      .then((result) => {
+        if (result.value) {
+          this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: 'life' });
+          this.props.history.push('/timer');
+        } else if
+        (result.dismiss === swal.DismissReason.cancel) {
+          swal("Come Back When You're Ready")
+            .then(() => {
+              this.props.history.push('/home');
+            })
+        }
+      });
   };
 
   render() {
@@ -67,7 +73,7 @@ class TimerSelect extends Component {
       <div>
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
           <Grid item>
-            <img src='images/clock.jpg' width='100%' margin='20px'/>
+            <img src='images/clock.jpg' width='100%' margin='20px' />
           </Grid>
           <Grid item >
             <h2>What's first today?</h2>
