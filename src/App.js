@@ -33,8 +33,10 @@ const myTheme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#fff',
-      contrastText: '#000000',
+      light: '#c1c1c1',
+      main: '#5f5f5f',
+      dark: '#000',
+      contrastText: '#fff',
     },
     // secondary: cyan,
     // error: red,

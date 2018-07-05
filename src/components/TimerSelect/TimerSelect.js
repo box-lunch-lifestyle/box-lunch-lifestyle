@@ -29,8 +29,8 @@ class TimerSelect extends Component {
       text: "You Got This!",
       showConfirmButton: true,
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#BB221C',
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
       confirmButtonText: '<i class="fa fa-play"></i>',
     })
       .then((result) => {
@@ -52,8 +52,8 @@ class TimerSelect extends Component {
       text: "You Got This!",
       showConfirmButton: true,
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#BB221C',
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
       confirmButtonText: '<i class="fa fa-play"></i>',
     })
       .then((result) => {

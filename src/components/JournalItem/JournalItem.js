@@ -94,9 +94,9 @@ class JournalItem extends Component {
         title: 'Are you sure?',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#BB221C',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: '#c82027',
+        cancelButtonColor: '#5f5f5f',
+        confirmButtonText: 'Delete'
       }).then((result) => {
         if (result.value) {
         this.handleDeleteComment(comment);
