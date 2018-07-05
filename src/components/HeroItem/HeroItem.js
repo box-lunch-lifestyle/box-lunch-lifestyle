@@ -10,28 +10,26 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = {
     card: {
-        width: 300,
-        float: 'center',
-        margin: '10px',
-        padding: '5px',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-        width: 200,
-        display: 'flex',
+        width: '300px',
     },
 
-    contentHeader: {
+    date: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        fontSize: '15px',
     },
+
+    title: {
+        display: 'flex',
+        fontSize: '20px',
+    },
+
+    image: {
+        display: 'flex',
+        float: 'right',
+        paddingLeft: '70px',
+
+    }
 };
 
 const mapStateToProps = reduxState => ({
@@ -66,11 +64,11 @@ class HeroItem extends Component {
                 <Grid item xs={12}>
                     <Card className={classes.card}>
                         <CardContent>
-                            <Typography className={classes.title} color="textSecondary">
+                            <Typography className={classes.date} color="textSecondary">
                                 June 30th 2018
           </Typography>
-                            <Typography variant="headline" component="h2">
-                                Hero (1 Day) <span><img src={displayImg}/></span>
+                            <Typography className={classes.title} variant="headline" component="h2">
+                                Hero (1 Day) <span><img src={displayImg} className={classes.image}/></span>
           </Typography>
 
                         </CardContent>
