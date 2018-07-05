@@ -94,8 +94,8 @@ class JournalItem extends Component {
         title: 'Are you sure?',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#BB221C',
+        confirmButtonColor: '#c82027',
+        cancelButtonColor: '#5f5f5f',
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.value) {
