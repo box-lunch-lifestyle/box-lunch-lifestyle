@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
 import FoodTimer from '../TimerOptions/FoodTimer';
 import LifeTimer from '../TimerOptions/LifeTimer';
+import Header from '../Header/Header';
 
 
 const mapStateToProps = reduxState => ({
@@ -128,7 +129,7 @@ class TimerPage extends Component {
 
   // Run at 2 minutes left
   twoMinWarning = () => {
-    this.setState ({
+    this.setState({
       audio: <audio src="/audio/2min_warning.mp3" autoPlay />
     })
   }
@@ -141,14 +142,14 @@ class TimerPage extends Component {
     });
 
     let nextRound;
-    if (this.props.timer.currentRound === 'food'){
+    if (this.props.timer.currentRound === 'food') {
       nextRound = 'life';
     } else {
-      nextRound ='food';
+      nextRound = 'food';
     }
 
     // If just finished first round...
-    if(!this.props.timer.isSecondRound){
+    if (!this.props.timer.isSecondRound) {
       swal({
         title: "Good Job!",
         text: "Ready For Round Two?",
@@ -157,22 +158,22 @@ class TimerPage extends Component {
         confirmButtonText: 'YES!',
         allowOutsideClick: false
       })
-      .then((result) => {
-        if (result.value) {
-          this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: nextRound});
-        } 
-      });
-      this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'});
-    
-    // If just finished second round...
+        .then((result) => {
+          if (result.value) {
+            this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: nextRound });
+          }
+        });
+      this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED' });
+
+      // If just finished second round...
     } else {
-        this.addNote();
-    } 
+      this.addNote();
+    }
   };
 
   // Opens comment sweetalert
-  async addNote () {
-    const {value: text} = await swal({
+  async addNote() {
+    const { value: text } = await swal({
       title: 'Excellent!',
       input: 'textarea',
       inputPlaceholder: "What Should Your Future Self Know About Today?",
@@ -184,19 +185,18 @@ class TimerPage extends Component {
       allowOutsideClick: false
     })
     if (text) {
-      this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
-      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+      this.props.dispatch({ type: 'FETCH_POST_COMMENT', payload: { comment: text } });
+      this.props.dispatch({ type: 'POST_NEW_ENTRY', payload: { lunch_complete: true, activity_complete: true } });
       this.props.history.push('/completed');
-    } else 
-    {
-      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+    } else {
+      this.props.dispatch({ type: 'POST_NEW_ENTRY', payload: { lunch_complete: true, activity_complete: true } });
       this.props.history.push('/completed');
     }
   };
 
   // Resets timer reducer to default state when finished
   componentWillUnmount = () => {
-    this.props.dispatch({type: 'CLEAR_TIMER_REDUCER'});
+    this.props.dispatch({ type: 'CLEAR_TIMER_REDUCER' });
   }
 
   render() {
@@ -240,6 +240,7 @@ class TimerPage extends Component {
     return (
 
       <div>
+        <Header title="Box Lunch Lifestyle" />
         {this.state.audio}
         <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>

@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import JournalItem from '../JournalItem/JournalItem';
 import swal from 'sweetalert2'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Header from '../Header/Header';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -26,7 +27,7 @@ class JournalPage extends Component {
   constructor(props) {
     super(props)
     this.addNote = this.addNote.bind(this);
-    };
+  };
 
   handleClick = (pageLink) => () => {
     this.props.history.push(pageLink);
@@ -35,7 +36,7 @@ class JournalPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    this.props.dispatch({ type: 'FETCH_ALL_COMMENTS'});
+    this.props.dispatch({ type: 'FETCH_ALL_COMMENTS' });
   }
 
   componentDidUpdate() {
@@ -45,15 +46,15 @@ class JournalPage extends Component {
   }
 
 
-  async addNote () {
-    const {value: text} = await swal({
+  async addNote() {
+    const { value: text } = await swal({
       input: 'textarea',
       inputPlaceholder: 'What should your future self know about today?',
       showCancelButton: true
     })
     if (text) {
       // swal(text)
-      const action = { type: 'FETCH_POST_COMMENT', payload: {comment: text }}
+      const action = { type: 'FETCH_POST_COMMENT', payload: { comment: text } }
       this.props.dispatch(action);
       console.log(text);
     }
@@ -61,39 +62,40 @@ class JournalPage extends Component {
 
 
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
-        <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-          <Grid item>
-            <h1>NOTES TO SELF</h1>
-          </Grid>
+          <Header title="Box Lunch Lifestyle" />
+          <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
+            <Grid item>
+              <h1>NOTES TO SELF</h1>
+            </Grid>
           </Grid>
           <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16}>
-          <Grid item>
-            <Button variant="contained" color="primary" onClick={this.addNote} className={classes.button}>ADD</Button>
+            <Grid item>
+              <Button variant="contained" color="primary" onClick={this.addNote} className={classes.button}>ADD</Button>
+            </Grid>
+            <Grid item>
+              <Button variant="contained" color="primary" onClick={this.handleClick('/home')} className={classes.button}>HOME</Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button variant="contained" color="primary" onClick={this.handleClick('/home')} className={classes.button}>HOME</Button>
-          </Grid>
-        </Grid>
           <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
-        <Grid item>
-        {this.props.comments.allComments.map(comment => <JournalItem key={comment.id} 
-        comment={comment}/>
-        )}
-        </Grid>
-        </Grid>
-      </div >
+            <Grid item>
+              {this.props.comments.allComments.map(comment => <JournalItem key={comment.id}
+                comment={comment} />
+              )}
+            </Grid>
+          </Grid>
+        </div >
       );
     }
 
     return (
       <div>
-        { content }
+        {content}
       </div >
     )
   }

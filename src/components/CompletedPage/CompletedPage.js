@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Header from '../Header/Header';
 
 const styles = theme => ({
   button: {
@@ -31,6 +32,7 @@ function CompletedPage(props) {
 
   return (
     <div className={classes.root}>
+       <Header title="Box Lunch Lifestyle" />
        <audio src="/audio/trumpet_fanfare.mp3" autoPlay />
     <Grid container spacing={24} >
         <Grid item xs={12}>
