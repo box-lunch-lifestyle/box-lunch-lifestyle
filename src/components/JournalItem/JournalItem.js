@@ -15,18 +15,27 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import swal from 'sweetalert2';
 
 const styles = theme => ({
     root: {
       ...theme.mixins.gutters(),
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2,
-      margin: '5px',
+      margin: '15px',
+      borderWidth: '1px',
+      boxShadow: 'none',
+      borderStyle: 'solid',
     },
     EditIcon: {
         marginRight: theme.spacing.unit,
         position: 'absolute',
-        right: 5,
+        right: '50px',
+    },
+    TrashIcon: {
+        marginRight: theme.spacing.unit,
+        position: 'absolute',
+        right: '5px',
     },
     headline: {
         color: '#808080',
@@ -70,7 +79,35 @@ class JournalItem extends Component {
           id: this.props.comment.id,
         });
         this.handleClose();
-      }
+    }
+
+    handleDeleteComment = (comment) => {
+        console.log(comment);
+        this.props.dispatch({
+            type: 'FETCH_DELETE_COMMENT',
+            payload: comment,
+        });
+    }
+
+    deleteClick = (comment) => {
+    swal({
+        title: 'Are you sure?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#BB221C',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+        this.handleDeleteComment(comment);
+          swal(
+            'Deleted!',
+            'Your note has been deleted.',
+            'success'
+          )
+        }
+    });
+    };
 
     render() {
         const {classes} = this.props;
@@ -83,15 +120,16 @@ class JournalItem extends Component {
                         </Typography>
                         <Typography variant="subheading">
                             {this.props.comment.comment}
-                            <IconButton className={classes.EditIcon} >
-                            <Edit onClick={this.handleClickOpen} aria-label="Edit" />
+                            <IconButton className={classes.EditIcon} aria-label="Edit">
+                            <Edit onClick={this.handleClickOpen}  />
                             </IconButton>
-                            {/* <IconButton aria-label="Delete">
-                            <DeleteIcon />
-                            </IconButton> */}
+                            <IconButton className={classes.TrashIcon} aria-label="Delete">
+                            <DeleteIcon onClick={() => this.deleteClick(this.props.comment)}/>
+                            </IconButton>
                         </Typography>
                     </Paper>
 
+                {/* This is where the dialog box starts */}
                 <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
@@ -99,7 +137,7 @@ class JournalItem extends Component {
                 >
                 <DialogContent>
                 <DialogContentText>
-                To change your Note to Self, click Save
+                To change your Note, click Save
                 </DialogContentText>
                 <TextField
                 autoFocus
