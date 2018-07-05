@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+});
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -32,30 +39,31 @@ class HomePage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     let content = null;
 
     if (this.props.user.userName) {
       content = (
-        <div className="attractive">
-          <Grid container alignItems={'center'} justify={'center'} direction={'row'} spacing={0} style={{ marginTop: 20 , marginBottom: 70 }}>
-            <Grid item xs={4} style={{ marginLeft: 80 }}>
+        <div className={classes.root}>
+          <Grid container alignItems={'center'} justify={'center'} direction={'row'} style={{ marginTop: 20 , marginBottom: 40 }}>
+            <Grid item xs={4} >
               <h2>Today is your day.</h2>
             </Grid>
-            <Grid item >
-              <img src='images/head.png' width={'60%'} alt="Hero guy" />
+            <Grid item xs={4} >
+              <img src='images/head.png' alt="Hero guy" />
             </Grid>
           </Grid>
-          <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={24}>
-            <Grid item>
+          <Grid container alignItems={'center'} justify={'space-between'} direction={'column'} spacing={24}>
+            <Grid item xs={6} style={{ marginBottom: 20 }}>
             <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
           </Grid>
-          <Grid item>
+          <Grid item xs={6} style={{ marginBottom: 20 }}>
             <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
           </Grid>
-          <Grid item>
+          <Grid item xs={6} style={{ marginBottom: 20 }} >
             <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
           </Grid>
-          <Grid item>
+          <Grid item xs={6} style={{ marginBottom: 20 }}>
           <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
           </Grid>
         </Grid>
@@ -71,4 +79,8 @@ class HomePage extends Component {
   }
 }
 
-export default connect(mapStateToProps)(HomePage);
+HomePage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(HomePage));
