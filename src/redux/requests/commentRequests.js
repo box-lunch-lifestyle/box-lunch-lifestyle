@@ -37,7 +37,7 @@ export function callDeleteComment(action) {
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
   };
-  return axios.delete(`/api/comment/deleteComment/${action.payload.id}`, action.payload)
+  return axios.delete(`/api/comment/deleteComment/${action.payload.id}`)
     .then(response => response.data)
     .catch(error => { throw error.response || error; })
 };
