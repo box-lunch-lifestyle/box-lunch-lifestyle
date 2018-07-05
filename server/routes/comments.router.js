@@ -79,7 +79,7 @@ router.put('/putComment/:id', (req, res) => {
 // delete comment in NOTE TO SELF
 router.delete('/deleteComment/:id', (req, res) => {
     console.log('DELETE /api/comment/deleteComment/:id');
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
         const query = `
         DELETE from "comments"
         WHERE "id" = $1
