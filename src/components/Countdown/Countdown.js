@@ -166,7 +166,7 @@ class Countdown extends Component {
 
     return (
       <div>
-        <div className="minutesAndSeconds">
+        <div>
           {this.state.minutes > 9 ?
             this.state.minutes : '0' + this.state.minutes}:
         {this.state.seconds > 9 ?
