@@ -23,7 +23,7 @@ const styles = theme => ({
     },
     title: {
         display: 'flex',
-        fontSize: '16px',
+        fontSize: '18px',
     },
     date: {
         color: '#808080',
