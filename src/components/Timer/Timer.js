@@ -13,7 +13,9 @@ import swal from 'sweetalert2';
 import FoodTimer from '../TimerOptions/FoodTimer';
 import LifeTimer from '../TimerOptions/LifeTimer';
 import Header from '../Header/Header';
+import Paper from '@material-ui/core/Paper';
 import '../../styles/timer.css';
+
 
 
 
@@ -28,7 +30,13 @@ const styles = theme => ({
   icon: {
     width: '100%',
     height: '100%',
-  }
+  },
+  paper: {
+    padding: theme.spacing.unit * 1,
+    textAlign: 'center',
+    color: theme.palette.primary.contrastText,
+    background: theme.palette.primary.main,
+  },
 })
 
 class TimerPage extends Component {
@@ -149,14 +157,16 @@ class TimerPage extends Component {
     }
 
     return (
-      <div className="container">
-   <Header title="Box Lunch Lifestyle" />   
-      {this.state.audio}
-        <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-          <Grid item>
-            {messageBar}
+      <div >
+        <Header title="Box Lunch Lifestyle" />
+        {this.state.audio}
+        <Grid container direction={'column'} spacing={16} className="container">
+          <Grid item >
+            <Paper className={classes.paper} style={{ marginBottom: 60 }}>
+              {messageBar}
+            </Paper>
           </Grid>
-          <Grid>
+          <Grid item style={{ marginBottom: '25%' }}>
             <div>
               {countdown}
             </div>

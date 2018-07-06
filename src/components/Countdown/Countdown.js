@@ -63,8 +63,8 @@ class Countdown extends Component {
         timeRemainingInSeconds = timeRemainingInSeconds - 1;
         this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds), 1000);
       }
-    // If paused...
-    // Waits 1 sec and runs function again
+      // If paused...
+      // Waits 1 sec and runs function again
     } else {
       this.setTimeoutId = setTimeout(this.timerCountdown.bind(this, timeRemainingInSeconds), 1000);
     }
@@ -92,7 +92,7 @@ class Countdown extends Component {
     }
     console.log(this.state)
     console.log(nextProps)
-  }  
+  }
 
   // When component mounts, run timer.
   componentDidMount() {
@@ -146,46 +146,46 @@ class Countdown extends Component {
     let pausePlayButton;
     let timer;
     if (this.state.isRunning) {
-      pausePlayButton = <Button 
-        variant="fab" 
-        color="primary" 
-        onClick={this.pause} 
-        className={classes.button} 
-        >
-          <Pause className={classes.icon} />
-        </Button>
+      pausePlayButton = <Button
+        variant="fab"
+        color="primary"
+        onClick={this.pause}
+        className={classes.button}
+      >
+        <Pause className={classes.icon} />
+      </Button>
     } else {
 
-      pausePlayButton = <Button 
-      variant="fab" color="primary" 
-      onClick={this.play} 
-      className={classes.button} >
-      <Play className={classes.icon} />
+      pausePlayButton = <Button
+        variant="fab" color="primary"
+        onClick={this.play}
+        className={classes.button} >
+        <Play className={classes.icon} />
       </Button>
     }
 
     return (
       <div>
-        <div className="timerContainer">
-        <div id="clockdiv">
-        <div>
-          <span> {this.state.minutes > 9 ?
-            this.state.minutes : '0' + this.state.minutes} </span>
-            <div className="smalltext">Minutes</div>
+        <div className="timerContainer" style={{ marginBottom: 40 }}>
+          <div id="clockdiv">
+            <div>
+              <span> {this.state.minutes > 9 ?
+                this.state.minutes : '0' + this.state.minutes} </span>
+              <div className="smalltext">Minutes</div>
+            </div>
+            <div>
+              <span>
+                {this.state.seconds > 9 ?
+                  this.state.seconds : '0' + this.state.seconds} </span>
+              <div className="smalltext">Seconds</div>
+            </div>
           </div>
-          <div>
-            <span>
-        {this.state.seconds > 9 ?
-            this.state.seconds : '0' + this.state.seconds} </span>
-            <div className="smalltext">Seconds</div>
-            </div>
-            </div>
         </div>
         <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16}>
-        <Grid item>
-          {pausePlayButton}
-          <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} ><Stop className={classes.icon} /></Button>
-        </Grid>
+          <Grid item >
+            {pausePlayButton}
+            <Button variant="fab" color="secondary" onClick={this.stop} className={classes.button} style={{ marginLeft: 40 }}><Stop className={classes.icon} /></Button>
+          </Grid>
         </Grid>
       </div>
     )
