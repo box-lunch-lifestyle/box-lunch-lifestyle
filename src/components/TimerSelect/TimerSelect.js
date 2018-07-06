@@ -26,7 +26,7 @@ class TimerSelect extends Component {
   foodTimerClick = () => {
     swal({
       title: "READY?",
-      text: "You Got This!",
+      text: "You got this!",
       showConfirmButton: true,
       showCancelButton: true,
       confirmButtonColor: '#c82027',
@@ -38,8 +38,10 @@ class TimerSelect extends Component {
           this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: 'food' });
           this.props.history.push('/timer');
         } else if (result.dismiss === swal.DismissReason.cancel) {
-          swal("Come Back When You're Ready")
-            .then(() => {
+          swal({
+            title: "Come back when you're ready.",
+            confirmButtonColor: '#c82027',
+          })            .then(() => {
               this.props.history.push('/home');
             })
         }
@@ -62,7 +64,10 @@ class TimerSelect extends Component {
           this.props.history.push('/timer');
         } else if
         (result.dismiss === swal.DismissReason.cancel) {
-          swal("Come Back When You're Ready")
+          swal({
+            title: "Come back when you're ready.",
+            confirmButtonColor: '#c82027',
+          })
             .then(() => {
               this.props.history.push('/home');
             })
