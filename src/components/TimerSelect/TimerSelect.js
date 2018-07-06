@@ -51,7 +51,7 @@ class TimerSelect extends Component {
   youTimerClick = () => {
     swal({
       title: "READY?",
-      text: "You Got This!",
+      text: "You got this!",
       showConfirmButton: true,
       showCancelButton: true,
       confirmButtonColor: '#c82027',
