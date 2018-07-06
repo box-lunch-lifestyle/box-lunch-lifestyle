@@ -96,39 +96,22 @@ li a:hover {
     color: #eee;
 }
 
-  .example-appear {
+  .lunch-appear {
     opacity: 0.01;
   }
   
-  .example-appear.example-appear-active {
+  .lunch-appear.lunch-appear-active {
     opacity: 1;
     transition: opacity 1.5s ease-in;
   }
 
-  .example2-appear {
+  .life-appear {
     opacity: 0.01;
   }
   
-  .example2-appear.example-appear-active {
+  .life-appear.life-appear-active {
     opacity: 1;
-    transition: opacity .5s ease-in;
-  }
-
-
-.example-component {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-    opacity: 0;
-    visibility: hidden; 
-  }
-  .example-component.show {
-    opacity: 1;
-    visibility: visible; 
+    transition: opacity 1.5s ease-in;
   }
 
 @keyframes slideInFromBottom {
@@ -140,9 +123,9 @@ li a:hover {
     }
   }
   
-  .taco {  
+  .headerAnimation {  
     /* This section calls the slideInFromLeft animation we defined above */
-    animation: 1s ease-out 0s 1 slideInFromBottom;
+    animation: 2s ease-out 0s 1 slideInFromBottom;
     
     /* background: #333;
     padding: 30px; */
