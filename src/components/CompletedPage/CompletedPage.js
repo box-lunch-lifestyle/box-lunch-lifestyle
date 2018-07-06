@@ -22,7 +22,14 @@ const styles = theme => ({
     background: theme.palette.primary.main,
   },
   date: {
-    fontSize: 25,
+    fontSize: 18,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 17,
+  },
+  noPadding: {
+    padding: '0px !important',
   }
 });
 
@@ -54,18 +61,18 @@ function CompletedPage(props) {
         </Grid>
       </Grid>
       <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'}>
-        <Grid item>
+        <Grid item className={classes.noPadding}>
           <div className='completedMessage'>
             <h2>Nicely done!</h2>
           </div>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} className={classes.noPadding}>
           <div className='completedImg'>
-            <img src='images/stickman.png' alt='boxingBoy' width='100%' margin='20px' />
+            <img src='images/stickman.png' alt='boxingBoy' width='100%' />
           </div>
         </Grid>
-        <Grid item xs={8}>
-          <h3>Everyday matters. <br/> Keep it up! </h3>
+        <Grid item xs={8} className={classes.noPadding}>
+          <h3 className={classes.text}>Everyday matters. <br/> Keep it up! </h3>
         </Grid>
         <Grid item xs={6}>
           <Button onClick={handleClick('/home')} variant="contained" color="primary" className={classes.button}>Home</Button>
