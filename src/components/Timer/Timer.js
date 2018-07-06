@@ -12,6 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import swal from 'sweetalert2';
 import FoodTimer from '../TimerOptions/FoodTimer';
 import LifeTimer from '../TimerOptions/LifeTimer';
+import Header from '../Header/Header';
+import '../../styles/timer.css';
+
 
 
 const mapStateToProps = reduxState => ({
@@ -49,86 +52,9 @@ class TimerPage extends Component {
     }
   }
 
-  // OLD CODE was used to monitor current modal and round
-  //   (Modals were tracked because we originally had special 
-  //   messages under the header depending on the modal/round)
-  componentDidMount = () => {
-    this.setState({
-      //UNCOMMENT BELOW WHEN WE IMPLEMENT A REDUCER
-      // currentModal: this.timer.firstModal,
-      // currentRound: this.timer.firstRound,
-      currentModal: 'food',
-      currentRound: 'food',
-    });
-  };
-
-  // OLD CODE was used to toggle the modal after the first round finished
-  completeRoundOne = () => {
-    if (this.state.currentRound === 'food') {
-      this.setState({
-        currentModal: 'life',
-      })
-    } else {
-      this.setState({
-        currentModal: 'food',
-      })
-    }
-  };
-
-  // OLD CODE was used to open comment modal after second round
-  completeRoundTwo = () => {
-    this.setState({
-      currentModal: 'commentOption',
-    })
-  };
-
-  // OLD CODE was used to remove the current modal
-  modalConfirm = () => {
-    this.setState({
-      currentModal: '',
-    })
-  };
-
-  // OLD CODE moved to Countdown.js, this function paused the timer.
-  pause = () => {
-    // tbd after we determine how the timer will function
-    console.log('pause');
-    this.setState({
-      timerIsRunning: false,
-    })
-  };
-
-  // OLD CODE moved to Countdown.js, this function unpaused the timer
-  play = () => {
-    // tbd after we determine how the timer will function
-    console.log('play');
-    this.setState({
-      timerIsRunning: true,
-    })
-  };
-
-  // OLD CODE moved to Countdown.js, this function would offer a user to stop
-  stop = () => {
-    swal({
-      title: 'Are you sure?',
-      text: "You'll have to start from the beginning!",
-      type: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#BB221C',
-      confirmButtonText: 'I need to stop!'
-    }).then((result) => {
-      if (result.value) {
-        // do we want a sweet alert here? Yes we do;)
-        this.props.history.push('/home');
-      }
-    })
-
-  };
-
   // Run at 2 minutes left
   twoMinWarning = () => {
-    this.setState ({
+    this.setState({
       audio: <audio src="/audio/2min_warning.mp3" autoPlay />
     })
   }
@@ -141,62 +67,62 @@ class TimerPage extends Component {
     });
 
     let nextRound;
-    if (this.props.timer.currentRound === 'food'){
+    if (this.props.timer.currentRound === 'food') {
       nextRound = 'life';
     } else {
-      nextRound ='food';
+      nextRound = 'food';
     }
 
     // If just finished first round...
-    if(!this.props.timer.isSecondRound){
+    if (!this.props.timer.isSecondRound) {
       swal({
         title: "Good Job!",
         text: "Ready For Round Two?",
         showConfirmButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#c82027',
         confirmButtonText: 'YES!',
         allowOutsideClick: false
       })
-      .then((result) => {
-        if (result.value) {
-          this.props.dispatch({type: 'SET_CURRENT_ROUND', payload: nextRound});
-        } 
-      });
-      this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED'});
-    
-    // If just finished second round...
+        .then((result) => {
+          if (result.value) {
+            this.props.dispatch({ type: 'SET_CURRENT_ROUND', payload: nextRound });
+          }
+        });
+      this.props.dispatch({ type: 'SET_FIRST_ROUND_COMPLETED' });
+
+      // If just finished second round...
     } else {
-        this.addNote();
-    } 
+      this.addNote();
+    }
   };
 
   // Opens comment sweetalert
-  async addNote () {
-    const {value: text} = await swal({
+  async addNote() {
+    const { value: text } = await swal({
       title: 'Excellent!',
       input: 'textarea',
       inputPlaceholder: "What Should Your Future Self Know About Today?",
       showConfirmButton: true,
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#c82027',
+      cancelButtonColor: '#5f5f5f',
       confirmButtonText: 'Save',
       cancelButtonText: 'Skip',
       allowOutsideClick: false
     })
     if (text) {
-      this.props.dispatch({type: 'FETCH_POST_COMMENT', payload: {comment: text}});
-      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+      this.props.dispatch({ type: 'FETCH_POST_COMMENT', payload: { comment: text } });
+      this.props.dispatch({ type: 'POST_NEW_ENTRY', payload: { lunch_complete: true, activity_complete: true } });
       this.props.history.push('/completed');
-    } else 
-    {
-      this.props.dispatch({type: 'POST_NEW_ENTRY', payload: {lunch_complete: true, activity_complete: true} });
+    } else {
+      this.props.dispatch({ type: 'POST_NEW_ENTRY', payload: { lunch_complete: true, activity_complete: true } });
       this.props.history.push('/completed');
     }
   };
 
   // Resets timer reducer to default state when finished
   componentWillUnmount = () => {
-    this.props.dispatch({type: 'CLEAR_TIMER_REDUCER'});
+    this.props.dispatch({ type: 'CLEAR_TIMER_REDUCER' });
   }
 
   render() {
@@ -206,28 +132,14 @@ class TimerPage extends Component {
     let messageBar;
 
     if (this.props.timer.currentRound === 'food') {
-      messageBar = <div>
-        <p>ENJOY YOUR FOOD.</p>
+      messageBar = <div className="timerMessageBar">
+        <h2>CHEW. NOTICE. REFUEL</h2>
       </div>
     } else if (this.props.timer.currentRound === 'life') {
-      messageBar = <div>
-        <p>ENJOY YOURSELF.</p>
-      </div>
-    } else if (this.state.currentModal === 'commentOption') {
-      messageBar = <div>
-        <p>EXCELLENT!</p>
-      </div>
-    } else if (this.state.currentRound === 'food') {
-      messageBar = <div>
-        <p>CHEW. NOTICE. REFUEL.</p>
-      </div>
-    } else {
-      messageBar = <div>
-        <p>DO THIS FOR YOU</p>
+      messageBar = <div className="timerMessageBar">
+        <h2>DO THIS FOR YOU.</h2>
       </div>
     }
-
-    let timer;
 
     let countdown;
     if (this.props.timer.currentRound === 'food') {
@@ -238,18 +150,15 @@ class TimerPage extends Component {
     }
 
     return (
-
-      <div>
-        {this.state.audio}
+      <div className="container">
+   <Header title="Box Lunch Lifestyle" />   
+      {this.state.audio}
         <Grid container spacing={24} alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
           <Grid item>
             {messageBar}
           </Grid>
           <Grid>
             <div>
-              {/* Timer will go in this div. */}
-              <p>TIMER WILL GO HERE</p>
-              {timer}
               {countdown}
             </div>
           </Grid>

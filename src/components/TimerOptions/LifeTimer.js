@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Countdown from '../Countdown/Countdown';
 import { connect } from 'react-redux';
 
@@ -8,15 +8,15 @@ const mapStateToProps = reduxState => ({
 });
 
 class LifeTimer extends Component {
-  render () {
+  render() {
     return (
-      <div>LIFE TIMER
-        <Countdown 
-          timeRemainingInSeconds={2} 
-          onEveryMinute={()=>{}} 
+      <div className="lifeTimer">
+        <Countdown
+          timeRemainingInSeconds={121}
+          onEveryMinute={() => { }}
           onCompletion={this.props.onComplete}
           twoMinWarning={this.props.twoMinWarning}
-          history={this.props.history} 
+          history={this.props.history}
         />
       </div>
     )

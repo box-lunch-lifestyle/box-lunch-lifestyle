@@ -6,10 +6,16 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
+import Header from '../Header/Header';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
+  },
+  button:{
+    boxShadow: 'none',
+    width: 175,
+    height: 40,
   },
 });
 
@@ -45,6 +51,7 @@ class HomePage extends Component {
     if (this.props.user.userName) {
       content = (
         <div className={classes.root}>
+           <Header title="Box Lunch Lifestyle" />
           <Grid container alignItems={'center'} justify={'center'} direction={'row'} style={{ marginTop: 20 , marginBottom: 40 }}>
             <Grid item xs={4} >
               <h2>Today is your day.</h2>
@@ -54,17 +61,17 @@ class HomePage extends Component {
             </Grid>
           </Grid>
           <Grid container alignItems={'center'} justify={'space-between'} direction={'column'} spacing={24}>
-            <Grid item xs={6} style={{ marginBottom: 20 }}>
-            <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} >TIMER</Button>
+            <Grid item xs={6} style={{ marginBottom: 15 }}>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} className={classes.button}>TIMER</Button>
           </Grid>
-          <Grid item xs={6} style={{ marginBottom: 20 }}>
-            <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} >MILESTONES</Button>
+          <Grid item xs={6} style={{ marginBottom: 15 }}>
+            <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} className={classes.button}>MILESTONES</Button>
           </Grid>
-          <Grid item xs={6} style={{ marginBottom: 20 }} >
-            <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} >NOTES TO SELF</Button>
+          <Grid item xs={6} style={{ marginBottom: 15 }} >
+            <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} className={classes.button}>NOTES TO SELF</Button>
           </Grid>
-          <Grid item xs={6} style={{ marginBottom: 20 }}>
-          <Button color="secondary" variant="contained" onClick={this.logout}>LOG OUT</Button>
+          <Grid item xs={6} style={{ marginBottom: 15 }}>
+          <Button color="secondary" variant="contained" onClick={this.logout} className={classes.button}>LOG OUT</Button>
           </Grid>
         </Grid>
         </div>

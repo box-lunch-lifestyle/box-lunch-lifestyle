@@ -33,8 +33,10 @@ const myTheme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#fff',
-      contrastText: '#000000',
+      light: '#c1c1c1',
+      main: '#5f5f5f',
+      dark: '#000',
+      contrastText: '#fff',
     },
     // secondary: cyan,
     // error: red,
@@ -46,10 +48,10 @@ const myTheme = createMuiTheme({
 const App = () => (
   <MuiThemeProvider theme={myTheme}>
   <div>
-    <Header title="Box Lunch Lifestyle" />
+    {/* <Header title="Box Lunch Lifestyle" /> */}
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/loading" />
         <Route
           path="/login"
           component={LoginPage}

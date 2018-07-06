@@ -12,6 +12,7 @@ router.get('/getComments', (req, res) => {
       ON "p"."id" = "c"."person_id"
       WHERE "p"."id" = $1
       ORDER BY "c"."date_posted"
+      DESC
     `;
         const params = [req.user.id];
         pool.query(query, params)

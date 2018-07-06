@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 
 import LoginField from './LoginForm';
+import Header from '../Header/Header';
 
 
 const mapStateToProps = state => ({
@@ -89,6 +90,7 @@ class LoginPage extends Component {
     return (
       <div>
         {this.renderAlert()}
+        <Header title="Box Lunch Lifestyle" />
         <LoginField login={this.login} 
         handleInputChangeFor={this.handleInputChangeFor} 
         handleMouseDownPassword={this.handleMouseDownPassword} 

@@ -10,7 +10,7 @@ const mapStateToProps = reduxState => ({
 class FoodTimer extends Component {
   render() {
     return (
-      <div>FOOD TIMER
+      <div className="foodTimer">
         <Countdown 
           timeRemainingInSeconds={2} 
           onEveryMinute={() => { }} 

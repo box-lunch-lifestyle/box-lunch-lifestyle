@@ -13,9 +13,11 @@ import ContenderItem from '../ContenderItem/ContenderItem';
 import VictorItem from '../VictorItem/VictorItem';
 import ChampionItem from '../ChampionItem/ChampionItem';
 import UndisputedChampionItem from '../UndisputedChampionItem/UndisputedChampionItem';
+import Header from '../Header/Header';
 
 const mapStateToProps = state => ({
   user: state.user,
+  entries: state.entries,
 });
 
 const styles = theme => ({
@@ -53,7 +55,7 @@ class MilestonePage extends Component {
     });
     this.props.dispatch({
       type: 'FETCH_ALL_ENTRIES'
-    })
+    });
   }
 
   componentDidUpdate() {
@@ -61,6 +63,7 @@ class MilestonePage extends Component {
       this.props.history.push('login');
     }
   }
+ 
 
   handleHomeClick = () => {
     this.props.history.push('home');
@@ -68,20 +71,22 @@ class MilestonePage extends Component {
 
   render() {
     const { classes } = this.props;
+
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
+         <Header title="Box Lunch Lifestyle" />
           <Grid className={classes.root} container spacing={24}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <h1> MILESTONES </h1>
               </Paper>
-            </Grid>
+        </Grid>
             <Grid className={classes.header} container spacing={24}>
               <Grid item xs={12}>
-                <h5> You have [X] lunches under your belt </h5>
+                <h5> You have {this.props.entries.allEntries.length} lunches under your belt </h5>
               </Grid>
               <Grid item xs={12}>
                 <HeroItem />

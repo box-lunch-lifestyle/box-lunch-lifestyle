@@ -38,7 +38,9 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit,
     },
     button: {
-        marginTop: theme.spacing.unit,
+        margin: '40px',
+        boxShadow: 'none',
+
     },
     header: {
         textAlign: 'center',
