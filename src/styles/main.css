@@ -27,7 +27,6 @@ h1 {
 
 body {
     font-family: attractive;
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
 }
 
 loading {
@@ -44,7 +43,6 @@ loading {
 }
 
 .instructions {
-    /* background-color: #00acb0; */
     padding: 10px;
     color: #ece7e7;
 }
@@ -75,16 +73,8 @@ input[type="submit"] {
 }
 
 .navbar {
-  /* background-color: #00acb0; */
   width: 100%;
   border-radius: 0px;
-}
-
-/* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
 }
 
 li {
@@ -140,20 +130,6 @@ li a:hover {
     opacity: 1;
     visibility: visible; 
   }
-/* 
-  .loading-animation {
-    transform: translate3d(20px, 20px, 0px);
-  } */
-
-  /* .pictureContainer img {
-    position: relative;
-    top: 0px;
-    transition: transform .2s ease-in-out;
-}
-
-.pictureContainer img:hover {
-    transform: translate3d(0px, -150px, 0px);
-} */
 
 @keyframes slideInFromBottom {
     100% {

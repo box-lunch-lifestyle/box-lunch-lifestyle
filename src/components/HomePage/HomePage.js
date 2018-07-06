@@ -14,6 +14,8 @@ const styles = theme => ({
   },
   button:{
     boxShadow: 'none',
+    width: 175,
+    height: 40,
   },
 });
 
@@ -59,16 +61,16 @@ class HomePage extends Component {
             </Grid>
           </Grid>
           <Grid container alignItems={'center'} justify={'space-between'} direction={'column'} spacing={24}>
-            <Grid item xs={6} style={{ marginBottom: 20 }}>
+            <Grid item xs={6} style={{ marginBottom: 15 }}>
             <Button color="primary" variant="contained" onClick={this.handleClick('/timerSelect')} className={classes.button}>TIMER</Button>
           </Grid>
-          <Grid item xs={6} style={{ marginBottom: 20 }}>
+          <Grid item xs={6} style={{ marginBottom: 15 }}>
             <Button color="primary" variant="contained" onClick={this.handleClick('/milestone')} className={classes.button}>MILESTONES</Button>
           </Grid>
-          <Grid item xs={6} style={{ marginBottom: 20 }} >
+          <Grid item xs={6} style={{ marginBottom: 15 }} >
             <Button color="primary" variant="contained" onClick={this.handleClick('/journal')} className={classes.button}>NOTES TO SELF</Button>
           </Grid>
-          <Grid item xs={6} style={{ marginBottom: 20 }}>
+          <Grid item xs={6} style={{ marginBottom: 15 }}>
           <Button color="secondary" variant="contained" onClick={this.logout} className={classes.button}>LOG OUT</Button>
           </Grid>
         </Grid>
