@@ -27,6 +27,7 @@ const styles = theme => ({
     date: {
         color: '#808080',
         textAlign: 'left',
+        fontSize: '16px',
     },
 });
 
