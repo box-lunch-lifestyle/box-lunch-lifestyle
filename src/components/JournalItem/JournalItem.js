@@ -22,24 +22,26 @@ const styles = theme => ({
       ...theme.mixins.gutters(),
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2,
-      margin: '15px',
-      borderWidth: '1px',
+      margin: '10px',
       boxShadow: 'none',
-      borderStyle: 'solid',
+      paddingBottom: '25px',
     },
     EditIcon: {
-        marginRight: theme.spacing.unit,
+        marginTop: 9,
         position: 'absolute',
-        right: '50px',
+        right: '55px',
     },
     TrashIcon: {
-        marginRight: theme.spacing.unit,
+        marginTop: 9,
         position: 'absolute',
-        right: '5px',
+        right: '10px',
     },
     headline: {
         color: '#808080',
     },
+    comment: {
+        marginBottom: 5,
+      },
   });
 
 
@@ -115,10 +117,10 @@ class JournalItem extends Component {
         return (
                 <div>
                     <Paper className={classes.root}>
-                        <Typography variant="headline" className={classes.headline}>
+                        <Typography variant="body1" className={classes.headline}>
                             {date}
                         </Typography>
-                        <Typography variant="subheading">
+                        <Typography variant="subheading" >
                             {this.props.comment.comment}
                             <IconButton className={classes.EditIcon} aria-label="Edit">
                             <Edit onClick={this.handleClickOpen}  />

@@ -35,8 +35,8 @@ const styles = theme => ({
     marginRight: 5,
   },
   buttonDiv: {
-    marginTop: 15,
-  }
+    marginTop: 10,
+  },
 });
 
 class JournalPage extends Component {
@@ -106,7 +106,7 @@ class JournalPage extends Component {
             </Grid>
           </Grid>
           <Grid container alignItems={'stretch'} justify={'center'} direction={'column'} spacing={16}>
-            <Grid item>
+            <Grid item >
               {this.props.comments.allComments.map(comment => <JournalItem key={comment.id}
                 comment={comment} />
               )}
