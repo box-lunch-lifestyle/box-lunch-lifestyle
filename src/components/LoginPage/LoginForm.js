@@ -38,8 +38,11 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit,
     },
     button: {
-        margin: '40px',
+        marginTop: 25,
+        margin: 5,
         boxShadow: 'none',
+        width: 175,
+        height: 40,
 
     },
     header: {

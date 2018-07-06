@@ -36,6 +36,11 @@ const styles = theme => ({
     button: {
         margin: '30px',
         boxShadow: 'none',
+        marginTop: 25,
+        margin: 5,
+        boxShadow: 'none',
+        width: 175,
+        height: 40,
     },
     header: {
         textAlign: 'center',
