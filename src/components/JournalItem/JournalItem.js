@@ -24,18 +24,24 @@ const styles = theme => ({
       paddingBottom: theme.spacing.unit * 2,
       margin: '10px',
       boxShadow: 'none',
+      paddingBottom: '25px',
     },
     EditIcon: {
+        marginTop: 9,
         position: 'absolute',
         right: '55px',
     },
     TrashIcon: {
+        marginTop: 9,
         position: 'absolute',
         right: '10px',
     },
     headline: {
         color: '#808080',
     },
+    comment: {
+        marginBottom: 5,
+      },
   });
 
 
@@ -115,7 +121,7 @@ class JournalItem extends Component {
                         <Typography variant="body1" className={classes.headline}>
                             {date}
                         </Typography>
-                        <Typography variant="subheading">
+                        <Typography variant="subheading" >
                             {this.props.comment.comment}
                             <IconButton className={classes.EditIcon} aria-label="Edit">
                             <Edit onClick={this.handleClickOpen}  />
