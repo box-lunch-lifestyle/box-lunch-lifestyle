@@ -14,6 +14,7 @@ import Header from '../Header/Header';
 
 const mapStateToProps = state => ({
   user: state.user,
+  entries: state.entries,
 });
 
 class MilestonePage extends Component {
@@ -29,7 +30,7 @@ class MilestonePage extends Component {
     });
     this.props.dispatch({
       type: 'FETCH_ALL_ENTRIES'
-    })
+    });
   }
 
   componentDidUpdate() {
@@ -37,13 +38,13 @@ class MilestonePage extends Component {
       this.props.history.push('login');
     }
   }
+ 
 
   handleHomeClick = () => {
     this.props.history.push('home');
   }
 
   render() {
-    // FYI right now milestone card is set to grid system but parent component is not. therefore everything looks funny.
     let content = null;
 
     if (this.props.user.userName) {
@@ -55,7 +56,7 @@ class MilestonePage extends Component {
               <h1> MILESTONES </h1>
             </Grid>
             <Grid item>
-              <h5> You have [X] lunches under your belt </h5>
+              <h5> You have {this.props.entries.allEntries.length} lunches under your belt </h5>
             </Grid>
             <div>
               <Grid item>

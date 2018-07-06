@@ -52,7 +52,7 @@ class LoadingPage extends Component {
         transitionAppearTimeout={2000}
         transitionEnter={false}
         transitionLeave={false}>
-        <p>Better Lunch.</p>
+        <p>Better lunch.</p>
       </CSSTransitionGroup>
     }
     if (this.state.lifeAppear) {
@@ -62,7 +62,7 @@ class LoadingPage extends Component {
         transitionAppearTimeout={2000}
         transitionEnter={false}
         transitionLeave={false}>
-        <p>Better Life.</p>
+        <p>Better life.</p>
       </CSSTransitionGroup>
     }
 

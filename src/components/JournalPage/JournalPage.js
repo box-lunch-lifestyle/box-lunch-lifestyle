@@ -8,6 +8,7 @@ import JournalItem from '../JournalItem/JournalItem';
 import swal from 'sweetalert2'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Header from '../Header/Header';
+import Paper from '@material-ui/core/Paper';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -15,12 +16,27 @@ const mapStateToProps = state => ({
 });
 
 const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundImage: `url(${"../images/blackboard.jpg"})`,
+  },
   button: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit *2,
     // alignItems: 'center',
     boxShadow: 'none',
     justify: 'space-around',
   },
+  titleBar: {
+    padding: .5,
+    textAlign: 'center',
+    color: theme.palette.primary.contrastText,
+    background: theme.palette.primary.main,
+    marginLeft: 5,
+    marginRight: 5,
+  },
+  buttonDiv: {
+    marginTop: 15,
+  }
 });
 
 class JournalPage extends Component {
@@ -71,12 +87,17 @@ class JournalPage extends Component {
       content = (
         <div>
           <Header title="Box Lunch Lifestyle" />
-          <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-            <Grid item>
-              <h1>NOTES TO SELF</h1>
+          <div className={classes.root}>
+          <Grid container spacing={16}>
+            <Grid item xs={12}>
+            <div>
+              <Paper className={classes.titleBar}>
+              <h2>NOTES TO SELF</h2>
+              </Paper>
+              </div>
             </Grid>
           </Grid>
-          <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16}>
+          <Grid container alignItems={'center'} justify={'space-around'} direction={'row'} spacing={16} className={classes.buttonDiv}>
             <Grid item>
               <Button variant="contained" color="primary" onClick={this.addNote} className={classes.button}>ADD</Button>
             </Grid>
@@ -91,6 +112,7 @@ class JournalPage extends Component {
               )}
             </Grid>
           </Grid>
+          </div>
         </div >
       );
     }

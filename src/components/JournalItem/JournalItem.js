@@ -100,11 +100,12 @@ class JournalItem extends Component {
       }).then((result) => {
         if (result.value) {
         this.handleDeleteComment(comment);
-          swal(
-            'Deleted!',
-            'Your note has been deleted.',
-            'success'
-          )
+          swal({
+            confirmButtonColor: '#c82027',
+            title: 'Deleted!',
+            text: 'Your note has been deleted.',
+            type: 'success',
+          })
         }
     });
     };
