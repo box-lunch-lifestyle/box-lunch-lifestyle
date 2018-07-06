@@ -7,30 +7,28 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
+import { CardMedia } from '@material-ui/core';
 
-const styles = {
-    card: {
-        display: 'flex',
-        width: '300px',
+const styles = theme => ({
+    root1: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 1,
+        paddingBottom: theme.spacing.unit * 1,
+        right: '15px',
+        boxShadow: 'none',
     },
-
-    date: {
-        display: 'flex',
-        fontSize: '15px',
+    image: {
+        float: 'right',
     },
-
     title: {
         display: 'flex',
-        fontSize: '20px',
+        fontSize: '16px',
     },
-
-    image: {
-        display: 'flex',
-        float: 'right',
-        paddingLeft: '70px',
-
-    }
-};
+    date: {
+        color: '#808080',
+        textAlign: 'left',
+    },
+});
 
 const mapStateToProps = reduxState => ({
     entries: reduxState.entries,
@@ -63,16 +61,18 @@ class HeroItem extends Component {
 
         return (
             <div>
-                <Grid item xs={12}>
-                    <Card className={classes.card}>
+                <Grid className={classes.root1} item xs={12}>
+                    <Card >
                         <CardContent>
-                            <Typography className={classes.title} color="textSecondary">
+                            <Typography className={classes.date} color="textSecondary">
                             {displayDate}
-          </Typography>
+                            </Typography>
                             <Typography className={classes.title} variant="headline" component="h2">
-                                Hero (1 Day) <span><img src={displayImg} className={classes.image}/></span>
-          </Typography>
-
+                                Hero (1 Day)
+                            </Typography>
+                            <CardMedia className={classes.image}>
+                                <img src={displayImg} />
+                            </CardMedia>
                         </CardContent>
                     </Card>
                 </Grid>

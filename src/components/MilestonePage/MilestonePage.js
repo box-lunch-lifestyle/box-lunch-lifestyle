@@ -27,11 +27,19 @@ const styles = theme => ({
   },
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${"/images/background_blackboard.jpg"})`,
+    backgroundImage: `url(${"/images/blackboard.jpg"})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-  }
-
+  },
+  header: {
+    display: 'flex',
+    textAlign: 'center',
+    fontSize: '20px',
+    color: 'white',
+},
+milesButton: {
+  boxShadow: 'none',
+}
 });
 
 class MilestonePage extends Component {
@@ -71,7 +79,7 @@ class MilestonePage extends Component {
                 <h1> MILESTONES </h1>
               </Paper>
             </Grid>
-            <Grid container spacing={24}>
+            <Grid className={classes.header} container spacing={24}>
               <Grid item xs={12}>
                 <h5> You have [X] lunches under your belt </h5>
               </Grid>
@@ -84,7 +92,7 @@ class MilestonePage extends Component {
                 <UndisputedChampionItem />
               </Grid>
               <Grid item xs={12}>
-                <Button variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>
+                <Button className={classes.milesButton} variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>
               </Grid>
             </Grid>
           </Grid>

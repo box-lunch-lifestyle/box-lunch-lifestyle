@@ -35,7 +35,7 @@ function CompletedPage(props) {
         <Grid item xs={12}>
           <div className='completedDate'>
             <Paper className={classes.paper}>
-              <Moment format="MMMM do, YYYY">
+              <Moment format="MMMM, do, YYYY">
               </Moment></Paper>
           </div>
         </Grid>

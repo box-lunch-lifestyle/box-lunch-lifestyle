@@ -12,7 +12,7 @@ class FoodTimer extends Component {
     return (
       <div>FOOD TIMER
         <Countdown 
-          timeRemainingInSeconds={121} 
+          timeRemainingInSeconds={2} 
           onEveryMinute={() => { }} 
           onCompletion={this.props.onComplete} 
           twoMinWarning={this.props.twoMinWarning}
