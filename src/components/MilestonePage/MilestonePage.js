@@ -15,6 +15,7 @@ import ChampionItem from '../ChampionItem/ChampionItem';
 import UndisputedChampionItem from '../UndisputedChampionItem/UndisputedChampionItem';
 import Header from '../Header/Header';
 
+
 const mapStateToProps = state => ({
   user: state.user,
   entries: state.entries,
@@ -22,7 +23,7 @@ const mapStateToProps = state => ({
 
 const styles = theme => ({
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: .5,
     textAlign: 'center',
     color: theme.palette.primary.contrastText,
     background: theme.palette.primary.main,
@@ -36,12 +37,15 @@ const styles = theme => ({
   header: {
     display: 'flex',
     textAlign: 'center',
-    fontSize: '20px',
+    fontSize: '25px',
     color: 'white',
-},
-milesButton: {
-  boxShadow: 'none',
-}
+  },
+  milesButton: {
+    boxShadow: 'none',
+    marginBottom: '30px',
+    width: 175,
+    height: 40,
+  },
 });
 
 class MilestonePage extends Component {
@@ -63,7 +67,7 @@ class MilestonePage extends Component {
       this.props.history.push('login');
     }
   }
- 
+
 
   handleHomeClick = () => {
     this.props.history.push('home');
@@ -77,17 +81,17 @@ class MilestonePage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-         <Header title="Box Lunch Lifestyle" />
+          <Header title="Box Lunch Lifestyle" />
           <Grid className={classes.root} container spacing={24}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <h1> MILESTONES </h1>
               </Paper>
-        </Grid>
+            </Grid>
             <Grid className={classes.header} container spacing={24}>
-              <Grid item xs={12}>
-                <h5> You have {this.props.entries.allEntries.length} lunches under your belt </h5>
-              </Grid>
+                <Grid item xs={12}>
+                  <h5> You have {this.props.entries.allEntries.length} lunches <br /> under your belt </h5>
+                </Grid>
               <Grid item xs={12}>
                 <HeroItem />
                 <JourneymanItem />
