@@ -35,6 +35,7 @@ const styles = theme => ({
     },
     button: {
         margin: '30px',
+        boxShadow: 'none',
     },
     header: {
         textAlign: 'center',
@@ -87,7 +88,10 @@ function RegisterForm(props) {
                                         SIGN UP
                                 </Button>
                                 </FormControl>
-                                <Link to="/login" className={classes.button}>CANCEL</Link>
+                                {/* <Link to="/login" className={classes.button}>CANCEL</Link> */}
+                                <Button variant="raised" size="small" color="secondary" onClick={props.handleLink('/login')} className={classes.button}>
+                                CANCEL
+                                </Button>
                             </Grid>
                         </div>
                     </form>
