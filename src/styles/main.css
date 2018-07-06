@@ -37,6 +37,10 @@ loading {
     background-color: #c82027;
 }
 
+.completedImg {
+    width: 100%
+}
+
 .instructions h1 {
     font-size: 24px;
     font-weight: 700;
