@@ -7,32 +7,28 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
+import { CardMedia } from '@material-ui/core';
 
-const styles = {
-    card: {
-        width: 300,
-        float: 'center',
-        margin: '10px',
-        padding: '5px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-
+const styles = theme => ({
+    root1: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 1,
+        paddingBottom: theme.spacing.unit * 1,
+        right: '15px',
+        boxShadow: 'none',
     },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-        width: 200,
-        display: 'flex',
+    image: {
+        float: 'right',
     },
-
-    contentHeader: {
+    title: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        fontSize: '16px',
     },
-};
+    date: {
+        color: '#808080',
+        textAlign: 'left',
+    },
+});
 
 const mapStateToProps = reduxState => ({
     entries: reduxState.entries,
@@ -65,16 +61,18 @@ class HeroItem extends Component {
 
         return (
             <div>
-                <Grid item xs={12}>
-                    <Card className={classes.card}>
+                <Grid className={classes.root1} item xs={12}>
+                    <Card >
                         <CardContent>
-                            <Typography className={classes.title} color="textSecondary">
+                            <Typography className={classes.date} color="textSecondary">
                             {displayDate}
-          </Typography>
-                            <Typography variant="headline" component="h2">
-                                Hero (1 Day) <span><img src={displayImg}/></span>
-          </Typography>
-
+                            </Typography>
+                            <Typography className={classes.title} variant="headline" component="h2">
+                                Hero (1 Day)
+                            </Typography>
+                            <CardMedia className={classes.image}>
+                                <img src={displayImg} />
+                            </CardMedia>
                         </CardContent>
                     </Card>
                 </Grid>

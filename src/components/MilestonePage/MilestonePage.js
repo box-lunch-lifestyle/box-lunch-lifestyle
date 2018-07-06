@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import HeroItem from '../HeroItem/HeroItem';
 import JourneymanItem from '../JourneymanItem/JourneymanItem';
 import ContenderItem from '../ContenderItem/ContenderItem';
@@ -17,11 +20,33 @@ const mapStateToProps = state => ({
   entries: state.entries,
 });
 
+const styles = theme => ({
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.primary.contrastText,
+    background: theme.palette.primary.main,
+  },
+  root: {
+    flexGrow: 1,
+    backgroundImage: `url(${"/images/blackboard.jpg"})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
+  header: {
+    display: 'flex',
+    textAlign: 'center',
+    fontSize: '20px',
+    color: 'white',
+},
+milesButton: {
+  boxShadow: 'none',
+}
+});
+
 class MilestonePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
   }
 
   componentDidMount() {
@@ -45,21 +70,25 @@ class MilestonePage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
-                <Header title="Box Lunch Lifestyle" />
-          <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={16}>
-            <Grid item>
-              <h1> MILESTONES </h1>
-            </Grid>
-            <Grid item>
-              <h5> You have {this.props.entries.allEntries.length} lunches under your belt </h5>
-            </Grid>
-            <div>
-              <Grid item>
+         <Header title="Box Lunch Lifestyle" />
+          <Grid className={classes.root} container spacing={24}>
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <h1> MILESTONES </h1>
+              </Paper>
+        </Grid>
+            <Grid className={classes.header} container spacing={24}>
+              <Grid item xs={12}>
+                <h5> You have {this.props.entries.allEntries.length} lunches under your belt </h5>
+              </Grid>
+              <Grid item xs={12}>
                 <HeroItem />
                 <JourneymanItem />
                 <ContenderItem />
@@ -67,14 +96,15 @@ class MilestonePage extends Component {
                 <ChampionItem />
                 <UndisputedChampionItem />
               </Grid>
-            </div>
-            <Button variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>
+              <Grid item xs={12}>
+                <Button className={classes.milesButton} variant="contained" color="primary" onClick={this.handleHomeClick}> Home </Button>
+              </Grid>
+            </Grid>
           </Grid>
+
         </div>
       );
     }
-
-
 
     return (
       <div>
@@ -84,4 +114,8 @@ class MilestonePage extends Component {
   }
 }
 
-export default connect(mapStateToProps)(MilestonePage);
+MilestonePage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(MilestonePage));
