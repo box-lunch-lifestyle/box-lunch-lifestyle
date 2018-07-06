@@ -51,7 +51,7 @@ const App = () => (
     {/* <Header title="Box Lunch Lifestyle" /> */}
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/loading" />
         <Route
           path="/login"
           component={LoginPage}
