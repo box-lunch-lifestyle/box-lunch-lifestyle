@@ -20,6 +20,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.primary.contrastText,
     background: theme.palette.primary.main,
+    fontFamily: 'attractive',
   },
   date: {
     fontSize: 18,
