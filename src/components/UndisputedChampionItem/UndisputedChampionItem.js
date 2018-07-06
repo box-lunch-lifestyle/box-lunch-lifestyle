@@ -19,6 +19,7 @@ const styles = theme => ({
     },
     image: {
         float: 'right',
+        flex: 1,
     },
     title: {
         display: 'flex',
@@ -28,6 +29,13 @@ const styles = theme => ({
         color: '#808080',
         textAlign: 'left',
         fontSize: '16px',
+    },
+    text: {
+        margin: 0,
+        flex: 4,
+    },
+    content: {
+        display: 'flex',
     },
 });
 
@@ -64,13 +72,15 @@ class UndisputedChampionItem extends Component {
             <div>
                 <Grid className={classes.root1} item xs={12}>
                     <Card >
-                        <CardContent>
-                            <Typography className={classes.date} color="textSecondary">
-                                {displayDate}
-                            </Typography>
-                            <Typography className={classes.title} variant="headline" component="h2">
-                                World Champion (250 Days)
+                        <CardContent className={classes.content}>
+                            <div className={classes.text}>
+                                <Typography className={classes.date} color="textSecondary">
+                                    {displayDate}
+                                </Typography>
+                                <Typography className={classes.title} variant="headline" component="h2">
+                                    World Champion (250 Days)
                         </Typography>
+                            </div>
                             <CardMedia className={classes.image}>
                                 <img src={displayImg} />
                             </CardMedia>

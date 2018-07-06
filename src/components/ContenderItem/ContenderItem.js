@@ -16,10 +16,11 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 1,
         right: '15px',
         boxShadow: 'none',
-        
+
     },
     image: {
         float: 'right',
+        flec: 1,
     },
     title: {
         display: 'flex',
@@ -30,6 +31,13 @@ const styles = theme => ({
         textAlign: 'left',
         fontSize: '16px',
     },
+    text: {
+        margin: 0,
+        flex: 4,
+    },
+    content: {
+        display: 'flex',
+    }
 });
 
 const mapStateToProps = reduxState => ({
@@ -63,22 +71,24 @@ class ContenderItem extends Component {
 
         return (
             <div>
-            <Grid className={classes.root1} item xs={12}>
-                <Card >
-                    <CardContent>
-                        <Typography className={classes.date} color="textSecondary">
-                        {displayDate}
+                <Grid className={classes.root1} item xs={12}>
+                    <Card >
+                        <CardContent className={classes.content}>
+                            <div className={classes.text}>
+                                <Typography className={classes.date} color="textSecondary">
+                                    {displayDate}
+                                </Typography>
+                                <Typography className={classes.title} variant="headline" component="h2">
+                                    Contender (15 Days)
                         </Typography>
-                        <Typography className={classes.title} variant="headline" component="h2">
-                        Contender (15 Days)
-                        </Typography>
-                        <CardMedia className={classes.image}>
-                            <img src={displayImg} />
-                        </CardMedia>
-                    </CardContent>
-                </Card>
-            </Grid>
-        </div>
+                            </div>
+                            <CardMedia className={classes.image}>
+                                <img src={displayImg} />
+                            </CardMedia>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </div>
         );
     }
 }
