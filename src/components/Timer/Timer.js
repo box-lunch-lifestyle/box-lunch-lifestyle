@@ -77,10 +77,10 @@ class TimerPage extends Component {
     if (!this.props.timer.isSecondRound) {
       swal({
         title: "Good Job!",
-        text: "Ready For Round Two?",
+        text: "Ready for round two?",
         showConfirmButton: true,
         confirmButtonColor: '#c82027',
-        confirmButtonText: 'YES!',
+        confirmButtonText: 'Yes!',
         allowOutsideClick: false
       })
         .then((result) => {
@@ -101,7 +101,7 @@ class TimerPage extends Component {
     const { value: text } = await swal({
       title: 'Excellent!',
       input: 'textarea',
-      inputPlaceholder: "What Should Your Future Self Know About Today?",
+      inputPlaceholder: "What should your future self know about today?",
       showConfirmButton: true,
       showCancelButton: true,
       confirmButtonColor: '#c82027',
@@ -145,7 +145,6 @@ class TimerPage extends Component {
     if (this.props.timer.currentRound === 'food') {
       countdown = <div className="roundOne"><FoodTimer onComplete={this.onComplete} twoMinWarning={this.twoMinWarning} history={this.props.history} /></div>
     } else if (this.props.timer.currentRound === 'life') {
-      console.log('DONE');
       countdown = <div className="roundTwo"><LifeTimer onComplete={this.onComplete} twoMinWarning={this.twoMinWarning} history={this.props.history} /></div>
     }
 

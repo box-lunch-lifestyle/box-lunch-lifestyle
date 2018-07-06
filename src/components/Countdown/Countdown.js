@@ -126,11 +126,10 @@ class Countdown extends Component {
     swal({
       title: 'Are you sure?',
       text: "You'll have to start from the beginning!",
-      type: 'question',
       showCancelButton: true,
       confirmButtonColor: '#c82027',
       cancelButtonColor: '#5f5f5f',
-      confirmButtonText: 'I need to stop!'
+      confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
         // do we want a sweet alert here? Yes we do;)

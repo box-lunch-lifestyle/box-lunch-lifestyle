@@ -92,7 +92,6 @@ class JournalItem extends Component {
     deleteClick = (comment) => {
     swal({
         title: 'Are you sure?',
-        type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#c82027',
         cancelButtonColor: '#5f5f5f',
