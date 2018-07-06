@@ -55,6 +55,10 @@ class RegisterPage extends Component {
     });
   }
 
+  handleLink = (pageLink) => () => {
+    this.props.history.push(pageLink);
+  }
+
   renderAlert() {
     if (this.state.message !== '') {
       return (
@@ -76,6 +80,7 @@ class RegisterPage extends Component {
         <Header title="Box Lunch Lifestyle" />
         <RegisterForm handleInputChangeFor={this.handleInputChangeFor}
           registerUser={this.registerUser}
+          handleLink={this.handleLink}
           state={this.state} />
       </div>
     );

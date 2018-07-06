@@ -33,7 +33,7 @@ class LoadingPage extends Component {
               transitionAppearTimeout={1000}
               transitionEnter={false}
               transitionLeave={false}>
-              <p>Better Lunch.</p>
+              <p>Better lunch.</p>
             </CSSTransitionGroup>
           </Grid>
           <Grid item>
@@ -43,7 +43,7 @@ class LoadingPage extends Component {
               transitionAppearTimeout={2000}
               transitionEnter={false}
               transitionLeave={false}>
-              <p>Better Life.</p>
+              <p>Better life.</p>
             </CSSTransitionGroup>
           </Grid>
         </Grid>

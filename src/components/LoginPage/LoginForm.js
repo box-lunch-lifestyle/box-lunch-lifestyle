@@ -39,6 +39,8 @@ const styles = theme => ({
     },
     button: {
         margin: '40px',
+        boxShadow: 'none',
+
     },
     header: {
         textAlign: 'center',
@@ -106,7 +108,7 @@ function LoginForm(props) {
                         </div>
                         <Grid item xs={12}>
                             <div>
-                            <Button variant="raised" size="small" color="secondary" onClick={props.handleLink('/register')} >
+                            <Button variant="raised" size="small" color="secondary" onClick={props.handleLink('/register')} className={classes.button}>
                                     OR SIGN UP NOW!
                                 </Button>
                             </div>

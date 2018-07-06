@@ -133,11 +133,11 @@ class TimerPage extends Component {
 
     if (this.props.timer.currentRound === 'food') {
       messageBar = <div className="timerMessageBar">
-        <p>ENJOY YOUR FOOD.</p>
+        <h2>Enjoy your food.</h2>
       </div>
     } else if (this.props.timer.currentRound === 'life') {
       messageBar = <div className="timerMessageBar">
-        <p>ENJOY YOURSELF.</p>
+        <h2>Enjoy your self.</h2>
       </div>
     }
 
