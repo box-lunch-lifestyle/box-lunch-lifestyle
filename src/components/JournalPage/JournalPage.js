@@ -35,7 +35,7 @@ const styles = theme => ({
     marginRight: 5,
   },
   buttonDiv: {
-    marginTop: 15,
+    marginTop: 10,
   }
 });
 
