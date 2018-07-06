@@ -39,7 +39,7 @@ class TimerSelect extends Component {
           this.props.history.push('/timer');
         } else if (result.dismiss === swal.DismissReason.cancel) {
           swal({
-            title: "Come back when you're ready",
+            title: "Come back when you're ready.",
             confirmButtonColor: '#c82027',
           })            .then(() => {
               this.props.history.push('/home');
@@ -65,7 +65,7 @@ class TimerSelect extends Component {
         } else if
         (result.dismiss === swal.DismissReason.cancel) {
           swal({
-            title: "Come back when you're ready",
+            title: "Come back when you're ready.",
             confirmButtonColor: '#c82027',
           })
             .then(() => {
