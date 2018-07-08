@@ -43,7 +43,7 @@ function CompletedPage(props) {
 
   const date = new Date();
   console.log(date);
-  const formattedDate = moment(date).format("MMMM do, YYYY");
+  const formattedDate = moment(date).format("MMMM Do, YYYY");
   console.log(formattedDate);
 
   return (
