@@ -1,18 +1,12 @@
-## Contributors
+# Box Lunch Lifestyle
 
-- **Kevin Dexter**
-- **Ilana Nagib**
-- **Cory Booth**
-- **Bree Melechinsky**
-- **Torben Jepsen**
+The Box Lunch Lifestyle mobile-first application is a web application designed to provide it's users with an easy to use timer to track their lunch break, dividing their time evenly between lunch and themselves, and provides a few ways of tracking progress via use of a Notes page as well as a Milestones page.
 
+## Getting Started
 
-# Express/Passport with React
-This version uses React to control the login requests and redirection in coordination with client-side routing.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-We **STONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Prerequisites
+### Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -20,7 +14,7 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+### Create database and table
 
 Create a new database called `box_lunch_lifestyle` and create a `person` table:
 
@@ -50,15 +44,15 @@ CREATE TABLE comments (
 );
 ```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+If you would like to name your database something else, you will need to change `box_lunch_lifestyle` to the name of your new database name in `server/modules/pool.js`
 
-## Download (Don't Clone) This Repository
+### Download (Don't Clone) This Repository
 
 * Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
 * Unzip the project and start with the code in that folder.
 * Create a new GitHub project and push this code to the new repository.
 
-## Development Setup Instructions
+### Development Setup Instructions
 
 * Run `npm install`
 * Create a `.env` file at the root of the project and paste this line into the file:
@@ -71,7 +65,7 @@ If you would like to name your database something else, you will need to change 
 * Run `npm run client`
 * Navigate to `localhost:3000`
 
-## Debugging
+### Debugging
 
 To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run dev:client`. Start the debugging server by selecting the Debug button.
 
@@ -81,13 +75,13 @@ Then make sure `Launch Program` is selected from the dropdown, then click the gr
 
 ![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
 
-## Linting
+### Linting
 
 The Airbnb ESLint for react is a part of this project. If you would like to take advantage of this in VS Code, you can add the `ESLint` extension. Click the `Extensions` button (the button right below the `Debug`) and search for `ESLint`. Click `install` for the first result and then click `Reload`. Then it should be all set up!
 
 ![VSCode Toolbar](documentation/images/vscode-toolbar.png)
 
-## Production Build
+### Production Build
 
 Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
 
@@ -95,7 +89,7 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 * Run `npm start`
 * Navigate to `localhost:5000`
 
-## Lay of the Land
+### Lay of the Land
 
 * `src/` contains the React application
 * `public/` contains static assets for the client-side
@@ -106,8 +100,37 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 
 1. Create a new Heroku project
 1. Link the Heroku project to the project GitHub Repo
-1. Create an Herkoku Postgres database
+1. Create a Heroku Postgres database
 1. Connect to the Heroku Postgres database from Postico
 1. Create the necessary tables
 1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
 1. In the deploy section, select manual deploy
+
+## Built With
+
+* Javascript
+* CSS
+* HTML
+* React
+* Material-UI
+* Redux/Sagas
+* Moment.js
+* SQL
+* PostgreSQL
+* Sweetalert2
+* Express
+* Node.js
+* Nodemon
+* Passport
+
+## Authors
+
+- **Kevin Dexter**
+- **Ilana Nagib**
+- **Cory Booth**
+- **Bree Melechinsky**
+- **Torben Jepsen**
+
+## Acknowledgements
+* Sairam Krish (Countdown logic)
+* Prime Digital Academy (User login logic)
