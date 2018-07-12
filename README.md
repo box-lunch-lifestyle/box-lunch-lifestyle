@@ -125,11 +125,11 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 
 ## Authors
 
-- **Kevin Dexter**
-- **Ilana Nagib**
-- **Cory Booth**
-- **Bree Melechinsky**
-- **Torben Jepsen**
+- **Cory Booth** (https://github.com/superginrai)
+- **Kevin Dexter** (https://github.com/KevinJDexter)
+- **Torben Jepsen** (https://github.com/TorbenJepsen)
+- **Bree Melechinsky** (https://github.com/juniormince)
+- **Ilana Nagib** (https://github.com/ilananagib)
 
 ## Acknowledgements
 * Sairam Krish (Countdown logic)
