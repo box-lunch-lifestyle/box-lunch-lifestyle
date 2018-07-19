@@ -41,9 +41,9 @@ function CompletedPage(props) {
     props.history.push(pageLink);
   }
 
-  const date = new Date();
-  console.log(date);
-  const formattedDate = moment(date).format("MMMM Do, YYYY");
+  // const date = new Date();
+  // console.log(date);
+  const formattedDate = moment().format("MMMM Do, YYYY");
   console.log(formattedDate);
 
   return (

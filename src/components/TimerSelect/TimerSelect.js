@@ -81,13 +81,13 @@ class TimerSelect extends Component {
       <div>
             <Header title="Box Lunch Lifestyle" />
         <Grid container alignItems={'center'} justify={'center'} direction={'column'} spacing={8}>
-          <Grid item>
-            <img src='images/clock.jpg' width='100%' margin='20px' />
+          <Grid item >
+            <img src='images/clock.jpg' width='100%' margin='10px' />
           </Grid>
           <Grid item >
             <h2>What's first today?</h2>
           </Grid>
-          <Grid item>
+          <Grid item style={{ marginBottom: 50 }}>
             <Button onClick={this.foodTimerClick} variant="contained" color="primary" className={classes.button}>
               FOOD
       </Button>
