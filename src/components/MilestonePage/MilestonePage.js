@@ -90,7 +90,7 @@ class MilestonePage extends Component {
             </Grid>
             <Grid className={classes.header} container spacing={24}>
                 <Grid item xs={12}>
-                  <h5> You have {this.props.entries.allEntries.length} lunches <br /> under your belt </h5>
+                  <h5> You have {this.props.entries.allEntries.length} lunches <br /> under your belt. </h5>
                 </Grid>
               <Grid item xs={12}>
                 <HeroItem />
