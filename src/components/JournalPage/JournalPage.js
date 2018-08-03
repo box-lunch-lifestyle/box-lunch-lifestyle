@@ -74,7 +74,6 @@ class JournalPage extends Component {
       // swal(text)
       const action = { type: 'FETCH_POST_COMMENT', payload: { comment: text } }
       this.props.dispatch(action);
-      console.log(text);
     }
   }
 

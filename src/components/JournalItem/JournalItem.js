@@ -113,6 +113,7 @@ class JournalItem extends Component {
 
     render() {
         const {classes} = this.props;
+        console.log(this.props.comment);
         const date = moment(this.props.comment.date_posted).format("MMMM Do YYYY");
         return (
                 <div>
