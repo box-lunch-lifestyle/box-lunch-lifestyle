@@ -2,6 +2,9 @@
 
 The Box Lunch Lifestyle mobile-first application is a web application designed to provide it's users with an easy to use timer to track their lunch break, dividing their time evenly between lunch and themselves, and provides a few ways of tracking progress via use of a Notes page as well as a Milestones page.
 
+Live beta demo:
+https://box-lunch-lifestyle.herokuapp.com/#/login
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
